@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack-dev-server --open --mode development",
+    "test" : "jest"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,13 @@
     "@babel/core": "^7.22.7",
     "@babel/preset-env": "^7.22.7",
     "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "jest-environment-jsdom": "^29.6.1",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4",
