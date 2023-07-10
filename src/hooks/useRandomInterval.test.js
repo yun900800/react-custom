@@ -1,7 +1,5 @@
 import useRandomInterval from './useRandomInterval';
 import { renderHook,waitFor } from "@testing-library/react";
-//jest.useFakeTimers();
-//jest.spyOn(global, 'setTimeout');
 describe('useRandomInterval hook test', () => {
     it('callback should have execute once', async () => {
         jest.useFakeTimers();
