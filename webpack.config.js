@@ -16,6 +16,10 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
+            { 
+                test: /\.(ts|tsx)$/, 
+                loader: "ts-loader" 
+            },
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
@@ -35,4 +39,8 @@ module.exports = {
             template: './public/index.html'
         })
     ]
+    ,
+    resolve: {
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],    
+    },
 }
