@@ -4,4 +4,4 @@ import ReactDOM from 'react-dom'
 // 引入App.js文件
 import App from './App.js'
 
-//ReactDOM.render(<App/>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('app'))
