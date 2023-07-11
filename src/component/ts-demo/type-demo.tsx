@@ -245,6 +245,7 @@ function isApiError(error: Error) {
 //window.foo = 1; 这个会编译报错
 
 (window as any).foo = 1;
+(window as any).cache = {};
 
 //4、将 any 断言为一个具体的类型
 function getCacheData(key: string): any {
@@ -257,7 +258,7 @@ interface Cat {
 }
 //这里将any类型断言为Cat类型
 const tom5 = getCacheData('tom') as Cat;
-tom5.run();
+//tom5.run();
 
 //5、要使得 A 能够被断言为 B，只需要 A 兼容 B 或 B 兼容 A 即可
 
@@ -278,7 +279,7 @@ interface Cat6 {
 }
 
 const tom6 = getCacheData1<Cat6>('tom');
-tom6.run();
+//tom6.run();
 
 
 
