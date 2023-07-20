@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Sparkles from './sparkle/sparkles';
 import Input from './component/new-input';
 import Hello from './component/Hello.tsx';
+import { Boop , SpringBoop, NewBoop }from './boop/boop';  
 import './app.css';
 
 export default class App extends Component {
@@ -20,7 +21,17 @@ export default class App extends Component {
             <div className='app'>
                 <Hello name='yun900800@126.com' enthusiasmLevel={5}></Hello>
             </div>
+            <Boop rotation={20} timing={200}>
+                <div>Common Boop</div>
+            </Boop>
+            <SpringBoop rotation={20} x={20} timing={200}>
+                <div>Spring Boop </div>
+            </SpringBoop>
+
+            <NewBoop rotation={20} y={20} timing={200}>
+                <div>NewBoop with Spring and Hooks</div>
+            </NewBoop>
             </>
         );
     }
-}
+};
