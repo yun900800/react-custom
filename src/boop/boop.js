@@ -28,7 +28,7 @@ export const Boop = ({ rotation = 0, timing = 150, children }) => {
         setIsBooped(true);
     };
     return (
-        <span onMouseEnter={trigger} style={style}>
+        <span className='boop-padding' onMouseEnter={trigger} style={style}>
             {children}
         </span>
     );
@@ -74,7 +74,7 @@ export const SpringBoop = ({
         setIsBooped(true);
     };
     return (
-      <animated.span onMouseEnter={trigger} style={style}>
+      <animated.span className='boop-padding'  onMouseEnter={trigger} style={style}>
         {children}
       </animated.span>
     );
@@ -83,7 +83,7 @@ export const SpringBoop = ({
 export const NewBoop = ({ children, ...boopConfig }) => {
   const [style, trigger] = useBoop(boopConfig);
   return (
-    <animated.span onMouseEnter={trigger} style={style}>
+    <animated.span className='boop-padding'  onMouseEnter={trigger} style={style}>
       {children}
     </animated.span>
   );

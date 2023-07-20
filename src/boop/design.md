@@ -8,3 +8,8 @@
 
 3. 最后发现这里的动画逻辑可以抽取为一个hook,返回值是一个style和一个trigger函数.这里体现了react的一个抽象逻辑
 就是将UI部分和行为部分相应的职责分离;元素代表UI和hooks抽象行为.  
+
+
+# 知识总结
+
+1. react-feather是一个关于react-icon的库
