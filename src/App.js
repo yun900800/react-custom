@@ -4,12 +4,18 @@ import Input from './component/new-input';
 import Hello from './component/Hello.tsx';
 import { Boop , SpringBoop, NewBoop }from './boop/boop';  
 import CircleDemo from './component/circle-demo';
+import {StyleBasic} from './component/styles/style-basic';
+import {AdapterProps } from './component/styles/adapter-prop';
+import {StyleExtender } from './component/styles/style-extender';
 import './app.css';
 
 export default class App extends Component {
     render() {
         return (
             <>
+            <div className='app'>
+                {process.env.NODE_ENV}, {process.env.name}
+            </div>
             <div className='app'>
                 <Sparkles color='red' width="200px" height="200px">hello</Sparkles>
                 , react  
@@ -33,6 +39,9 @@ export default class App extends Component {
                 <div>NewBoop with Spring and Hooks</div>
             </NewBoop>
             <CircleDemo></CircleDemo>
+            <StyleBasic></StyleBasic>
+            <AdapterProps></AdapterProps>
+            <StyleExtender></StyleExtender>
             </>
         );
     }
