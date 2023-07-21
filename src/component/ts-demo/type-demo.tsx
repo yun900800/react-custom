@@ -1,7 +1,7 @@
 //定义一个number类型,ts是静态类型，而且是弱类型
-let foo: number = 1;
+const foo: number = 1;
 
-let myFavoriteNumber: string = 'seven';
+const myFavoriteNumber: string = 'seven';
 //编译报错
 //myFavoriteNumber = 7;
 
@@ -24,7 +24,7 @@ something = 7;
 //something.setName('Tom');
 
 //类型推断,初始赋值的时候进行类型推断, 没有赋值默认为any
-let favoriteNumber = 'seven';
+const favoriteNumber = 'seven';
 //这里默认类型推断
 //favoriteNumber = 7;
 
@@ -49,7 +49,7 @@ interface Person {
     age: number;
 }
 
-let tom: Person = {
+const tom: Person = {
     name: 'Tom',
     age: 25
 };
@@ -62,7 +62,7 @@ interface Person1 {
     age?: number;
 }
 
-let tom1: Person1 = {
+const tom1: Person1 = {
     name: 'Tom'
 };
 //此时不能添加未定义属性
@@ -74,7 +74,7 @@ interface Person2 {
     [propName: string]: any;
 }
 
-let tom2: Person2 = {
+const tom2: Person2 = {
     name: 'Tom',
     gender: 'male'
 };
@@ -99,7 +99,7 @@ interface Person3 {
     [propName: string]: string | number;
 }
 
-let tom3: Person3 = {
+const tom3: Person3 = {
     name: 'Tom',
     age: 25,
     gender: 'male'
@@ -114,7 +114,7 @@ interface Person4 {
     [propName: string]: any;
 }
 
-let tom4: Person4 = {
+const tom4: Person4 = {
     id: 89757,
     name: 'Tom',
     gender: 'male'
@@ -124,20 +124,20 @@ let tom4: Person4 = {
 
 
 //数组定义
-let array : string[] = ["a","b","c"];
+const array : string[] = ["a","b","c"];
 
 //数组泛型
-let fibonacci: Array<number> = [1, 1, 2, 3, 5];
+const fibonacci: Array<number> = [1, 1, 2, 3, 5];
 
 //接口定义数组
 interface NumberArray {
     [index: number]: number;
 }
-let fibonacci1: NumberArray = [1, 1, 2, 3, 5];
+const fibonacci1: NumberArray = [1, 1, 2, 3, 5];
 
 //类数组
 function sum() {
-    let args: {
+    const args: {
         [index: number]: number;
         length: number;
         callee: Function;
@@ -145,10 +145,10 @@ function sum() {
 }
 
 //any在数组中的应用
-let list: any[] = ['xcatliu', 25, { website: 'http://devnote.pro' }];
+const list: any[] = ['xcatliu', 25, { website: 'http://devnote.pro' }];
 
 //函数表达式, 如果左边没有声明类型，ts会进行类型推断
-let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
+const mySum: (x: number, y: number) => number = function (x: number, y: number): number {
     return x + y;
 };
 
@@ -171,16 +171,16 @@ function buildName(firstName: string, lastName?: string) {
         return firstName;
     }
 }
-let tomcat = buildName('Tom', 'Cat');
-let tom0 = buildName('Tom');
+const tomcat = buildName('Tom', 'Cat');
+const tom0 = buildName('Tom');
 
 //默认参数值，ts会将添加了默认值的参数识别为可选参数,有了默认值以后的可选参数，后面可以继续出现参数,
 //添加一个默认值是一个好的最佳实践。
 function buildName1(firstName: string = 'Tom', lastName: string) {
     return firstName + ' ' + lastName;
 }
-let tomcat1 = buildName1('Tom', 'Cat');
-let cat1 = buildName1(undefined, 'Cat');
+const tomcat1 = buildName1('Tom', 'Cat');
+const cat1 = buildName1(undefined, 'Cat');
 
 //剩余参数
 function push(array, ...items) {
@@ -189,7 +189,7 @@ function push(array, ...items) {
     });
 }
 
-let a: any[] = [];
+const a: any[] = [];
 push(a, 1, 2, 3);
 
 function reverse(x: number): number;
@@ -280,6 +280,8 @@ interface Cat6 {
 
 const tom6 = getCacheData1<Cat6>('tom');
 //tom6.run();
+
+export {}
 
 
 

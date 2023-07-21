@@ -1,5 +1,3 @@
-import { createUnzip } from "zlib";
-
 // type alias
 type Name = string;
 type NameResolver  = ()=> string;
@@ -12,19 +10,22 @@ function getName(n: NameOrResolver) {
     return n();
 }
 
+getName(()=>'54');
+
 //类型别名常用于联合类型
 
 //字符串字面量类型 约束取值只能是某几个字符串中的一个.
 type EventName = 'click' | 'mousemove' | 'scroll';
 function handleEvent(ele:Element, event: EventName){
-
+    console.log(ele);
+    console.log(event);
 }
 
 handleEvent(document.getElementById('hello'), 'scroll');  // 没问题
 // handleEvent(document.getElementById('world'), 'dblclick'); // 报错，event 不能为 'dblclick'.
 
 // 数组合并相同类型对象，元组合并不同类型对象
-let tom: [string, number] = ['Tom', 25];
+const tom: [string, number] = ['Tom', 25];
 tom[0].slice(1);
 tom[1].toFixed(2);
 
@@ -32,6 +33,7 @@ tom[1].toFixed(2);
 
 let tom1: [string, number];
 tom1 = ['Tom', 25];
+console.log(tom1);
 
 // let tom: [string, number];
 // tom = ['Tom']; 这里会编译报错
@@ -57,7 +59,7 @@ class Animal {
         return a instanceof Animal;
     }
 
-    set name(value:any) {
+    set name(value:string) {
         
     }
 
@@ -66,7 +68,7 @@ class Animal {
     }
 }
 
-let a = new Animal('Jack');
+const a = new Animal('Jack');
 a.name = 'Kate Green';
 Animal.isAnimal(a);
 //console.log(a.sayHi());
@@ -81,7 +83,7 @@ class TomCat extends Animal {
     }
 }
 
-let c = new TomCat('Tom'); // Tom
+const c = new TomCat('Tom'); // Tom
 // console.log(c.sayHi());
 
 // 参数属性
@@ -94,7 +96,7 @@ class ParamAnimal {
     }
 }
 
-let paramAnimal = new ParamAnimal('paramAnimal',15,'6688');
+const paramAnimal = new ParamAnimal('paramAnimal',15,'6688');
 // console.log(paramAnimal.name);
 // 一下编译报错
 // paramAnimal.age = 20;
@@ -189,20 +191,21 @@ type ReadOnlyPerson = ReadOnlyType<Person>;
 type myUnionType = "🍇" | "🍎" | "🫐" | "🍋";
 
 // This works!
-let lemon:myUnionType = "🍋"
+const lemon:myUnionType = "🍋"
  
-let noLemonsPlease:Exclude<myUnionType, "🍋"> = "🍇";
+const noLemonsPlease:Exclude<myUnionType, "🍋"> = "🍇";
 //  ^
 //  └ - - Type is  "🍇" | "🍎" | "🫐"
 
-let noApplesOrLemons:Exclude<myUnionType, "🍋" | "🍎"> = "🍇";
+const noApplesOrLemons:Exclude<myUnionType, "🍋" | "🍎"> = "🍇";
 //  ^
 //  └ - - Type is  "🍇" | "🫐"
 
-let onlyRaspberries:Exclude<myUnionType, "🍋" | "🍎" | "🫐"> = "🍇";
+const onlyRaspberries:Exclude<myUnionType, "🍋" | "🍎" | "🫐"> = "🍇";
 //  ^
 //  └ - - Type is  "🍇"
 
-let backToLemons:myUnionType = "🍋"
+const backToLemons:myUnionType = "🍋"
 //  ^
 //  └ - - Type is  "🍇" | "🍎" | "🫐" | "🍋"
+export {}

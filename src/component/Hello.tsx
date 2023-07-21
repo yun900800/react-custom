@@ -1,8 +1,8 @@
-//import * as React from 'react';
+import React from 'react';
 import './hello.css';
 import Sparkles from '../sparkle/sparkles';
-import IMAGE from '../assets/images/process-picture.jpg'; 
-import SVG from '../assets/svg/sparkle.svg';
+import PROCESS from '../assets/images/process-picture.jpg'; 
+import SPARKLES from '../assets/svg/sparkle.svg';
 
 export interface Props {
   name: string;
@@ -21,8 +21,8 @@ function Hello({ name, enthusiasmLevel = 1 }: Props) {
         Hello {name + getExclamationMarks(enthusiasmLevel)}
       </div>
       </Sparkles>
-      <img src={IMAGE} width={400} height={400}></img>
-      <img src={SVG} width={40} height={40}></img>
+      <img src={PROCESS} width={400} height={400} alt='a logo'></img>
+      <img src={SPARKLES} width={40} height={40} alt='a logo'></img>
     </div>
   );
 }

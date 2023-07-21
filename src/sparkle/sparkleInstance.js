@@ -17,17 +17,17 @@ function SparkleInstance({ color, size, style }) {
     );
 }
 
-const sparkleAnimation = keyframes`
-  0% {
-    transform: scale(0) rotate(0deg);
-  }
-  50% {
-    transform: scale(1) rotate(90deg);
-  }
-  100% {
-    transform: scale(0) rotate(180deg);
-  }
-`;
+// const sparkleAnimation = keyframes`
+//   0% {
+//     transform: scale(0) rotate(0deg);
+//   }
+//   50% {
+//     transform: scale(1) rotate(90deg);
+//   }
+//   100% {
+//     transform: scale(0) rotate(180deg);
+//   }
+// `;
 
 const growAndShrink = keyframes`
   0% {
@@ -60,5 +60,7 @@ const Svg = styled.svg`
   z-index: 2;
   animation: ${spin} 600ms forwards;
 `;
+
+console.log(Wrapper);
 
 export default SparkleInstance;

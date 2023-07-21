@@ -14,3 +14,4 @@ const Svg = styled.svg`
   position: absolute;
   animation: ${sparkleAnimation} 600ms forwards;
 `;
+console.log(Svg);

@@ -23,3 +23,10 @@ import '@testing-library/jest-dom/extend-expect';
     "test" : "jest"
 }
 ```
+
+5. @babel/preset-typescript vs ts-loader 如何选择的问题?
+
+6. eslint 安装5个包：
+    - 6.1 eslint,eslint-plugin-react,eslint-plugin-react-hooks,@typescript-eslint/eslint-plugin,@typescript-eslint/parser
+    - 6.2 创建.eslintrc.js
+
