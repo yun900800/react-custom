@@ -1,34 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
-import { animated } from 'react-spring';
-import { Star } from 'react-feather';
-import {useBoop} from '../hooks/use-boop';
-import { UnstyledButton } from './unstyle-button';
-import './circle-demo.css';
+import React from 'react'
+import styled from 'styled-components'
+import { animated } from 'react-spring'
+import { Star } from 'react-feather'
+import { useBoop } from '../hooks/use-boop'
+import { UnstyledButton } from './unstyle-button'
+import './circle-demo.css'
 const useAngledBoop = (index) => {
   // Our star has 5 points across a 360-degree area.
   // Our first point should shoot out at 0 degrees,
   // our second at 72 degrees (1/5th of 360),
   // our third at 144 degrees, and so on.
-  let angle = index * (360 / 5);
+  let angle = index * (360 / 5)
   // By default in JS, 0-degrees is the 3-o'clock
   // position, but I want my animation to start at
   // the 12-o'clock position, so I'll subtract
   // 90 degrees
-  angle -= 90;
+  angle -= 90
   // Trigonometry methods in JS use radians, not
   // degrees, so we need to convert.
-  const angleInRads = (angle * Math.PI) / 180;
+  const angleInRads = (angle * Math.PI) / 180
   // If this was meant to be reusable, this would
   // be configurable, but it's not, so it's
   // hardcoded. The # of pixels from the center
   // that our circle will bounce.
-  const distance = 42;
+  const distance = 42
   // Convert polar coordinages (angle, distance)
   // to cartesian ones (x, y), since JS uses
   // a cartesian coordinate system:
-  const x = distance * Math.cos(angleInRads);
-  const y = distance * Math.sin(angleInRads);
+  const x = distance * Math.cos(angleInRads)
+  const y = distance * Math.sin(angleInRads)
   // `normalize` is commonly called "lerp",
   // as well as Linear Interpolation. It
   // maps a value from one scale to another.
@@ -38,28 +38,28 @@ const useAngledBoop = (index) => {
   // one being the fastest.
   //
   // It's defined below
-  let timing = normalize(index, 0, 4, 450, 600);
+  let timing = normalize(index, 0, 4, 450, 600)
   // `normalize` produces linear interpolation,
   // but I want there to be a *bit* of an ease;
   // I want it to appear to be slowing down,
   // as we get further into the circles.
-  timing *= 1 + index * 0.22;
-  const friction = normalize(index, 0, 4, 15, 40);
+  timing *= 1 + index * 0.22
+  const friction = normalize(index, 0, 4, 15, 40)
   const boop = useBoop({
     x,
     y,
     timing,
     scale: 1.4,
     springConfig: { tension: 180, friction },
-  });
-  return boop;
-};
+  })
+  return boop
+}
 const CircleDemo = () => {
-  const [c1s, c1t] = useAngledBoop(0);
-  const [c2s, c2t] = useAngledBoop(1);
-  const [c3s, c3t] = useAngledBoop(2);
-  const [c4s, c4t] = useAngledBoop(3);
-  const [c5s, c5t] = useAngledBoop(4);
+  const [c1s, c1t] = useAngledBoop(0)
+  const [c2s, c2t] = useAngledBoop(1)
+  const [c3s, c3t] = useAngledBoop(2)
+  const [c4s, c4t] = useAngledBoop(3)
+  const [c5s, c5t] = useAngledBoop(4)
   const [starStyles, starTrigger] = useBoop({
     scale: 1.1,
     rotation: 10,
@@ -68,7 +68,7 @@ const CircleDemo = () => {
       tension: 300,
       friction: 6,
     },
-  });
+  })
   return (
     <Wrapper>
       <Button
@@ -76,21 +76,20 @@ const CircleDemo = () => {
           // If I had more than 5 points, I might
           // write a `callAll()` helper function.
           // But I don't, so this is fine.
-          c1t();
-          c2t();
-          c3t();
-          c4t();
-          c5t();
-          starTrigger();
+          c1t()
+          c2t()
+          c3t()
+          c4t()
+          c5t()
+          starTrigger()
         }}
-
-        onClick={() =>{
-          c1t();
-          c2t();
-          c3t();
-          c4t();
-          c5t();
-          starTrigger();
+        onClick={() => {
+          c1t()
+          c2t()
+          c3t()
+          c4t()
+          c5t()
+          starTrigger()
         }}
       >
         <IconWrapper style={starStyles}>
@@ -103,8 +102,8 @@ const CircleDemo = () => {
       <Circle style={c4s} />
       <Circle style={c5s} />
     </Wrapper>
-  );
-};
+  )
+}
 // This helper function is used in the component
 const normalize = (
   number,
@@ -115,12 +114,10 @@ const normalize = (
 ) => {
   // FIrst, normalize the value between 0 and 1.
   const standardNormalization =
-    (number - currentScaleMin) / (currentScaleMax - currentScaleMin);
+    (number - currentScaleMin) / (currentScaleMax - currentScaleMin)
   // Next, transpose that value to our desired scale.
-  return (
-    (newScaleMax - newScaleMin) * standardNormalization + newScaleMin
-  );
-};
+  return (newScaleMax - newScaleMin) * standardNormalization + newScaleMin
+}
 // My project uses styled-components.
 // Nothing here is styled-components-specific,
 // however. It's just the tool I was already
@@ -128,13 +125,13 @@ const normalize = (
 const Wrapper = styled.div`
   position: relative;
   width: min-content;
-`;
+`
 const Button = styled(UnstyledButton)`
   position: relative;
   z-index: 3;
   padding: 8px;
   border-radius: 50%;
-`;
+`
 const IconWrapper = styled(animated.span)`
   display: block;
   svg {
@@ -142,7 +139,7 @@ const IconWrapper = styled(animated.span)`
     stroke: var(--color-text) !important;
     fill: var(--color-background) !important;
   }
-`;
+`
 const Circle = styled(animated.div)`
   position: absolute;
   z-index: 1;
@@ -155,5 +152,5 @@ const Circle = styled(animated.div)`
   margin: auto;
   border-radius: 50%;
   background: hsl(50deg, 100%, 48%);
-`;
-export default CircleDemo;
+`
+export default CircleDemo

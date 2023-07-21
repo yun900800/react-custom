@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 const sparkleAnimation = keyframes`
   0% {
     transform: scale(0) rotate(0deg);
@@ -9,9 +9,9 @@ const sparkleAnimation = keyframes`
   100% {
     transform: scale(0) rotate(180deg);
   }
-`;
+`
 const Svg = styled.svg`
   position: absolute;
   animation: ${sparkleAnimation} 600ms forwards;
-`;
-console.log(Svg);
+`
+console.log(Svg)

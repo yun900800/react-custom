@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSpring } from 'react-spring';
+import React from 'react'
+import { useSpring } from 'react-spring'
 import usePrefersReducedMotion from './usePrefersReducedMotion'
 export function useBoop({
   x = 0,
@@ -12,8 +12,8 @@ export function useBoop({
     friction: 10,
   },
 }) {
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const [isBooped, setIsBooped] = React.useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [isBooped, setIsBooped] = React.useState(false)
   const style = useSpring({
     display: 'inline-block',
     backfaceVisibility: 'hidden',
@@ -25,21 +25,21 @@ export function useBoop({
          rotate(0deg)
          scale(1)`,
     config: springConfig,
-  });
+  })
   React.useEffect(() => {
     if (!isBooped) {
-        return;
+      return
     }
     const timeoutId = window.setTimeout(() => {
-        setIsBooped(false);
-    }, timing);
+      setIsBooped(false)
+    }, timing)
     return () => {
-        window.clearTimeout(timeoutId);
-    };
-  }, [isBooped]);
+      window.clearTimeout(timeoutId)
+    }
+  }, [isBooped])
   const trigger = React.useCallback(() => {
-    setIsBooped(true);
-  }, []);
-  const applicableStyle = prefersReducedMotion ? {} : style;
-  return [applicableStyle, trigger];
+    setIsBooped(true)
+  }, [])
+  const applicableStyle = prefersReducedMotion ? {} : style
+  return [applicableStyle, trigger]
 }

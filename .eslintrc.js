@@ -17,6 +17,8 @@ module.exports =  {
       "plugin:import/warnings",
       "plugin:import/typescript",
       "plugin:jsx-a11y/recommended",
+      "prettier",
+      "plugin:prettier/recommended",
       // 'prettier', // Use prettier, it can disable all rules which conflict with prettier
       // 'prettier/react' // Use prettier/react to pretty react syntax
     ],

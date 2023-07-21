@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { screen, render, cleanup, fireEvent } from '@testing-library/react'
-import Input from './component/input';
-import App from './component/app';
+import Input from './component/input'
+import App from './component/app'
 
 describe('App component', () => {
   beforeAll(() => {
@@ -9,7 +9,7 @@ describe('App component', () => {
   })
 
   it('should have the right message in the dom', () => {
-    const message = 'Hello World';
+    const message = 'Hello World'
 
     expect(screen.getByText(message)).toBeInTheDocument()
   })
@@ -18,12 +18,14 @@ describe('App component', () => {
 })
 
 describe('Input component', () => {
-  let input, inputID;
+  let input, inputID
 
   beforeAll(() => {
-    const { getByTestId, getByLabelText } = render(<Input label='username' id='username' />)
+    const { getByTestId, getByLabelText } = render(
+      <Input label="username" id="username" />
+    )
     input = getByLabelText('username')
-    inputID = getByTestId('username');
+    inputID = getByTestId('username')
   })
 
   it('should have the default value', () => {
@@ -36,7 +38,7 @@ describe('Input component', () => {
   })
 
   it('should have an element with this id', () => {
-    expect(inputID).not.toBeNull();
+    expect(inputID).not.toBeNull()
   })
 
   afterAll(cleanup)

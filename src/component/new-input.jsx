@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import './input.css';
-import Sparkles from '../sparkle/sparkles';
+import React, { useState } from 'react'
+import './input.css'
+import Sparkles from '../sparkle/sparkles'
 
 const Input = ({ id = '', label = '', type = 'text' }) => {
-  const [value, handleChange] = useState('');
+  const [value, handleChange] = useState('')
   return (
-    <div className='wrapper'>
-      <label htmlFor={id}><Sparkles color='green'>{label}</Sparkles></label>
-      <input type={type} id={id}
+    <div className="wrapper">
+      <label htmlFor={id}>
+        <Sparkles color="green">{label}</Sparkles>
+      </label>
+      <input
+        type={type}
+        id={id}
         data-testid={id}
         label={label}
         onChange={({ target }) => {
@@ -18,4 +22,4 @@ const Input = ({ id = '', label = '', type = 'text' }) => {
     </div>
   )
 }
-export default Input;
+export default Input

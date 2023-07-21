@@ -1,5 +1,5 @@
-const DEFAULT_COLOR = 'hsl(50deg, 100%, 50%)';
-import random from "../utils/random";
+const DEFAULT_COLOR = 'hsl(50deg, 100%, 50%)'
+import random from '../utils/random'
 const generateSparkle = (color = DEFAULT_COLOR) => {
   return {
     id: String(random(10000, 99999)),
@@ -16,4 +16,4 @@ const generateSparkle = (color = DEFAULT_COLOR) => {
     },
   }
 }
-export default generateSparkle;
+export default generateSparkle

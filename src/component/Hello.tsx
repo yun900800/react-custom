@@ -1,36 +1,36 @@
-import React from 'react';
-import './hello.css';
-import Sparkles from '../sparkle/sparkles';
-import PROCESS from '../assets/images/process-picture.jpg'; 
-import SPARKLES from '../assets/svg/sparkle.svg';
+import React from 'react'
+import './hello.css'
+import Sparkles from '../sparkle/sparkles'
+import PROCESS from '../assets/images/process-picture.jpg'
+import SPARKLES from '../assets/svg/sparkle.svg'
 
 export interface Props {
-  name: string;
-  enthusiasmLevel?: number;
+  name: string
+  enthusiasmLevel?: number
 }
 
 function Hello({ name, enthusiasmLevel = 1 }: Props) {
   if (enthusiasmLevel <= 0) {
-    throw new Error('You could be a little more enthusiastic. :D');
+    throw new Error('You could be a little more enthusiastic. :D')
   }
 
   return (
     <div className="hello">
-        <Sparkles color="red">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
-      </div>
+      <Sparkles color="red">
+        <div className="greeting">
+          Hello {name + getExclamationMarks(enthusiasmLevel)}
+        </div>
       </Sparkles>
-      <img src={PROCESS} width={400} height={400} alt='a logo'></img>
-      <img src={SPARKLES} width={40} height={40} alt='a logo'></img>
+      <img src={PROCESS} width={400} height={400} alt="a logo"></img>
+      <img src={SPARKLES} width={40} height={40} alt="a logo"></img>
     </div>
-  );
+  )
 }
 
-export default Hello;
+export default Hello
 
 // helpers
 
 function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
+  return Array(numChars + 1).join('!')
 }
