@@ -30,3 +30,6 @@ import '@testing-library/jest-dom/extend-expect';
     - 6.1 eslint,eslint-plugin-react,eslint-plugin-react-hooks,@typescript-eslint/eslint-plugin,@typescript-eslint/parser
     - 6.2 创建.eslintrc.js
 
+7. prettier 格式化安装的配置
+
+8. husky配置增加代码提交的eslint和prettier检查和格式化
