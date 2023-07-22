@@ -11,6 +11,8 @@
 # production
 /build
 
+/distgit
+
 # misc
 .DS_Store
 .env.local
