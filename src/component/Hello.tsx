@@ -10,10 +10,11 @@ export interface Props {
 }
 
 function Hello({ name, enthusiasmLevel = 1 }: Props) {
+  const user = 'this is a userInfo'
   if (enthusiasmLevel <= 0) {
     throw new Error('You could be a little more enthusiastic. :D')
   }
-
+  console.log(user)
   return (
     <div className="hello">
       <Sparkles color="red">
