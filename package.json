@@ -14,8 +14,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react","webpack","sparkles"],
+  "author": "yun900800@126.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.22.6",
