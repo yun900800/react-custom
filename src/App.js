@@ -7,7 +7,11 @@ import CircleDemo from './component/circle-demo'
 import { StyleBasic } from './component/styles/style-basic'
 import { AdapterProps } from './component/styles/adapter-prop'
 import { StyleExtender } from './component/styles/style-extender'
+import { Provider } from 'react-redux'
+import TaskList from './stories/TaskList'
+import store from './lib/store'
 import './app.css'
+import './index.css'
 
 export default class App extends Component {
   render() {
@@ -46,6 +50,9 @@ export default class App extends Component {
         <StyleBasic></StyleBasic>
         <AdapterProps></AdapterProps>
         <StyleExtender></StyleExtender>
+        <Provider store={store}>
+          <TaskList></TaskList>
+        </Provider>
       </>
     )
   }

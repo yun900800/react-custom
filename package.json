@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open --mode development",
     "env": "webpack serve --config webpack/webpack.config.js --env env=dev --open",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
-    "run-build" :"cd dist && npx serve",
+    "run-build": "cd dist && npx serve",
     "test": "jest",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
@@ -40,6 +40,8 @@
     "@types/node": "^20.4.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/react-redux": "^7.1.25",
+    "@types/redux": "^3.6.0",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "babel-loader": "^9.1.2",
@@ -73,9 +75,13 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "markdown-pdf": "^11.0.0",
+    "node-fetch": "^2.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
+    "react-redux": "^8.1.2",
     "react-spring": "^9.7.2",
     "styled-components": "^6.0.2"
   },
