@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const { type } = require('os')
 
 module.exports = {
     entry: './src/index.js',
@@ -16,6 +17,10 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
+            { 
+                test: /\.(ts|tsx)$/, 
+                loader: "ts-loader" 
+            },
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
@@ -25,6 +30,14 @@ module.exports = {
                 use: {
                     loader: 'html-loader'
                 }
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
+                type: 'asset/inline'
+            },
+            {
+                test: /\.(?:ico|gif|jpeg|jpg|png)$/i,
+                type: 'asset/resource'
             }
         ]
     },
@@ -35,4 +48,8 @@ module.exports = {
             template: './public/index.html'
         })
     ]
+    ,
+    resolve: {
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],    
+    },
 }

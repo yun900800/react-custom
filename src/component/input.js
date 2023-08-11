@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const Input = ({ id = '', label = '', type = 'text' }) => {
-  const [value, handleChange] = useState('');
+  const [value, handleChange] = useState('')
   return (
     <div>
       <label htmlFor={id}>{label}</label>
-      <input type={type} id={id}
+      <input
+        type={type}
+        id={id}
         data-testid={id}
         label={label}
         onChange={({ target }) => {
@@ -17,4 +19,4 @@ const Input = ({ id = '', label = '', type = 'text' }) => {
   )
 }
 
-export default Input;
+export default Input
