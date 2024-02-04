@@ -1,6 +1,9 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { HotModuleReplacementPlugin } = require('webpack')
+
 
 module.exports = {
     entry: './src/index.js',
@@ -24,7 +27,23 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader"],
+                exclude: /node_modules/,
+                use: [
+                    // { loader: 'style-loader'},
+                    {
+                      loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                      loader: 'css-loader',
+                      options: {
+                        importLoaders: 1
+                      }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                    
+                ],
             },
             {
                 test: /.html$/,
@@ -44,13 +63,20 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
+        open: true,
+        hot: true,
     },
     plugins: [
         new HtmlWebPackPlugin({
             title: 'react custom app',
             filename: 'index.html',
             template: './public/index.html'
-        })
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].bundle.css',
+            chunkFilename: '[id].css'
+        }),
+        new HotModuleReplacementPlugin(),
         // ,
         // new CopyPlugin({
         //     patterns: [{ from: 'src' , to: 'dist'}]
