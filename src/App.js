@@ -19,7 +19,6 @@ import { Foldable3 } from './fold/foldable-3'
 import Articles from './component/article/articles.jsx'
 import ArticlesWithHook from './component/article/articles-with-hook.js'
 import ArticlesWithDataApi from './component/article/article-with-data-api.js'
-
 export default class App extends Component {
   render() {
     return (

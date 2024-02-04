@@ -79,6 +79,8 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.6.7",
     "markdown-pdf": "^11.0.0",
