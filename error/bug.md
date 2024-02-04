@@ -13,3 +13,5 @@ SyntaxError: C:\Users\86135\Desktop\我的demo\react-custom\src\stories\Page.sto
 
 ## 疑问
 1. @babel/preset-typescript 与 ts-loader的区别是什么?怎么选择使用的问题?
+
+## react的文件下的图片显示不出来的时候,需要将目录放置到public目录下

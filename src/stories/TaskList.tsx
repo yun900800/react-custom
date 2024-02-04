@@ -11,7 +11,7 @@ export default function TaskList() {
   // }
 
   // We're retrieving our state from the store
-  const tasks = useSelector((state) => {
+  const tasks = useSelector((state:any) => {
     const tasksInOrder = [
       ...state.taskbox.tasks.filter((t) => t.state === 'TASK_PINNED'),
       ...state.taskbox.tasks.filter((t) => t.state !== 'TASK_PINNED'),
@@ -22,7 +22,7 @@ export default function TaskList() {
     return filteredTasks
   })
 
-  const { status } = useSelector((state) => state.taskbox)
+  const { status } = useSelector((state:any) => state.taskbox)
 
   const dispatch = useDispatch()
 

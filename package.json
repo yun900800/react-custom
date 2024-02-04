@@ -14,7 +14,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "keywords": ["react","webpack","sparkles"],
+  "keywords": [
+    "react",
+    "webpack",
+    "sparkles"
+  ],
   "author": "yun900800@126.com",
   "license": "ISC",
   "devDependencies": {
@@ -76,12 +80,14 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.6.7",
     "markdown-pdf": "^11.0.0",
     "node-fetch": "^2.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-redux": "^8.1.2",
+    "react-router-dom": "^6.22.0",
     "react-spring": "^9.7.2",
     "styled-components": "^6.0.2"
   },

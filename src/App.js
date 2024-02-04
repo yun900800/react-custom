@@ -10,8 +10,15 @@ import { StyleExtender } from './component/styles/style-extender'
 import { Provider } from 'react-redux'
 import TaskList from './stories/TaskList'
 import store from './lib/store'
-import './app.css'
-import './index.css'
+
+import FoldableImage from './fold/foldable';
+import { Foldable } from './fold/foldable-1';
+import { Foldable2 } from './fold/foldable-2';
+import { Foldable3 } from './fold/foldable-3';
+
+import Articles from './component/article/articles.jsx';
+import ArticlesWithHook from './component/article/articles-with-hook.js';
+import ArticlesWithDataApi from './component/article/article-with-data-api.js';
 
 export default class App extends Component {
   render() {
@@ -53,6 +60,13 @@ export default class App extends Component {
         <Provider store={store}>
           <TaskList></TaskList>
         </Provider>
+        <FoldableImage width={600} height={400} percentage={40} src='assets/images/process-picture.jpg'></FoldableImage>
+        <Foldable width={600} height={400} src='assets/images/process-picture.jpg'></Foldable>
+        <Foldable2 width={600} height={400} src='assets/images/process-picture.jpg'></Foldable2>
+        <Foldable3 width={600} height={400} src='assets/images/process-picture.jpg'></Foldable3> 
+        <Articles/>
+        <ArticlesWithHook/>
+        <ArticlesWithDataApi/>
       </>
     )
   }
