@@ -7,7 +7,7 @@ const TextStylingCombinations = () => {
           Text Styling with Tailwind CSS — Deep Dive into Tailwind CSS Magic
         </span>
       </a>
-      <p className="text-lg font-semibold text-blue-500 leading-6 tracking-wide">
+      <p className="text-lg font-semibold text-blue-500 md:text-red-500 leading-6 tracking-wide">
         Text styling combination 1
       </p>
       <p className="text-base font-medium text-green-500 leading-7 tracking-tight">
@@ -37,6 +37,7 @@ const TextStylingCombinations = () => {
       <p className="text-base font-extrabold text-gray-700 leading-10 tracking-widest">
         Text styling combination 10
       </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">   <div>Item 1</div>   <div>Item 2</div>   <div>Item 3</div> </div>
     </div>
   )
 }

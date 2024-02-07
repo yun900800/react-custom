@@ -6,12 +6,14 @@ import store from './lib/store'
 import { Provider } from 'react-redux'
 import './styles/main.css'
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js'
-import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js'
+import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js';
+import ResponsiveText from './component/tailwind-ui/responsive-text.js';
+import ExampleUI from './component/tailwind-ui/example-ui.js'
 export default function RouterApp() {
   return (
     <>
       <Router>
-        <main className="">
+        <main className='max-sm:min-w-full'>
           <nav>
             <ul>
               <li>
@@ -28,6 +30,12 @@ export default function RouterApp() {
               <li>
                 <Link to="/tailwindtext">tailwindtext</Link>
               </li>
+              <li>
+                <Link to="/tailwindresponse">tailwindresponse</Link>
+              </li>
+              <li>
+                <Link to="/tailwindexampleui">tailwindexampleui</Link>
+              </li>
             </ul>
           </nav>
           <Routes>
@@ -35,6 +43,9 @@ export default function RouterApp() {
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/tailwindui" element={<TailwindUI />} />
             <Route path="/tailwindtext" element={<TextStylingCombinations />} />
+            <Route path="/tailwindresponse" element={<ResponsiveText/>}/>
+            <Route path="/tailwindexampleui" element={<ExampleUI/>}/>
+            
           </Routes>
         </main>
       </Router>
