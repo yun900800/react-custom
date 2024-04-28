@@ -170,4 +170,12 @@ console.log(sumOfSquareNew(tree));
 console.log('evenFibNew(10)')
 sicp.printList(evenFibNew(10));
 
+const ccc = sicp.pair(3,5)
+console.log(sicp.head(ccc));
+console.log(sicp.tail(ccc));
+
+const list1 = sicp.listJs('a','b')
+console.log(sicp.head(list1));
+console.log(sicp.head(sicp.tail(list1)));
+
 

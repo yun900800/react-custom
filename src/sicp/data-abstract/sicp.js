@@ -5,6 +5,38 @@ const car = (p)=>p((p,q)=>p);
 const cdr = (p)=>p((p,q)=>q);
 //cdr函数执行的作用之一就是返回第二个参数
 
+
+const error = (m, msg) =>{
+    throw new Error(m + msg)
+}
+const pair = (x, y)=>m=>{
+    return m === 0 ? x : m === 1 ? y : error(m, "argument not 0 or 1 -- pair");
+}
+
+const head = z =>{
+    if(null == z){
+        return null;
+    }
+    return z(0)
+}
+const tail = z =>{
+    if(null == z){
+        return null;
+    }
+    return z(1)
+}
+
+const listJs = (first,...rest) =>!first?null:pair(first, listJs(...rest));
+const is_null = x => null === x;
+const isEqual = (x,y) => x ===y;
+const member = (item, x) => {
+    return is_null(x)
+           ? null
+           : item === head(x)
+           ? x
+           : member(item, tail(x));
+}
+
 const list = (first,...rest) =>!first?null:cons(first, list(...rest));
 
 const map = (func,items) => {
@@ -12,6 +44,13 @@ const map = (func,items) => {
         return null;
     }
     return cons(func(car(items)), map(func, cdr(items)));
+}
+
+const forEach = (func,list) => {
+    if (null!== list) {
+        func(head(list));
+        forEach(func, tail(list));
+    }
 }
 
 const filter = function(predicate,sequence) {
@@ -33,6 +72,11 @@ const acculator = function(op, initial, sequence) {
     }
 }
 
+const printListJs = (items) =>
+    items !== null ?
+        (console.log(head(items)), printListJs(tail(items))) :
+        null;
+
 const printList = (items) =>
     items !== null ?
         (console.log(car(items)), printList(cdr(items))) :
@@ -41,12 +85,20 @@ const append = (items0, items1) =>
         items0 === null ?
             items1 :
             cons(car(items0), append(cdr(items0), items1))
+
+const appendJs = (items0, items1) =>
+        items0 === null ?
+            items1 :
+            pair(head(items0), appendJs(tail(items0), items1))
     
 const reverse = (items) =>
         items === null ?
             items :
             append(reverse(cdr(items)), list(car(items)));
-
+const reverseJs = items => 
+        items === null ?
+            items :
+            appendJs(reverseJs(tail(items)), listJs(head(items)));
 
 const consp = (a,b)=>{
     const dispatch = m=>{
@@ -104,10 +156,17 @@ module.exports =  {
     cons,
     car,
     cdr,
+    pair,
+    head,
+    tail,
+    listJs,
     list,
     printList,
+    printListJs,
     reverse,
+    reverseJs,
     append,
+    appendJs,
     consp,
     carp,
     cdrp,
@@ -116,7 +175,10 @@ module.exports =  {
     cdrm,
     map,
     filter,
-    acculator
+    acculator,
+    forEach,
+    error,
+    isEqual
 }
 
 //test
