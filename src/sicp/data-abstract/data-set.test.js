@@ -7,13 +7,20 @@ import {
     isElementOfSet,
     adJoinSetOrder,
     interSectionSetOrder,
-    unionSetOrder
+    unionSetOrder,
+
+    treeToList1,
+    treeToList2
 } from './data-set';
 import {
     head,
     listJs,
     printListJs,
-    tail
+    tail,
+    makeTree,
+    entry,
+    leftBranch,
+    rightBranch
 } from './sicp';
 describe('elementOfSet function test',()=>{
     it('elementOfSet function test',()=>{
@@ -85,4 +92,38 @@ describe('elementOfSet function test',()=>{
         expect(isElementOfSet(50,result)).toBeTruthy();
         expect(isElementOfSet(1,result)).toBeTruthy();
     });
+});
+
+describe('treeToList two method test',()=>{
+    it('treeToList method1 test',()=>{
+        const tree = makeTree(7, 
+            makeTree(3,
+                makeTree(1, null, null),
+                makeTree(5, null, null)
+            ),
+            makeTree(9,
+                null,
+                makeTree(11, null,null)
+            )
+        );
+        const list = treeToList1(tree);
+        //printListJs(list)
+        expect(1).toEqual(head(list));
+    });
+
+    it('treeToList method2 test' ,()=>{
+        const tree = makeTree(7, 
+            makeTree(3,
+                makeTree(1, null, null),
+                makeTree(5, null, null)
+            ),
+            makeTree(9,
+                makeTree(8,null,null),
+                makeTree(11, null,null)
+            )
+        );
+        const list = treeToList2(tree);
+        //printListJs(list)
+        expect(1).toEqual(head(list));
+    })
 });

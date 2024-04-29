@@ -4,8 +4,12 @@ import {
     car,
     cdr,
     listJs,
+    listJsNew,
     appendJs,
-    printListJs
+    printListJs,
+    isPair,
+    head,
+    tail
 } from './sicp';
 
 describe('test cons construct process',()=>{
@@ -37,10 +41,32 @@ describe('error function test',()=>{
 describe('appendJs function test',()=>{
     it('appendJs function test is OK ',()=>{
         const list1 = listJs(1,2,3,4);
-        printListJs(list1);
+        //printListJs(list1);
         const list2 = listJs(3,4,5,6);
-        printListJs(list2);
+        //printListJs(list2);
         const appendList = appendJs(list1,list2);
-        printListJs(appendList);
+        //printListJs(appendList);
+    });
+});
+
+describe('listJs function test',()=> {
+    it('listJs function test is OK',()=>{
+        const list1 = listJs(1,null,2);
+        printListJs(list1);
+        const list2 = listJsNew(1,null,2);
+        printListJs(list2);
+    });
+});
+
+describe('sicp isPair test',()=>{
+    it('sicp isPair test is OK',()=>{
+        const list1 = listJsNew(1,null,2);
+        expect(isPair(list1)).toBeTruthy();
+        const list2 = tail(list1);
+        expect(isPair(list2)).toBeTruthy();
+        const list3 = tail(list2);
+        expect(isPair(list3)).toBeTruthy();
+        const list4 = tail(list3);
+        expect(list4).toBeNull();
     });
 })

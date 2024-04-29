@@ -6,7 +6,12 @@ import {
     isEqual,
     appendJs,
     reverseJs,
-    printListJs
+    printListJs,
+
+    entry,
+    leftBranch,
+    rightBranch,
+    makeTree
 } from './sicp';
 
 const elementOfSet = (ele, set) => {
@@ -32,6 +37,20 @@ const isElementOfSet = (ele, set) => {
     return elementOfSet(ele, tail(set));
 }
 
+const isElementOfSetTree = (ele, set) => {
+    if (null === set) {
+        return false;
+    }
+    if (ele === entry(set)) {
+        return true;
+    }
+    if (ele < entry(set)) {
+        return isElementOfSetTree(ele, leftBranch(set));
+    } else {
+        return isElementOfSetTree(ele, rightBranch(set));
+    }
+}
+
 const adJoinSet = (ele, set) => {
     if (elementOfSet(ele,set)) {
         return set;
@@ -51,6 +70,20 @@ const adJoinSetOrder = (ele,set) => {
         return pair(currentElement, adJoinSetOrder(ele, restElement));
     } else if (currentElement > ele) {
         return pair(ele, set);
+    }
+}
+
+const adJoinSetTree = (ele,set) => {
+    if (null === set) {
+        return makeTree(ele, null,null)
+    }
+    if (ele === entry(set)) {
+        return set;
+    }
+    if (ele < entry(set)) {
+        return makeTree(entry(set), adJoinSetTree(ele, leftBranch(set)), rightBranch(set));
+    } else {
+        return makeTree(entry(set), leftBranch(set), adJoinSetTree(ele, rightBranch(set)));
     }
 }
 
@@ -117,6 +150,23 @@ const unionSetOrder = (set1,set2) => {
     }
 }
 
+const treeToList1 = tree => {
+    return null === tree ? null : 
+        appendJs(treeToList1(leftBranch(tree)), 
+            pair(entry(tree), treeToList1(rightBranch(tree))));
+}
+
+const treeToList2 = tree => {
+    const copyToList = (tree, result) => {
+        if (null === tree) {
+            return result;
+        }
+        return copyToList(leftBranch(tree), 
+            pair(entry(tree), copyToList(rightBranch(tree), result)));
+    }
+    return copyToList(tree, null);
+}
+
 module.exports = {
     elementOfSet,
     adJoinSet,
@@ -126,5 +176,8 @@ module.exports = {
     isElementOfSet,
     adJoinSetOrder,
     interSectionSetOrder,
-    unionSetOrder
+    unionSetOrder,
+
+    treeToList1,
+    treeToList2
 }

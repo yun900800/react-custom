@@ -12,6 +12,15 @@ const error = (m, msg) =>{
 const pair = (x, y)=>m=>{
     return m === 0 ? x : m === 1 ? y : error(m, "argument not 0 or 1 -- pair");
 }
+let isPair = (seq) => {
+    if (null === seq) {
+        return false;
+    }
+    if (typeof seq !== 'function') {
+        return false;
+    }
+    return typeof seq === 'function';
+}
 
 const head = z =>{
     if(null == z){
@@ -26,7 +35,24 @@ const tail = z =>{
     return z(1)
 }
 
+const entry = tree=> head(tree)
+const leftBranch = tree => head(tail(tree))
+const rightBranch = tree => {
+    const result = head(tail(tail(tree)));
+    return result;
+}
+const makeTree = (entry, left, right) => listJsNew(entry,left,right);
+
 const listJs = (first,...rest) =>!first?null:pair(first, listJs(...rest));
+const listJsNew = (first,...rest) => {
+    // if (first === null && rest != null){
+    //     return pair(first, listJsNew(...rest));
+    // }
+    if (first === undefined && rest.length ===0) {
+        return null;
+    }
+    return pair(first, listJsNew(...rest));
+}
 const is_null = x => null === x;
 const isEqual = (x,y) => x ===y;
 const member = (item, x) => {
@@ -72,10 +98,14 @@ const acculator = function(op, initial, sequence) {
     }
 }
 
-const printListJs = (items) =>
-    items !== null ?
-        (console.log(head(items)), printListJs(tail(items))) :
-        null;
+const printListJs = (items) => {
+    if (items !== null) {
+        console.log(head(items));
+        printListJs(tail(items));
+    } else {
+        return null;
+    }
+}
 
 const printList = (items) =>
     items !== null ?
@@ -160,6 +190,7 @@ module.exports =  {
     head,
     tail,
     listJs,
+    listJsNew,
     list,
     printList,
     printListJs,
@@ -178,7 +209,12 @@ module.exports =  {
     acculator,
     forEach,
     error,
-    isEqual
+    isEqual,
+    entry,
+    leftBranch,
+    rightBranch,
+    makeTree,
+    isPair
 }
 
 //test
