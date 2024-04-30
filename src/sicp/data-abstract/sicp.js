@@ -10,7 +10,9 @@ const error = (m, msg) =>{
     throw new Error(m + msg)
 }
 const pair = (x, y)=>m=>{
-    return m === 0 ? x : m === 1 ? y : error(m, "argument not 0 or 1 -- pair");
+    const setx = v => x = v;
+    const sety = v => y = v;
+    return m === 0 ? x : m === 1 ? y : m ==='set_head'? setx : m ==='set_tail'? sety: error(m, "argument not 0 or 1 -- pair");
 }
 let isPair = (seq) => {
     if (null === seq) {
@@ -33,6 +35,41 @@ const tail = z =>{
         return null;
     }
     return z(1)
+}
+
+const setHead = (z,v) => {
+    z("set_head")(v);
+    return z;
+}
+
+const setTail = (z,v) => {
+    z("set_tail")(v);
+    return z;
+}
+
+const pairMut = (x,y) => {
+    const setx = v => x = v;
+    const sety = v => y = v;
+    return m => m === "head"
+                ? x
+                : m === "tail"
+                ? y
+                : m === "set_head"
+                ? setx
+                : m === "set_tail"
+                ? sety
+                : error(m, "undefined operation -- pair");
+}
+
+const headMut = z => z('head');
+const tailMut = z => z('tail');
+const setHeadMut = (z,v) => {
+    z('set_head')(v);
+    return z;
+}
+const setTailMut = (z,v) => {
+    z('set_tail')(v);
+    return z;
 }
 
 const entry = tree=> head(tree)
@@ -120,7 +157,11 @@ const appendJs = (items0, items1) =>
         items0 === null ?
             items1 :
             pair(head(items0), appendJs(tail(items0), items1))
-    
+const appendMutator = (x,y) => {
+    setTail(lastPair(x),y);
+    return x;
+}
+
 const reverse = (items) =>
         items === null ?
             items :
@@ -129,6 +170,13 @@ const reverseJs = items =>
         items === null ?
             items :
             appendJs(reverseJs(tail(items)), listJs(head(items)));
+
+const lastPair = x => {
+    if (null === tail(x)) {
+        return x;
+    }
+    return lastPair(tail(x))
+}
 
 const consp = (a,b)=>{
     const dispatch = m=>{
@@ -182,6 +230,31 @@ const cdrm = cons => {
     }
 }
 
+const gcd = function(a,b) {
+    if (b === 0) {
+        return a;
+    }
+    return gcd(b, a%b);
+}
+
+const makeCycle = x => {
+    setTail(lastPair(x),x);
+    return x;
+}
+
+const mystery = v => {
+    const loop = (x,y) => {
+        if (null === x) {
+            return y;
+        } else {
+            const temp = tail(x);
+            setTail(x, y);
+            return loop(temp, x);
+        }
+    }
+    return loop(v,null)
+}
+
 module.exports =  {
     cons,
     car,
@@ -189,6 +262,8 @@ module.exports =  {
     pair,
     head,
     tail,
+    setHead,
+    setTail,
     listJs,
     listJsNew,
     list,
@@ -214,7 +289,17 @@ module.exports =  {
     leftBranch,
     rightBranch,
     makeTree,
-    isPair
+    isPair,
+    gcd,
+    pairMut,
+    tailMut,
+    headMut,
+    setHeadMut,
+    setTailMut,
+    lastPair,
+    appendMutator,
+    makeCycle,
+    mystery
 }
 
 //test
