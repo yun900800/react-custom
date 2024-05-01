@@ -4,7 +4,8 @@ import {
     head,
     setHead,
     setTail,
-    error
+    error,
+    listJs
 } from '../data-abstract/sicp';
 
 const makeQueue = ()=>{
@@ -59,10 +60,67 @@ const deleteQueue = q => {
     }
 }
 
+const printQueue = q => {
+    let temp = head(q);
+    if (null != temp) {
+        console.log(temp);
+    } else {
+        return null;
+    }
+    temp = tail(q);
+    printQueue(temp);
+}
+
+const makeQueueNew = ()=> {
+    let frontPtr = null;
+    let rearPtr = null;
+    const isEmptyQueue = () => {
+        return null === frontPtr;
+    }
+
+    const insertQueue = (item) => {
+        if (isEmptyQueue()) {
+            const initList = listJs(item);
+            frontPtr = initList;
+            rearPtr = initList;
+            return frontPtr;
+        } else {
+            const newItem = listJs(item);
+            setTail(rearPtr,newItem);
+            rearPtr = newItem;
+            return frontPtr
+        }
+    }
+    const deleteQueue = () => {
+        if (isEmptyQueue()) {
+            error(q, "delete_queue called with an empty queue");
+        } else {
+            frontPtr = tail(frontPtr);
+            return frontPtr;
+        }
+    }
+
+    const dispatch = (m) => {
+        if (m=== 'insertQueue') {
+            return insertQueue;
+        } else if ('deleteQueue' === m) {
+            return deleteQueue;
+        } else if ('emptyQueue' === m) {
+            return isEmptyQueue;
+        } else {
+            error(m,'Unknow operation -- DISPATCH');
+        }
+    }
+    return dispatch;
+}
+
 module.exports = {
     makeQueue,
     insertQueue,
     deleteQueue,
     isEmptyQueue,
-    frontQueue
+    frontQueue,
+    printQueue,
+    frontPtr,
+    makeQueueNew
 }
