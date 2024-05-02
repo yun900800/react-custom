@@ -98,7 +98,13 @@ const makeTableNew = (sameKey)=> {
     return dispatch;
 }
 
-const operation_table = makeTableNew();
+const operation_table = makeTableNew((key1,key2)=>{
+    if (typeof key1 === 'function' && typeof key2 === 'function') {
+        return head(key1) === head(key2);
+    } else {
+        return key1 === key2
+    }
+});
 const get = operation_table("lookup");
 const put = operation_table("insert");
 

@@ -1,4 +1,19 @@
-import { pair, head, tail, isPair, error} from './sicp';
+import { 
+    pair, 
+    head, 
+    tail, 
+    isPair, 
+    error, 
+    listJs,
+    apply_in_underlying_javascript,
+    mapJs,
+    printListJs
+} from './sicp';
+
+import {
+    put,
+    get
+} from '../state/table'
 
 const makeFromRealImagRectangular = (real, imag)=>{
     return attachTag('rectangular',pair(real,imag));
@@ -81,7 +96,7 @@ const attachTag = (tagType, contents) => {
     return pair(tagType,contents);
 }
 
-const tagType = datum => {
+const typeTag = datum => {
     return isPair(datum) ? head(datum): error(datum, "bad tagged datum -- type_tag");
 }
 
@@ -90,11 +105,11 @@ const contents = datum => {
 }
 
 const isRectangular = z => {
-    return tagType(z) === 'rectangular';
+    return typeTag(z) === 'rectangular';
 }
 
 const isPolar = z => {
-    return tagType(z) === 'polar';
+    return typeTag(z) === 'polar';
 }
 
 const realPart = z =>{
@@ -123,6 +138,89 @@ const makeFromMagAng = (r,a) => {
     return makeFromMagAngPolar(r,a);
 }
 
+
+const installRectangularPackage = () => {
+
+    const realPart = z => {
+        return head(z);
+    }
+
+    const imagPart = z => {
+        return tail(z);
+    }
+
+    const makeFromRealImag = (x, y) => {
+        return pair(x,y);
+    }
+
+    const magnitude = z => {
+        return Math.sqrt(realPart(z) * realPart(z) + imagPart(z) * imagPart(z));
+    }
+
+    const angle = z => {
+        return Math.atan2( imagPart(z) / realPart(z));
+    }
+
+    const makeFromMagAng = (r, a) => {
+        return pair(r * Math.cos(a), r * Math.sin(a));
+    }
+
+    const tag = x => {
+        return attachTag("rectangular", x); 
+    }
+
+    put("real_part", listJs("rectangular"), realPart);
+    put("imag_part", listJs("rectangular"), imagPart);
+    put("magnitude", listJs("rectangular"), magnitude);
+    put("angle", listJs("rectangular"), angle);
+    put("make_from_real_imag", "rectangular",
+        (x, y) => tag(makeFromRealImag(x, y)));
+    put("make_from_mag_ang", "rectangular",
+        (r, a) => tag(makeFromMagAng(r, a)));
+    return "done";
+}
+
+const installPolarPackage = () => {
+    const magnitude = z => { return head(z); }
+    const angle = z => { return tail(z); }
+    const makeFromMagAng = (r, a) => {
+        return pair(r,a);
+    }
+
+    const realPart = z => {
+        return magnitude(z) * Math.cos(angle(z));
+    }
+
+    const imagPart = z => {
+        return magnitude(z) * Math.sin(angle(z));
+    }
+
+    const makeFromRealImag = (x , y) => {
+        return pair(Math.sqrt(x*x + y*y),
+                    Math.atan2(y, x));
+    }
+
+    const tag = x => { return attachTag("polar", x); }
+    put("real_part", listJs("polar"), realPart);
+    put("imag_part", listJs("polar"), imagPart);
+    put("magnitude", listJs("polar"), magnitude);
+    put("angle", listJs("polar"), angle);
+    put("make_from_real_imag", "polar", 
+        (x, y) => tag(makeFromRealImag(x, y)));
+    put("make_from_mag_ang", "polar",
+        (r, a) => tag(makeFromMagAng(r, a)));
+    return "done";
+}
+
+const applyGeneric = (op, args) => {
+    const typeTags = mapJs(typeTag, args);
+    const fun = get(op, typeTags);
+    return undefined !== fun
+           ? apply_in_underlying_javascript(fun, mapJs(contents, args))
+           : error(listJs(op, typeTags),
+                   "no method for these types -- apply_generic");
+}
+
 module.exports = {
     addComplex,
     subComplex,
@@ -130,5 +228,8 @@ module.exports = {
     divComplex,
     makeFromMagAng,
     makeFromRealImag,
-    contents
+    contents,
+    installRectangularPackage,
+    installPolarPackage,
+    applyGeneric
 };

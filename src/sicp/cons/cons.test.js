@@ -5,7 +5,10 @@ import {
     cdr,
     isCons,
     setCar,
-    setCdr
+    setCdr,
+    cons2,
+    setCar2,
+    car2
 } from './cons';
 
 describe('cons test',()=> {
@@ -30,5 +33,5 @@ describe('cons test',()=> {
     it('cons1 test',()=>{
         const c1 = cons1('a','b');
         expect('a').toEqual(car(c1));
-    })
+    });
 });

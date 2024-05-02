@@ -9,6 +9,12 @@ const isCons = cons => {
     return typeof cons === 'function';
 }
 
+/**
+ * 这个可以用来理解环境模型
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
 const cons1 = (a,b) => {
     //定义的函数f的环境是包含a和b的E1,
     //因此调用的时候创建的环境E2一定要从E1中获取
@@ -16,6 +22,7 @@ const cons1 = (a,b) => {
     let a1 = f =>f(a,b);
     return a1;
 }
+
 
 module.exports = {
     cons,

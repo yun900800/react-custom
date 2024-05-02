@@ -5,6 +5,19 @@ const car = (p)=>p((p,q)=>p);
 const cdr = (p)=>p((p,q)=>q);
 //cdr函数执行的作用之一就是返回第二个参数
 
+const is_empty_list = arg => {
+    return null === arg || undefined === arg ||  arg.length ===0;
+}
+
+function apply_in_underlying_javascript(prim,argument_list) {
+    const argument_array = new Array();
+    let i = 0;
+    while (!is_empty_list(argument_list)) {
+        argument_array[i++] = head(argument_list);
+        argument_list = tail(argument_list);
+    }
+    return prim.apply(prim,argument_array);
+}
 
 const error = (m, msg) =>{
     throw new Error(m + msg)
@@ -107,6 +120,13 @@ const map = (func,items) => {
         return null;
     }
     return cons(func(car(items)), map(func, cdr(items)));
+}
+
+const mapJs = (func,items) => {
+    if (null == items) {
+        return null;
+    }
+    return pair(func(head(items)), map(func, tail(items)));
 }
 
 const forEach = (func,list) => {
@@ -280,6 +300,7 @@ module.exports =  {
     carm,
     cdrm,
     map,
+    mapJs,
     filter,
     acculator,
     forEach,
@@ -299,7 +320,8 @@ module.exports =  {
     lastPair,
     appendMutator,
     makeCycle,
-    mystery
+    mystery,
+    apply_in_underlying_javascript
 }
 
 //test
