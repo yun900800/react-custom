@@ -49,5 +49,5 @@ describe('utils test',()=> {
         const list3 = append(list1,list2);
         const result = acculator((a,b)=>a+b,0,list3);
         expect(result).toEqual(40);
-    })
+    });
 });

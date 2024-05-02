@@ -15,6 +15,7 @@
     "test-pair" : "jest src/sicp/pair/pair.test.js",
     "test-list" : "jest src/sicp/list/list.test.js",
     "test-utils" : "jest src/sicp/utils/utils.test.js",
+    "test-evaluation" : "jest src/sicp/evaluation/evaluation.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
     "storybook": "storybook dev -p 6006",
