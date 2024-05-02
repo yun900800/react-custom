@@ -4,11 +4,10 @@ import {
     car,
     cdr,
     isCons,
-    setCar,
-    setCdr,
-    cons2,
-    setCar2,
-    car2
+    listFromCons,
+    printList,
+    display,
+    isList
 } from './cons';
 
 describe('cons test',()=> {
@@ -33,5 +32,22 @@ describe('cons test',()=> {
     it('cons1 test',()=>{
         const c1 = cons1('a','b');
         expect('a').toEqual(car(c1));
+    });
+
+    it('listFromCons and printList',()=> {
+        const list1 = listFromCons(1,2,3,4);
+        expect('1,2,3,4').toEqual(printList(list1));
+    });
+
+    it('display list',()=> {
+        const list1 = listFromCons(1,2,3,4);
+        display('('+ printList(list1)+')');
+    });
+
+    it('isList test', ()=> {
+        const list1 = listFromCons(1,2,3,4);
+        expect(isList(list1)).toBeTruthy();
+        const list2 = listFromCons(list1, 5,6,7);
+        expect(isList(list2)).toBeFalsy();
     });
 });

@@ -13,6 +13,8 @@
     "test-complex" : "jest src/sicp/data-abstract/complex.test.js",
     "test-cons" : "jest src/sicp/cons/cons.test.js",
     "test-pair" : "jest src/sicp/pair/pair.test.js",
+    "test-list" : "jest src/sicp/list/list.test.js",
+    "test-utils" : "jest src/sicp/utils/utils.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
     "storybook": "storybook dev -p 6006",

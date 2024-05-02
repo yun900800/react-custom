@@ -9,6 +9,30 @@ const isCons = cons => {
     return typeof cons === 'function';
 }
 
+const listFromCons = (first,...rest) =>!first?null:cons(first, listFromCons(...rest));
+
+const isList = list=> {
+    return typeof cons === 'function' && typeof car(list) !== 'function' &&
+        typeof cdr(list) === 'function';
+}
+const printList = (list)=> {
+    let msg = '';
+    const iter = (items) => {
+        if (null === items) {
+            return;
+        }
+        msg += car(items) +','
+        iter(cdr(items));
+    }
+    iter(list);
+    msg = msg.substring(0, msg.length-1);
+    return msg;
+}
+
+const display = msg => {
+    console.log(msg);
+}
+
 /**
  * 这个可以用来理解环境模型
  * @param {*} a 
@@ -29,5 +53,9 @@ module.exports = {
     car,
     cdr,
     isCons,
-    cons1
+    cons1,
+    listFromCons,
+    printList,
+    display,
+    isList
 }
