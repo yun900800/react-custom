@@ -36,6 +36,33 @@ function good_enough(oldGuess , newGuess) {
     return Math.abs( (newGuess-oldGuess) / oldGuess) < 0.01
 }
 
+/**
+ * 递归计算过程
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
+const plus = (a,b) => {
+    if (a === 0) {
+        return b;
+    }
+    return inc(plus(dec(a), b)); 
+}
+
+/**
+ * 迭代计算过程
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
+const plus_one = (a,b) => {
+    return a === 0 ? b : plus_one(dec(a), inc(b));
+}   
+
+const inc = x => x + 1;
+const dec = x => x - 1;
+
 
 function sqrt(x) {
     return sqrt_iter(1, x);
@@ -45,5 +72,7 @@ module.exports = {
     test,
     p,
     conditional,
-    sqrt
+    sqrt,
+    plus,
+    plus_one
 }

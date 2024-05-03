@@ -3,7 +3,8 @@ import {
     append,
     forEach,
     filter,
-    acculator
+    acculator,
+    gcd
 } from './utils';
 
 import {
@@ -50,4 +51,19 @@ describe('utils test',()=> {
         const result = acculator((a,b)=>a+b,0,list3);
         expect(result).toEqual(40);
     });
+
+    it('gcd test',()=> {
+        let result = gcd(4,8);
+        expect(4).toEqual(result);
+        result = gcd(3,7);
+        expect(1).toEqual(result);
+        result = gcd(0,3);
+        expect(3).toEqual(result);
+        result = gcd(null,3);
+        expect(3).toEqual(result);
+        expect(()=>{
+            gcd(undefined,3)
+        }).toThrow('Maximum call stack size exceeded');
+    
+    })
 });

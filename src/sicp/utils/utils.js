@@ -42,10 +42,18 @@ const acculator = function(op, initial, sequence) {
     }
 }
 
+const gcd = function(a,b) {
+    if (b === 0) {
+        return a;
+    }
+    return gcd(b, a%b);
+}
+
 module.exports = {
     map,
     append,
     forEach,
     filter,
-    acculator
+    acculator,
+    gcd
 }
