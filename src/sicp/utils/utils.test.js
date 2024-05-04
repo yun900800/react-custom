@@ -4,13 +4,18 @@ import {
     forEach,
     filter,
     acculator,
-    gcd
+    gcd,
+    lastPair
 } from './utils';
 
 import {
     list,
     printList
 } from '../list/list';
+
+import {
+    head
+} from '../pair/pair'
 
 describe('utils test',()=> {
     it('list map to another list',()=>{
@@ -65,5 +70,10 @@ describe('utils test',()=> {
             gcd(undefined,3)
         }).toThrow('Maximum call stack size exceeded');
     
-    })
+    });
+
+    it('lastPair test',()=> {
+        const list1 = list(1,2,3,4);
+        expect(head(lastPair(list1))).toEqual(4)
+    });
 });

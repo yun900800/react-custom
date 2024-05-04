@@ -3,11 +3,14 @@ import {
     startPoint,
     endPoint,
     printSegment,
-    segment
+    segment,
+    midPointSegment
 } from './segment';
 
 import {
-    makePoint
+    makePoint,
+    printPoint,
+    point
 } from './point';
 
 describe('segment test',()=> {
@@ -20,5 +23,14 @@ describe('segment test',()=> {
 
         printSegment(s1);
         expect('(-1,1)===>(1,1)').toEqual(segment(s1));
+    });
+
+    it('midPointSegment test',()=>{
+        const p1 = makePoint(-1,-1);
+        const p2 = makePoint(1,1);
+        const s1 = makeSegment(p1,p2);
+        const midPoint = midPointSegment(s1);
+        printPoint(midPoint);
+        expect('(0,0)').toEqual(point(midPoint));
     });
 });

@@ -23,8 +23,36 @@ const isList = list=> {
         typeof tail(list) === 'function';
 }
 
+const listRef = (list,n) => {
+    if (n == 0) {
+        return head(list)
+    } else {
+        return listRef(tail(list), n-1);
+    }
+}
+
+const length = (list)=> {
+    if (null == list) {
+        return 0;
+    }
+    return  1 + length(tail(list));
+}
+
+const reverse = (list) => {
+    const iter = function(list, result){
+        if (null == list){
+            return result;
+        }
+        return iter(tail(list), pair(head(list), result));
+    }
+    return iter(list,null);
+}
+
 module.exports = {
     list,
     printList,
-    isList
+    isList,
+    listRef,
+    length,
+    reverse
 }

@@ -5,7 +5,10 @@ import {
 } from '../pair/pair';
 
 import {
-    point
+    point,
+    xPoint,
+    yPoint,
+    makePoint
 } from './point'
 
 const makeSegment = (startPoint, endPoint) => {
@@ -26,10 +29,20 @@ const segment = line => {
     return point(startPoint(line)) + "===>"+ point(endPoint(line));
 }
 
+const midPointSegment = (line) => {
+    const stPoint = startPoint(line);
+    const enPoint = endPoint(line);
+    return makePoint(
+        (xPoint(stPoint)+ xPoint(enPoint)) / 2,
+        (yPoint(stPoint) + yPoint(enPoint)) / 2
+    );
+}
+
 module.exports = {
     makeSegment,
     startPoint,
     endPoint,
     printSegment,
-    segment
+    segment,
+    midPointSegment
 }

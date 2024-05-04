@@ -16,6 +16,17 @@ const append = (items0, items1) =>
             items1 :
             pair(head(items0), append(tail(items0), items1));
 
+            
+const lastPair = (list) => {
+    if (list == null) {
+        return 'empty';
+    }
+    if (null == tail(list)) {
+        return list;
+    }
+    return lastPair(tail(list));
+}
+
 const forEach = (func,list) => {
     if (null!== list) {
         func(head(list));
@@ -52,6 +63,7 @@ const gcd = function(a,b) {
 module.exports = {
     map,
     append,
+    lastPair,
     forEach,
     filter,
     acculator,

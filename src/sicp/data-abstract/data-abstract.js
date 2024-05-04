@@ -117,7 +117,7 @@ const endPoint = function(line) {
 const midPointSegment = function(line) {
     const stPoint = startPoint(line);
     const enPoint = endPoint(line);
-    return new makePoint((xPoint(stPoint)+ xPoint(enPoint)) / 2, (yPoint(stPoint) + yPoint(enPoint)) / 2);
+    return makePoint((xPoint(stPoint)+ xPoint(enPoint)) / 2, (yPoint(stPoint) + yPoint(enPoint)) / 2);
 }
 
 const printPoint = function(p) {
