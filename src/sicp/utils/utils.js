@@ -60,6 +60,8 @@ const gcd = function(a,b) {
     return gcd(b, a%b);
 }
 
+const square = x =>x*x;
+
 module.exports = {
     map,
     append,
@@ -67,5 +69,6 @@ module.exports = {
     forEach,
     filter,
     acculator,
-    gcd
+    gcd,
+    square
 }

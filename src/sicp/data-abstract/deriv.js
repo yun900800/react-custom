@@ -1,4 +1,3 @@
-const { error } = require('console');
 const sicp = require('./sicp');
 
 const isString = value => typeof value === 'string'

@@ -9,8 +9,19 @@ import {
     isList,
     listRef,
     length,
-    reverse
+    reverse,
+    sameParity,
+    squareList,
+    squareListWithMap,
+    squareListWithIter,
+    squareListWithIterRightOrder,
+    squareListWithIterLeftOrder,
+    squareListWithIter1
 } from './list';
+
+import {
+    printTree
+} from '../tree/tree'
 
 describe('list test', ()=> {
     it('make list test',()=> {
@@ -57,6 +68,44 @@ describe('list test', ()=> {
         const reverseList2 = reverse(list2);
         expect('4,3,2,1').toEqual(printList(reverseList1));
         expect('4,3,2,1,10').toEqual(printList(reverseList2));
+    });
+
+    it('sameParity test',()=>{
+        let result = sameParity(1,2,3,4,5,6,7);
+        expect('1,3,5,7').toEqual(printList(result));
+        result = sameParity(2,3,4,5,6,7);
+        expect('2,4,6').toEqual(printList(result));
+    });
+
+    it('squareList test',()=> {
+        const list1 = list(1,2,3,4);
+        expect(printList(squareList(list1))).toEqual('1,4,9,16')
+    });
+
+    it('squareListWithMap test',()=> {
+        const list1 = list(2,4,8,16);
+        expect(printList(squareListWithMap(list1))).toEqual('4,16,64,256')
+    });
+
+    it('squareListWithIter test',()=>{
+        const list1 = list(2,4,8,16);
+        const list2 = squareListWithIter(list1);
+        expect('256,64,16,4').toEqual(printList(list2));
+    });
+    it('squareListWithIterRightOrder test',()=>{
+        const list1 = list(2,4,8,16);
+        const list2 = squareListWithIterRightOrder(list1);
+        expect('4,16,64,256').toEqual(printList(list2));
+    });
+    it('squareListWithIterLeftOrder test',()=>{
+        const list1 = list(2,4,8,16);
+        const list2 = squareListWithIterLeftOrder(list1);
+        expect('4,16,64,256').toEqual(printList(list2));
+    });
+    it('squareListWithIter1 test',()=>{
+        const list1 = list(2,4,8,16);
+        const list2 = squareListWithIter1(list1);
+        printTree(list2);
     })
 
 });

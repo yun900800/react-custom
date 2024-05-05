@@ -4,6 +4,12 @@ import {
     tail
 } from "../pair/pair";
 
+import {
+    filter,
+    square,
+    map
+} from '../utils/utils'
+
 const list = (first,...rest) =>(!first && rest.length ===0)?null:pair(first, list(...rest));
 const printList = (list) => {
     let msg = '';
@@ -48,11 +54,82 @@ const reverse = (list) => {
     return iter(list,null);
 }
 
+
+
+const sameParity = (sample, ...others) => {
+    const even = x => x % 2 ===1;
+    const odd = x => x % 2 ===0;
+    let fn = even;
+    if (!even(sample)){
+        fn = odd;
+    }
+    return filter(fn, pair(sample, list(...others)));
+}
+
+const squareList = list => {
+    if (null === list) {
+        return null;
+    }
+    return pair(square(head(list)), squareList(tail(list)));
+}
+
+const squareListWithMap = list => {
+    return map(square,list);
+}
+
+const squareListWithIter = list => {
+    const iter = (things, answer) => {
+        if (null === things) {
+            return answer;
+        }
+        return iter(tail(things), pair(square(head(things)), answer));
+    }
+    return iter(list,null);
+}
+
+const squareListWithIterRightOrder = list => {
+    const iter = (things, answer) => {
+        if (null === things) {
+            return reverse(answer);
+        }
+        return iter(tail(things), pair(square(head(things)), answer));
+    }
+    return iter(list,null);
+}
+
+const squareListWithIterLeftOrder = list => {
+    const iter = (things, answer) => {
+        if (null === things) {
+            return (answer);
+        }
+        return iter(tail(things), pair(square(head(things)), answer));
+    }
+    return iter(reverse(list),null);
+}
+
+const squareListWithIter1 = list => {
+    const iter = (things, answer) => {
+        if (null === things) {
+            return answer;
+        }
+        return iter(tail(things), pair(answer,square(head(things))));
+    }
+    return iter(list,null);
+}
+
+
 module.exports = {
     list,
     printList,
     isList,
     listRef,
     length,
-    reverse
+    reverse,
+    sameParity,
+    squareList,
+    squareListWithMap,
+    squareListWithIter,
+    squareListWithIterRightOrder,
+    squareListWithIterLeftOrder,
+    squareListWithIter1
 }

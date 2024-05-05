@@ -20,6 +20,7 @@
     "test-rational" : "jest src/sicp/rational/rational.test.js",
     "test-sharp" : "jest src/sicp/sharp/rectangle.test.js",
     "test-interval" : "jest src/sicp/interval/interval.test.js",
+    "test-tree" : "jest src/sicp/tree/tree.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
     "storybook": "storybook dev -p 6006",

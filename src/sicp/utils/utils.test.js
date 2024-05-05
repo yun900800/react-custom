@@ -23,6 +23,16 @@ describe('utils test',()=> {
         const list2 = map(item=>item*item, list1);
         const result = printList(list2);
         expect('1,4,9,16').toEqual(result);
+
+        const list3 = list(1,2,null,4)
+        const list4 = map(item=>item*item, list3);
+        const result1 = printList(list4);
+        expect('1,4,0,16').toEqual(result1);
+
+        const list5 = list(-11,-2,null,4);
+        const list6 = map(Math.abs, list5);
+        const result2 = printList(list6);
+        expect('11,2,0,4').toEqual(result2);
     });
 
     it('append test', ()=> {
