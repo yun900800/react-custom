@@ -5,7 +5,14 @@ import {
     filter,
     acculator,
     gcd,
-    lastPair
+    lastPair,
+    fibIter,
+    enumerate,
+    enumerateTree,
+
+    anotherMap,
+    anotherAppend,
+    anotherLength
 } from './utils';
 
 import {
@@ -14,7 +21,8 @@ import {
 } from '../list/list';
 
 import {
-    head
+    head,
+    pair
 } from '../pair/pair'
 
 describe('utils test',()=> {
@@ -65,6 +73,9 @@ describe('utils test',()=> {
         const list3 = append(list1,list2);
         const result = acculator((a,b)=>a+b,0,list3);
         expect(result).toEqual(40);
+
+        const list4 = acculator(pair,null, list(1,2,3,4));
+        expect('1,2,3,4').toEqual(printList(list4))
     });
 
     it('gcd test',()=> {
@@ -86,4 +97,43 @@ describe('utils test',()=> {
         const list1 = list(1,2,3,4);
         expect(head(lastPair(list1))).toEqual(4)
     });
+
+    it('fibIter test',()=> {
+        const fib4 = fibIter(4);
+        expect(5).toEqual(fib4);
+    });
+    it('enumerate test',()=> {
+        const list1 = enumerate(1,10);
+        expect('1,2,3,4,5,6,7,8,9,10').toEqual(printList(list1));
+    });
+    it('enumerate foreach test',()=> {
+        const list1 = enumerate(1,10);
+
+        const list2 = map(item=>{
+            return fibIter(item);
+        },list1);
+        expect('1,2,3,5,8,13,21,34,55,89').toEqual(printList(list2));
+    });
+
+    it('enumerateTree test',()=> {
+        const list1 = enumerateTree(list(1, list(2, list(3,4)), 5));
+        expect('1,2,3,4,5').toEqual(printList(list1));
+    });
+
+    it('anotherMap test',()=>{
+        const list1 = list(1,2,3,4,5);
+        const list2 = anotherMap(item=>item*10, list1);
+        expect('10,20,30,40,50').toEqual(printList(list2))
+    });
+
+    it('anotherAppend test',()=> {
+        const list1 = list(1,2,3);
+        const list2 = list(4,5,6);
+        const list3 = anotherAppend(list1,list2);
+        expect('1,2,3,4,5,6').toEqual(printList(list3))
+    });
+    it('anotherLength test',()=> {
+        const list1 = list(1,2,3);
+        expect(anotherLength(list1)).toEqual(3)
+    })
 });
