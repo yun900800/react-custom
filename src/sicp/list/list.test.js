@@ -27,6 +27,9 @@ describe('list test', ()=> {
     it('make list test',()=> {
         const list1 = list(1,2,3,4);
         expect('1,2,3,4').toEqual(printList(list1));
+
+        const list2 = list(null);
+        expect('').toEqual(printList(list2));
     });
 
     it('isList and printList test',()=> {

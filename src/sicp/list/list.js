@@ -15,7 +15,7 @@ const printList = (list) => {
     let msg = '';
     const iter = (items) => {
         if (null === items) {
-            return;
+            return null;
         }
         msg += head(items) +',';
         iter(tail(items));
