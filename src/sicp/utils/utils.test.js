@@ -12,7 +12,16 @@ import {
 
     anotherMap,
     anotherAppend,
-    anotherLength
+    anotherLength,
+
+    foldLeft,
+    foldRight,
+
+    generatePair,
+    primeSumPair,
+    permutations,
+    uniquePair,
+    primeSumPairNew
 } from './utils';
 
 import {
@@ -23,7 +32,11 @@ import {
 import {
     head,
     pair
-} from '../pair/pair'
+} from '../pair/pair';
+
+import {
+    printTrees
+} from '../tree/tree'
 
 describe('utils test',()=> {
     it('list map to another list',()=>{
@@ -65,6 +78,9 @@ describe('utils test',()=> {
         const list3 = append(list1,list2);
         const result = filter(item=> item %2 ===1, list3);
         expect('1,3,1,9').toEqual(printList(result));
+
+        const list5 = list(null);
+        expect(list5).toBeNull();
     });
 
     it('acculator test',()=> {
@@ -135,5 +151,57 @@ describe('utils test',()=> {
     it('anotherLength test',()=> {
         const list1 = list(1,2,3);
         expect(anotherLength(list1)).toEqual(3)
+    });
+
+    it('foldLeft test',()=> {
+        const leftValue = foldLeft((a,b)=>a/b, 1, list(1,2,3));
+        expect(0.16666666666666666).toEqual(leftValue);
+
+        const list1 = foldLeft(list,null,list(1,2,3));
+        expect('1 ===> 2 ===> 3').toEqual(printTrees(list1));
+    });
+
+    it('foldRight test',()=> {
+        const rightValue = foldRight((a,b)=>a/b, 1, list(1,2,3));
+        expect(1.5).toEqual(rightValue);
+        const list1 = foldRight(list,null,list(1,2,3));
+        expect('1 ===> 2 ===> 3').toEqual(printTrees(list1));
+    });
+
+    it('generatePair test',()=> {
+        const list1 = generatePair(3);
+        const result = printTrees(list1);
+        expect('2 ===> 1 ===> 3 ===> 1 ===> 3 ===> 2').toEqual(result);
+    });
+
+    it('primeSumPair test',()=> {
+        const list1 = primeSumPair(6);
+        const result = printTrees(list1);
+        expect('2 ===> 1 ===> 3 ===> 3 ===> 2 ===> 5 ===> 4 ===> 1 ===> 5 ===> 4 ===> 3 ===> 7 ===> 5 ===> 2 ===> 7 ===> 6 ===> 1 ===> 7 ===> 6 ===> 5 ===> 11')
+            .toEqual(result);
+    });
+
+    it('permutations test',()=> {
+        const list1 = permutations(list(1,2,3));
+        const result = printTrees(list1);
+        expect('1 ===> 2 ===> 3 ===> empty ===> 1 ===> 3 ===> 2 ===> empty ===> 2 ===> 1 ===> 3 ===> empty ===> 2 ===> 3 ===> 1 ===> empty ===> 3 ===> 1 ===> 2 ===> empty ===> 3 ===> 2 ===> 1 ===> empty')
+            .toEqual(result);
+    });
+    it('uniquePair test',()=> {
+        const tree1 = uniquePair(4);
+        let result = printTrees(tree1);
+        expect('2 ===> 1 ===> 3 ===> 1 ===> 3 ===> 2 ===> 4 ===> 1 ===> 4 ===> 2 ===> 4 ===> 3').toEqual(result);
+        const tree2 = uniquePair(6);
+        result = printTrees(tree2);
+        expect(
+            '2 ===> 1 ===> 3 ===> 1 ===> 3 ===> 2 ===> 4 ===> 1 ===> 4 ===> 2 ===> 4 ===> 3 ===> 5 ===> 1 ===> 5 ===> 2 ===> 5 ===> 3 ===> 5 ===> 4 ===> 6 ===> 1 ===> 6 ===> 2 ===> 6 ===> 3 ===> 6 ===> 4 ===> 6 ===> 5'
+        ).toEqual(result);
+    });
+
+    it('primeSumPairNew test',()=>{
+        const list1 = primeSumPairNew(6);
+        const result = printTrees(list1);
+        expect('2 ===> 1 ===> 3 ===> 3 ===> 2 ===> 5 ===> 4 ===> 1 ===> 5 ===> 4 ===> 3 ===> 7 ===> 5 ===> 2 ===> 7 ===> 6 ===> 1 ===> 7 ===> 6 ===> 5 ===> 11')
+            .toEqual(result);
     })
 });
