@@ -18,21 +18,38 @@ import {
 //     endPoint
 // } from '../sharp/segment';
 
+const makeVect = (xcor,ycor)=>list(xcor,ycor)
+const xcorVect = vect=>head(vect);
+const ycorVect = vect=>head(tail(vect));
+
+const vector = v => {
+    return '(' + xcorVect(v)+ ','+ ycorVect(v) + ')';
+}
+
+const addVect = (vect1,vect2) => {
+    return makeVect(xcorVect(vect1)+ xcorVect(vect2),
+        ycorVect(vect1)+ ycorVect(vect2)
+    );
+}
+
+const subVect = (vect1,vect2) => {
+    return makeVect(xcorVect(vect1)- xcorVect(vect2),
+        ycorVect(vect1)- ycorVect(vect2)
+    );
+}
+
+const scaleVect = (vect,factor) => {
+    return makeVect(xcorVect(vect)* factor,
+        ycorVect(vect) * factor
+    );
+}
+
 /**
  * painter is the base element
  */
 const wave = (el, frame) => {
     console.log('draw element:',el, frame)
     return 'draw element:' + el + " in:" + frame+'.'
-}
-/**
- * 第一个画家的左边部分和第二个画家的右边部分
- * 合并成一幅新的图画, 返回一个新的画家
- * @param {*} wave1 
- * @param {*} wave2 
- */
-const beside = (wave1,wave2) => {
-    //return is left wave1 and right wave2
 }
 
 /**
@@ -45,34 +62,6 @@ const below = (wave1, wave2) => {
     //return is upper wave2 and bottom wave1
 }
 
-/**
- * 上下颠倒
- * @param {*} wave 
- * @returns 
- */
-const flip_vert = wave => {
-    //wave 上下颠倒
-}
-/**
- * 左右反转
- * @param {*} wave 
- * @returns 
- */
-const flip_horiz = wave => {
-    // wave 左右反转
-}
-
-/**
- * 以基本画家为蓝图,组合产生新的画家
- * 这个组合的特点是 画家的左边是原来的画,右边是颠倒的话
- */
-const wave2 = beside(wave, flip_vert(wave));
-/**
- * 将wave2生成的话分成上下两部分
- */
-const wave4 = below(wave2,wave2);
-//这里的特点是画家wave在有关语言或者操作下，仍然是封闭的,
-//就是说，返回的结果仍然是画家
 
 /**
  * 画家的左边和画家颠倒的右边组合成新画家
@@ -158,31 +147,7 @@ const originFrame = frame=> head(frame);
 const edge1Frame = frame=> head(tail(frame));
 const edge2Frame = frame=> head(tail(tail(frame)));
 
-const makeVect = (xcor,ycor)=>list(xcor,ycor)
-const xcorVect = vect=>head(vect);
-const ycorVect = vect=>head(tail(vect));
 
-const vector = v => {
-    return '(' + xcorVect(v)+ ','+ ycorVect(v) + ')';
-}
-
-const addVect = (vect1,vect2) => {
-    return makeVect(xcorVect(vect1)+ xcorVect(vect2),
-        ycorVect(vect1)+ ycorVect(vect2)
-    );
-}
-
-const subVect = (vect1,vect2) => {
-    return makeVect(xcorVect(vect1)- xcorVect(vect2),
-        ycorVect(vect1)- ycorVect(vect2)
-    );
-}
-
-const scaleVect = (vect,factor) => {
-    return makeVect(xcorVect(vect)* factor,
-        ycorVect(vect) * factor
-    );
-}
 
 const makeSegment = (start, end) => list(start, end);
 const startSegment = segment => head(segment);
@@ -216,6 +181,107 @@ const segmentToPainter = segmentList => frame => {
     }, segmentList);
 }
 
+const transformPainter = (painter, origin, corner1, corner2) => {
+    //这里的参数frame是原始的框架，实际上就是(0.0,0.0) (1.0,0.0)(0.0,1.0)
+    return frame=> {
+        const m = frameCoordMap(frame);
+        const newOrigin = m(origin);
+        return painter(makeFrame(
+                newOrigin,
+                subVect(m(corner1), newOrigin),
+                subVect(m(corner2), newOrigin))
+            );
+    }
+}
+
+/**
+ * 上下颠倒
+ * @param {*} wave 
+ * @returns 
+ */
+const flip_vert = wave => {
+    //wave 上下颠倒
+    return transformPainter(wave,
+        makeVect(0.0,1.0),
+        makeVect(1.0,1.0),
+        makeVect(0.0,0.0)
+    );
+}
+
+/**
+ * 缩放到右上部
+ * 
+ * @param {*} wave 
+ * @returns 
+ */
+const shrinkToUpperRight = wave => {
+    return transformPainter(wave,
+        makeVect(0.5,0.5),
+        makeVect(1.0,0.5),
+        makeVect(0.5,1.0)
+    );
+}
+
+const rotate90 = wave => {
+    return transformPainter(wave,
+        makeVect(1.0,0),
+        makeVect(1.0,1.0),
+        makeVect(0.0,0.0)
+    );
+}
+
+/**
+ * 第一个画家的左边部分和第二个画家的右边部分
+ * 合并成一幅新的图画, 返回一个新的画家
+ * @param {*} wave1 
+ * @param {*} wave2 
+ */
+const beside = (wave1,wave2) => {
+    const splitPoint = makeVect(0.5,0.0);
+    const painLeft = transformPainter(wave1,
+        makeVect(0.0,0),
+        splitPoint,
+        makeVect(0.0,1.0)
+    );
+    const painRight = transformPainter(wave1,
+        splitPoint,
+        makeVect(1.0,0.0),
+        makeVect(0.5,1.0)
+    );
+    return frame=>{
+        painLeft(frame);
+        painRight(frame);
+    }
+}
+
+/**
+ * 左右反转
+ * @param {*} wave 
+ * @returns 
+ */
+const flip_horiz = wave => {
+    // wave 左右反转
+    return transformPainter(wave,
+        makeVect(1.0,0.0),
+        makeVect(0.0,0.0),
+        makeVect(1.0,1.0)
+    )
+}
+
+/**
+ * 以基本画家为蓝图,组合产生新的画家
+ * 这个组合的特点是 画家的左边是原来的画,右边是颠倒的话
+ */
+const wave2 = beside(wave, flip_vert(wave));
+/**
+ * 将wave2生成的话分成上下两部分
+ */
+const wave4 = below(wave2,wave2);
+//这里的特点是画家wave在有关语言或者操作下，仍然是封闭的,
+//就是说，返回的结果仍然是画家
+
+
+
 module.exports = {
     wave,
     flip_pairs,
@@ -244,5 +310,12 @@ module.exports = {
     endSegment,
 
     frameCoordMap,
-    segmentToPainter
+    segmentToPainter,
+    transformPainter,
+
+    flip_vert,
+    shrinkToUpperRight,
+    rotate90,
+    beside,
+    flip_horiz
 }
