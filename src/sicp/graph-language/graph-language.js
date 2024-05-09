@@ -280,6 +280,9 @@ const wave4 = below(wave2,wave2);
 //这里的特点是画家wave在有关语言或者操作下，仍然是封闭的,
 //就是说，返回的结果仍然是画家
 
+//https://github.com/jiacai2050/sicp/blob/master/08/2015-08-14_picture_language.md 这篇文章对图形语言有了一些深入了解
+//以及对转化提出了另外一种有益的思考
+
 
 
 module.exports = {

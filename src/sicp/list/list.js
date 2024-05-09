@@ -26,7 +26,7 @@ const printList = (list) => {
 }
 const isList = list=> {
     return typeof list === 'function' && typeof head(list) !== 'function' &&
-        typeof tail(list) === 'function';
+        (typeof tail(list) === 'function' || null === tail(list));
 }
 
 const listRef = (list,n) => {

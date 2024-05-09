@@ -219,6 +219,10 @@ const remove = (item, sequence)=> {
                   sequence);
 }
 
+const error = (m, msg) =>{
+    throw new Error(m + msg)
+}
+
 module.exports = {
     map,
     append,
@@ -245,5 +249,6 @@ module.exports = {
 
     permutations,
     uniquePair,
-    primeSumPairNew
+    primeSumPairNew,
+    error
 }
