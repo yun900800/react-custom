@@ -29,6 +29,10 @@ const isList = list=> {
         (typeof tail(list) === 'function' || null === tail(list));
 }
 
+const isEmptyList = value => {
+    return value && value.length === 0;
+}
+
 const listRef = (list,n) => {
     if (n == 0) {
         return head(list)
@@ -122,6 +126,7 @@ module.exports = {
     list,
     printList,
     isList,
+    isEmptyList,
     listRef,
     length,
     reverse,

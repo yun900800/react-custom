@@ -148,17 +148,7 @@ describe('data-set test',()=> {
 
     it('interSectionTree test',()=>{
         const tree1 = listTree(list(1,2,3,4,5));
-        // console.log(entry(tree1));
-        // console.log(entry(leftBranch(tree1)));
-        // console.log(entry(rightBranch(leftBranch(tree1))));
-        // console.log(entry(rightBranch(tree1)));
-        // console.log(entry(rightBranch(rightBranch(tree1))));
         const tree2 = listTree(list(1,3,5,7,9));
-        // console.log(entry(tree2));
-        // console.log(entry(leftBranch(tree2)));
-        // console.log(entry(rightBranch(leftBranch(tree2))));
-        // console.log(entry(rightBranch(tree2)));
-        // console.log(entry(rightBranch(rightBranch(tree2))));
         const treeSet = interSectionTree(tree1,tree2);
         expect(elementOfSetWithTree(3,treeSet)).toBeTruthy();
         expect(elementOfSetWithTree(7,treeSet)).toBeFalsy();

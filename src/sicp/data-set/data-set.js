@@ -7,7 +7,7 @@ import {
     reverse,
     list,
     length,
-    printList,
+    isEmptyList,
     isList
 } from '../list/list';
 import {
@@ -151,7 +151,7 @@ const rightBranch = tree => head(tail(tail(tree)))
 const makeTree = (entry, left, right) => list(entry,left,right);
 
 const elementOfSetWithTree = (ele, set) => {
-    if (null === set || typeof set !== 'function') {
+    if (null === set || isEmptyList(set)) {
         return false;
     }
     if (ele === entry(set)) {
@@ -186,7 +186,7 @@ const treeToListOne = tree => {
 
 const treeToListTwo = tree => {
     const copyToList = (tree, result) => {
-        if (null === tree || !isList(tree)) {
+        if (null === tree || isEmptyList(tree)) {
             return result;
         }
         return copyToList(
