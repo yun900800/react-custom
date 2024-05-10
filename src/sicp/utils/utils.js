@@ -223,6 +223,8 @@ const error = (m, msg) =>{
     throw new Error(m + msg)
 }
 
+const isEqual = (x,y) => x ===y;
+
 module.exports = {
     map,
     append,
@@ -250,5 +252,6 @@ module.exports = {
     permutations,
     uniquePair,
     primeSumPairNew,
-    error
+    error,
+    isEqual
 }

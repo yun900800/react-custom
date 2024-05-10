@@ -5,7 +5,8 @@ import {
     isSameVariable,
     isSum,
     isProduct,
-    isInteger
+    isInteger,
+    singleOperand
 } from './deriv-utils';
 
 import {
@@ -61,6 +62,10 @@ describe('deriv-utils test',()=>{
     it('isInteger test',()=> {
         expect(isInteger('5')).toBeTruthy();
         expect(isInteger('a')).toBeFalsy();
+    });
+
+    it('singleOperand test',()=> {
+        expect(singleOperand(list('a',null))).toBeTruthy();
     })
 
 });

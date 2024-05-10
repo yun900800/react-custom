@@ -6,15 +6,21 @@ import {
     isSum,
     isProduct,
     isExponentiation,
-    error
+    error,
+    singleOperand
 } from './deriv-utils';
 import {
     list
 } from '../list/list';
 import {
     head,
+    isPair,
+    pair,
     tail
-} from '../pair/pair'
+} from '../pair/pair';
+import {
+    append
+} from '../utils/utils'
 
 const numberEqual = (exp,num) => isNumber(exp) && exp === num;
 
@@ -70,6 +76,34 @@ const makeExponentiation = (base,exponent) => {
 
 const base = s => head(tail(s));
 const exponent = s => head(tail(tail(s)));
+
+//这个暂时处于todo的状态
+const makeSumNew = (a1, a2, ...rest) => {
+    if (null === rest || rest.length === 0) {
+        return numberEqual(a1, 0)
+           ? a2
+           : numberEqual(a2, 0)
+           ? a1
+           : isNumber(a1) && isNumber(a2)
+           ? a1 + a2
+           : list('+',a1,a2);
+    } else {
+        return append(list('+',a1,a2), rest)
+    }
+}
+
+const sumNew = (s) => isPair(s) && head(s) ==='+';
+const addendNew = s => head(tail(s));
+const aguendNew = s => {
+    const tailOperand = tail(tail(s));
+    if (singleOperand(tailOperand)) {
+        return head(tailOperand)
+    } else {
+        return makeSumNew(tailOperand);
+    }
+}
+
+
 /**
  * 说明,谓词函数包括isVariable,isNumber,isSameVariable,isSum, 
     isProduct, numberEqual
@@ -125,5 +159,10 @@ module.exports = {
     makeExponentiation,
     base,
     exponent,
-    deriv
+    deriv,
+
+    makeSumNew,
+    addendNew,
+    aguendNew,
+    sumNew
 }

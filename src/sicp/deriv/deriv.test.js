@@ -9,7 +9,12 @@ import {
     makeExponentiation,
     base,
     exponent,
-    deriv
+    deriv,
+
+    makeSumNew,
+    addendNew,
+    aguendNew,
+    sumNew
 } from './deriv';
 
 import {
@@ -74,4 +79,16 @@ describe('deriv test',()=>{
         expect('* ===> y ===> ** ===> x ===> y-1').toEqual(printTrees(result));
 
     });
+
+    it('makeSumNew, addendNew, aguendNew test',()=> {
+        const listSum = makeSumNew('x','5');
+        expect(addendNew(listSum)).toEqual('x');
+        expect(aguendNew(listSum)).toEqual('5');
+
+        const listSum1 = makeSumNew('x','y','8');
+        expect(addendNew(listSum1)).toEqual('x');
+        const sumTemp = aguendNew(listSum1);
+        expect(addendNew(sumTemp)).toEqual('y');
+        expect(aguendNew(sumTemp)).toEqual('8');
+    })
 })

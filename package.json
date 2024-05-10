@@ -25,6 +25,7 @@
     "test-graph": "jest src/sicp/graph-language/graph-language.test.js",
     "test-quotate": "jest src/sicp/quotate/quotate.test.js",
     "test-deriv": "jest src/sicp/deriv/deriv.test.js src/sicp/deriv/deriv-utils.test.js",
+    "test-set": "jest src/sicp/data-set/data-set.test.js",
     "test-tree-all" : "npm-run-all -l -p test-tree test-conventional",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",

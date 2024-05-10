@@ -2,7 +2,8 @@ import {
     isList
 } from '../list/list'
 import { 
-    head 
+    head, 
+    tail
 } from '../pair/pair';
 const isString = value => typeof value === 'string';
 const isNumber = value => typeof value === 'number';
@@ -12,6 +13,9 @@ const isSameVariable = (val1, val2) => isVariable(val1) && isVariable(val2) && v
 const isSum = value => isList(value) && head(value)==='+';
 const isProduct = value => isList(value) && head(value)==='*';
 const isExponentiation = value => isList(value) && head(value)==='**';
+const singleOperand = value => {
+    return null === tail(value);
+}
 module.exports = {
     isString,
     isNumber,
@@ -20,5 +24,6 @@ module.exports = {
     isSum,
     isProduct,
     isExponentiation,
-    isInteger
+    isInteger,
+    singleOperand
 }
