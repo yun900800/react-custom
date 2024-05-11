@@ -21,7 +21,10 @@ import {
     primeSumPair,
     permutations,
     uniquePair,
-    primeSumPairNew
+    primeSumPairNew,
+
+    isEmptyList,
+    apply_in_underlying_javascript
 } from './utils';
 
 import {
@@ -203,5 +206,18 @@ describe('utils test',()=> {
         const result = printTrees(list1);
         expect('2 ===> 1 ===> 3 ===> 3 ===> 2 ===> 5 ===> 4 ===> 1 ===> 5 ===> 4 ===> 3 ===> 7 ===> 5 ===> 2 ===> 7 ===> 6 ===> 1 ===> 7 ===> 6 ===> 5 ===> 11')
             .toEqual(result);
+    });
+
+    it('isEmptyList test',()=> {
+        expect(isEmptyList([])).toBeTruthy();
+        expect(isEmptyList(null)).toBeTruthy();
+        expect(isEmptyList(undefined)).toBeTruthy();
+    });
+
+    it('apply_in_underlying_javascript test',()=>{
+        const result = apply_in_underlying_javascript((a,b,c)=>{
+            return a*b*c;
+        },list(3,5,8));
+        expect(result).toEqual(120);
     })
 });

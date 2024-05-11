@@ -16,6 +16,8 @@ import {
     entry,
     leftBranch,
     rightBranch,
+    key,
+    value,
     elementOfSetWithTree,
     adJoinSetWithTree,
     interSectionTree,
@@ -24,14 +26,16 @@ import {
     treeToListOne,
     treeToListTwo,
 
-    listTree
+    listTree,
+    lookup,
+    lookupWithTree
 } from './data-set';
 
 import {
     list,
     printList
 } from '../list/list';
-import { head } from '../pair/pair';
+import { head, pair } from '../pair/pair';
 
 describe('data-set test',()=> {
     it('elementOfSet function test',()=>{
@@ -129,11 +133,17 @@ describe('data-set test',()=> {
         expect('1,2').toEqual(printList(set3));   
     });
 
-    it('makeTree, entry, leftBranch, rightBranch test',()=> {
+    it('makeTree, entry, leftBranch, rightBranch, key, value test',()=> {
         const tree1 = makeTree(1,2,3);
         expect(entry(tree1)).toEqual(1);
         expect(leftBranch(tree1)).toEqual(2);
         expect(rightBranch(tree1)).toEqual(3);
+
+        const tree2 = makeTree(pair("hello",1),2,3);
+        expect(value(entry(tree2))).toEqual(1);
+        expect(key(entry(tree2))).toEqual('hello');
+        expect(leftBranch(tree2)).toEqual(2);
+        expect(rightBranch(tree2)).toEqual(3);
     });
 
     it('adJoinSetWithTree test',()=> {
@@ -197,5 +207,32 @@ describe('treeToList two method test',()=>{
     it('listTree test',()=> {
         const tree = listTree(list(1,3,5,7,9,11));
         expect(entry(tree)).toEqual(5);
+    });
+
+    it('lookup test',()=>{
+        const list1 = list(pair('hello',1), pair('world',2), pair('nice',3));
+        let result = lookup('hello',list1);
+        expect(value(result)).toEqual(1);
+        result = lookup('hello1',list1);
+        expect(result).toBeFalsy();
+        result = lookup('nice',list1);
+        expect(value(result)).toEqual(3);
+    });
+
+    it('lookupWithTree test',()=>{
+        const tree1 = makeTree(pair(7,'hello'), 
+            makeTree(pair(3,'nice'),
+                makeTree(pair(1,'meet'), null, null),
+                makeTree(pair(5,'haha'), null, null),
+            ),
+            makeTree(pair(9,'hehe'),
+                makeTree(pair(8,'hutu'),null,null),
+                makeTree(pair(11,'hello9'), null,null)
+            )
+        );
+        let result = lookupWithTree(9,tree1);
+        expect(value(result)).toEqual('hehe');
+        result = lookupWithTree(15,tree1);
+        expect(result).toBeFalsy();
     })
 });

@@ -7,8 +7,7 @@ import {
     reverse,
     list,
     length,
-    isEmptyList,
-    isList
+    isEmptyList
 } from '../list/list';
 import {
     head,
@@ -149,6 +148,8 @@ const entry = tree=> head(tree)
 const leftBranch = tree => head(tail(tree))
 const rightBranch = tree => head(tail(tail(tree)))
 const makeTree = (entry, left, right) => list(entry,left,right);
+const key = entry => head(entry);
+const value = entry => tail(entry);
 
 const elementOfSetWithTree = (ele, set) => {
     if (null === set || isEmptyList(set)) {
@@ -222,9 +223,7 @@ const partialTree = (elements, n)=> {
 
 const interSectionTree = (set1, set2) => {
     const treeSet1 = treeToListTwo(set1);
-    //console.log(printList(treeSet1))
     const treeSet2 = treeToListTwo(set2);
-    //console.log(printList(treeSet2))
     return listTree(interSectionSet(
         treeSet1,
         treeSet2
@@ -236,6 +235,31 @@ const unionTree = (set1, set2) => {
         treeToListTwo(set1),
         treeToListTwo(set2)
     ));
+}
+
+const lookup = (givenKey, setOfRecords) => {
+    if (null === setOfRecords) {
+        return false;
+    }
+    if (isEqual(givenKey, key(head(setOfRecords)))) {
+        return head(setOfRecords);
+    }
+    return lookup(givenKey,tail(setOfRecords));
+}
+
+const lookupWithTree = (givenKey, treeOfRecords) => {
+    if (null === treeOfRecords) {
+        return false;
+    }
+    const entryKey = key(entry(treeOfRecords));
+    if (isEqual(entryKey,givenKey)) {
+        return entry(treeOfRecords);
+    }
+    if (givenKey > entryKey) {
+        return lookupWithTree(givenKey, rightBranch(treeOfRecords));
+    } else {
+        return lookupWithTree(givenKey, leftBranch(treeOfRecords));
+    }
 }
 
 module.exports = {
@@ -256,6 +280,8 @@ module.exports = {
     entry,
     leftBranch,
     rightBranch,
+    key,
+    value,
     elementOfSetWithTree,
     adJoinSetWithTree,
     interSectionTree,
@@ -265,5 +291,6 @@ module.exports = {
     treeToListTwo,
 
     listTree,
-
+    lookup,
+    lookupWithTree
 }

@@ -7,7 +7,6 @@ import {
 
 import {
     list,
-    printList
 } from '../list/list'
 
 const map = (func,items)=> {
@@ -225,6 +224,20 @@ const error = (m, msg) =>{
 
 const isEqual = (x,y) => x ===y;
 
+const isEmptyList = arg => {
+    return null === arg || undefined === arg ||  arg.length ===0;
+}
+
+function apply_in_underlying_javascript(prim,argument_list) {
+    const argument_array = new Array();
+    let i = 0;
+    while (!isEmptyList(argument_list)) {
+        argument_array[i++] = head(argument_list);
+        argument_list = tail(argument_list);
+    }
+    return prim.apply(prim,argument_array);
+}
+
 module.exports = {
     map,
     append,
@@ -253,5 +266,8 @@ module.exports = {
     uniquePair,
     primeSumPairNew,
     error,
-    isEqual
+    isEqual,
+
+    isEmptyList,
+    apply_in_underlying_javascript
 }
