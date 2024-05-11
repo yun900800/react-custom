@@ -28,6 +28,7 @@
     "test-set": "jest src/sicp/data-set/data-set.test.js",
     "test-complex-new": "jest src/sicp/complex/rectangular-complex.test.js src/sicp/complex/polar-complex.test.js src/sicp/complex/complex.test.js",
     "test-data-directed": "jest src/sicp/complex/data-directed.test.js",
+    "test-message-passing": "jest src/sicp/complex/message-passing.test.js",
     "test-tree-all" : "npm-run-all -l -p test-tree test-conventional",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
