@@ -2,7 +2,19 @@ import {
     isEqual,
     error,
     gcd
-} from '../data-abstract/sicp'
+} from '../utils/utils';
+
+/**
+    代换模型要求语言中的符号只是作为值的名字，
+    如果使用了赋值操作，则变量的值就可以改变，
+    一个变量就不再是一个简单的名字，
+    而是索引着一个可以保存值的位置，而存储在那里的值也可以改变
+
+    理解赋值操作带来的好处和坏处
+ * 
+ * @param {*} balance 
+ * @returns 
+ */
 const makeWithDraw = balance=> {
     return amount => {
         if (balance >= amount) {

@@ -1,6 +1,7 @@
 import {
     map,
     append,
+    appendNew,
     forEach,
     filter,
     acculator,
@@ -24,7 +25,13 @@ import {
     primeSumPairNew,
 
     isEmptyList,
-    apply_in_underlying_javascript
+    apply_in_underlying_javascript,
+
+    makeCycle,
+    mystery,
+    countPairs,
+    loop,
+    loopNew
 } from './utils';
 
 import {
@@ -34,7 +41,9 @@ import {
 
 import {
     head,
-    pair
+    pair,
+    setTail,
+    tail
 } from '../pair/pair';
 
 import {
@@ -65,6 +74,8 @@ describe('utils test',()=> {
         const list3 = append(list1,list2);
         const result = printList(list3);
         expect('1,2,3,4,1,4,9,16').toEqual(result);
+        const tailResult = tail(list1);
+        expect('2,3,4').toEqual(printList(tailResult));
     });
 
     it('forEach test',()=> {
@@ -219,5 +230,55 @@ describe('utils test',()=> {
             return a*b*c;
         },list(3,5,8));
         expect(result).toEqual(120);
+    });
+
+    it('appendNew test',()=> {
+        const list1 = list(1,2,3);
+        const list2 = list(4,5,6);
+        const result = appendNew(list1,list2);
+        expect('1,2,3,4,5,6').toEqual(printList(result));
+        const tailResult = tail(list1);
+        expect('2,3,4,5,6').toEqual(printList(tailResult));
+    });
+
+    it('makeCycle test',()=>{
+        const x = list('a','b','c');
+        const result = makeCycle(x);
+        expect('a').toEqual(head(result));
+        expect('b').toEqual(head(tail(result)));
+        expect('c').toEqual(head(tail(tail(result))));
+        expect('a').toEqual(head(tail(tail(tail(result)))));
+    });
+
+    it('mystery test',()=> {
+        const x = list('a','b','c');
+        const result = mystery(x);
+        expect('c').toEqual(head(result));
+        expect('a').toEqual(head(lastPair(result)));
+    });
+
+    it('countPairs test',()=>{
+        const list1 = pair(pair(1,2),pair(3,4));
+        expect(countPairs(list1)).toEqual(3);
+        const list2 = list(1,2,3);
+        expect(countPairs(list2)).toEqual(3);
+    });
+
+    it('loop test' ,()=>{
+        const list1 = list(1,2,3);
+        expect(loop(list1)).toBeFalsy();
+
+        const list2 = list(1,2,3);
+        setTail(lastPair(list2),list2);
+        expect(loop(list2)).toBeTruthy();
+    })
+
+    it('loopNew test' ,()=>{
+        const list1 = list(1,2,3);
+        expect(loopNew(list1)).toBeFalsy();
+
+        const list2 = list(1,2,3);
+        setTail(lastPair(list2),list2);
+        expect(loopNew(list2)).toBeTruthy();
     })
 });

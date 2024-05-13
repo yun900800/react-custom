@@ -1,4 +1,4 @@
-import { listJs } from '../data-abstract/sicp';
+import { list } from '../list/list';
 import {
     makeTable,
     insetrTable,
@@ -49,8 +49,8 @@ describe('makeTable test', ()=> {
     });
 
     it('put and get test',()=>{
-        put('aaa',listJs('bbb'),x=>x);
-        const result = get('aaa',listJs('bbb'));
+        put('aaa',list('bbb'),x=>x);
+        const result = get('aaa',list('bbb'));
         expect(typeof result).toEqual('function');
     })
 });

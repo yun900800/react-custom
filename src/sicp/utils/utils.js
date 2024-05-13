@@ -2,11 +2,14 @@ import {
     head,
     isPair,
     pair,
+    setHead,
+    setTail,
     tail
 } from '../pair/pair';
 
 import {
     list,
+    length
 } from '../list/list'
 
 const map = (func,items)=> {
@@ -20,6 +23,11 @@ const append = (items0, items1) =>
         items0 === null ?
             items1 :
             pair(head(items0), append(tail(items0), items1));
+
+const appendNew = (items0, items1) => {
+    setTail(lastPair(items0),items1);
+    return items0;
+}
 
             
 const lastPair = (list) => {
@@ -238,9 +246,95 @@ function apply_in_underlying_javascript(prim,argument_list) {
     return prim.apply(prim,argument_array);
 }
 
+const makeCycle = x => {
+    setTail(lastPair(x),x);
+    return x;
+}
+
+const mystery = v => {
+    const loop = (x,y) => {
+        if (null === x) {
+            return y;
+        } else {
+            const temp = tail(x);
+            setTail(x, y);
+            return loop(temp, x);
+        }
+    }
+    return loop(v,null)
+}
+
+const member = (item,x) => {
+    return null === x
+           ? null
+           : item === head(x)
+           ? x
+           : member(item, tail(x));
+}
+
+const countPairs = x => {
+    const inner = (x, memoList)=> {
+        if (isPair(x) && !member(x,memoList)) {
+            return inner(head(x), inner(tail(x), pair(x, memoList)))
+        }
+        return memoList;
+    }
+    return length(inner(x, null));
+}
+
+const loop = list => {
+    const identity = pair(null,null);
+    const iter = remainList => {
+        if (null === remainList) {
+            return false;
+        }
+        if (identityEqual(head(remainList)) ) {
+            return true;
+        } else {
+            setHead(remainList,identity);
+            return iter(tail(remainList));
+        }
+    }
+    return iter(list);
+}
+
+const identityEqual = (x) => {
+    return isPair(x) && head(x) === null && tail(x) === null;
+}
+
+const identityEquals = (x,y) => {
+    return isPair(x) && isPair(y) && head(x) === head(y);
+}
+
+const loopNew = list => {
+    const iter = (x,y) => {
+        const stepOne = listWalk(1, x);
+        const stepTwo = listWalk(2, y);
+        if (null === stepOne || stepTwo === null) {
+            return false;
+        }
+        if (identityEquals(stepOne,stepTwo)) {
+            return true;
+        }
+        return iter(stepOne, stepTwo);
+    }
+    return iter(list,list);
+}
+
+const listWalk = (step,list)=> {
+    if (null === list) {
+        return null;
+    }
+    if (step === 0) {
+        return list;
+    }
+    return listWalk(step-1, tail(list));
+}
+
 module.exports = {
     map,
     append,
+    appendNew,
     lastPair,
     forEach,
     filter,
@@ -269,5 +363,12 @@ module.exports = {
     isEqual,
 
     isEmptyList,
-    apply_in_underlying_javascript
+    apply_in_underlying_javascript,
+
+    makeCycle,
+    mystery,
+    member,
+    countPairs,
+    loop,
+    loopNew
 }

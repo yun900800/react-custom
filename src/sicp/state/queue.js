@@ -3,10 +3,16 @@ import {
     tail,
     head,
     setHead,
-    setTail,
-    error,
-    listJs
-} from '../data-abstract/sicp';
+    setTail
+} from '../pair/pair';
+
+import {
+    error
+} from '../utils/utils';
+
+import {
+    list 
+} from  '../list/list';
 
 const makeQueue = ()=>{
     return pair(null,null);
@@ -80,12 +86,12 @@ const makeQueueNew = ()=> {
 
     const insertQueue = (item) => {
         if (isEmptyQueue()) {
-            const initList = listJs(item);
+            const initList = list(item);
             frontPtr = initList;
             rearPtr = initList;
             return frontPtr;
         } else {
-            const newItem = listJs(item);
+            const newItem = list(item);
             setTail(rearPtr,newItem);
             rearPtr = newItem;
             return frontPtr

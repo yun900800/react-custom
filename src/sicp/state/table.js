@@ -2,12 +2,17 @@ import {
     pair,
     tail,
     head,
-    setHead,
     setTail,
-    error,
-    listJs,
-    isEqual
 } from '../data-abstract/sicp';
+
+import {
+    error,
+    isEqual
+} from '../utils/utils';
+
+import {
+    list 
+} from  '../list/list';
 
 const lookup = (key, table) => {
     const record = assoc(key, tail(table));
@@ -44,11 +49,11 @@ const insetrTable = (key, value, table) => {
 }
 
 const makeTable = ()=>{
-    return listJs('*table*')
+    return list('*table*')
 }
 
 const makeTableNew = (sameKey)=> {
-    const localTable = listJs('*table*');
+    const localTable = list('*table*');
     const lookup = (key1, key2) => {
         const subtable = assoc(key1, tail(localTable));
         if (undefined === subtable ) {
@@ -76,7 +81,7 @@ const makeTableNew = (sameKey)=> {
         const subtable = assoc(key1, tail(localTable));
         if (undefined === subtable) {
             setTail(localTable,
-                     pair(listJs(key1, pair(key2, value)),
+                     pair(list(key1, pair(key2, value)),
                           tail(localTable)));
         } else {
             const record = assoc(key2, tail(subtable));
