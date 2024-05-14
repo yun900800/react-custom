@@ -70,7 +70,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             title: 'react custom app',
             filename: 'index.html',
-            template: './public/index.html'
+            template: 'public/index.html'
         }),
         new MiniCssExtractPlugin({
             filename: '[name].bundle.css',
@@ -79,7 +79,7 @@ module.exports = {
         new HotModuleReplacementPlugin(),
         // ,
         // new CopyPlugin({
-        //     patterns: [{ from: 'src' , to: 'dist'}]
+        //     patterns: [{ from: 'public/assets' , to: 'assets'}]
         // })
     ]
     ,
