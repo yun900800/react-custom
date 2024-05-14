@@ -14,12 +14,9 @@ import {
     list 
 } from  '../list/list';
 
+//下面的前端指针和后端指针对pair形成抽象屏障
 const makeQueue = ()=>{
     return pair(null,null);
-}
-
-const isEmptyQueue = q=> {
-    return null === frontPtr(q);
 }
 
 const frontPtr = q => {
@@ -37,6 +34,12 @@ const setFrontPtr = (q, item) => {
 const setRearPtr = (q, item) => {
     setTail(q,item);
     return q;
+}
+
+//下面的对列操作对上面的过程形成依赖,实际上是一种抽象屏障 
+
+const isEmptyQueue = q=> {
+    return null === frontPtr(q);
 }
 
 const frontQueue = q => {
@@ -75,6 +78,18 @@ const printQueue = q => {
     }
     temp = tail(q);
     printQueue(temp);
+}
+
+const displayQueue = q => {
+    const iter = (q,result)=> {
+        if (null != head(q)) {
+            result.push(head(q));
+        } else {
+            return result;
+        }
+        return iter(tail(q), result);
+    }
+    return iter(q,[])
 }
 
 const makeQueueNew = ()=> {
@@ -127,6 +142,8 @@ module.exports = {
     isEmptyQueue,
     frontQueue,
     printQueue,
-    frontPtr,
-    makeQueueNew
+    displayQueue,
+    makeQueueNew,
+
+    frontPtr
 }
