@@ -61,11 +61,11 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        historyApiFallback: true,
-        open: true,
-        hot: true,
-    },
+    // devServer: {
+    //     historyApiFallback: true,
+    //     open: true,
+    //     hot: true,
+    // },
     plugins: [
         new HtmlWebPackPlugin({
             title: 'react custom app',
@@ -77,10 +77,10 @@ module.exports = {
             chunkFilename: '[id].css'
         }),
         new HotModuleReplacementPlugin(),
-        // ,
-        // new CopyPlugin({
-        //     patterns: [{ from: 'public/assets' , to: 'assets'}]
-        // })
+        ,
+        new CopyPlugin({
+            patterns: [{ from: 'public/assets' , to: 'assets'}]
+        })
     ]
     ,
     resolve: {

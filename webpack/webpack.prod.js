@@ -1,12 +1,12 @@
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     mode: 'production',
-    devtool : 'source-map',
+    // devtool : 'source-map',
     plugins: [
         new webpack.DefinePlugin({
             'process.env.name': JSON.stringify('Production Wish')
         }),
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
     ]
 }
