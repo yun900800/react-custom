@@ -30,6 +30,13 @@ const callEach = (procedures) => {
 }
 
 /**
+ * 1. 导线是最基本的构成元素
+ * 2. 利用导线可以组合成复杂的与,或,非门
+ * 3. 利用与,或,非门可以组合成半加,全加等复合元素
+ * 4. 对这些命令以后形成抽象
+ * 
+ * 注意,导线包含一个基本的信号值,以及信号值发生变化以后,需要执行的过程(实际上是一个表)
+ * 
  * 定义最底层的抽象
  */
 const makeWire = ()=>{
@@ -83,6 +90,15 @@ const addAction = (wire, fns) => {
 const inverterDelay = 2;
 const andGateDelay = 3;
 const orGateDelay = 5;
+
+/**
+ * 利用导线可以构成各种简单和复杂的组合过程
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @param {*} c 
+ * @returns 
+ */
 const orGate = (a,b,c) => {
     const orActionFn = () => {
         const newValue = logicOr(getSignal(a), getSignal(b));
@@ -162,7 +178,19 @@ const fullAdder = (a,b,cIn,sum,cOut) => {
     return 'ok';
 }
 
-
+/**
+ * 
+ * timeSegment  ---> [*]   [*] 
+ *                    |     |
+ *                    v     v
+ *                   time queue
+ * 
+ * timeSegment结构如上,其中queue是一个队列
+ * 
+ * @param {*} time 
+ * @param {*} queue 
+ * @returns 
+ */
 const makeTimeSegment = (time, queue) => {
     return pair(time,queue);
 }
@@ -172,12 +200,27 @@ const segmentQueue = s => tail(s)
 
 
 /**
+ *                             segments     restSegments
+ *                                ^              ^
+ *                                |              |
+ * agenda ---> [*] ------------> [*] ---------->[*][null]
+ *              |                 |              |
+ *              v                 v              v
+ *          currentTime       firstSegment
+ * 
+ * agenda结构如上
+ * 
  * 定义基础过程抽象
  */
 const makeAgenda = () => {
     return list(0,null);
 }
 
+/**
+ * 对应具体的时间的值
+ * @param {*} agenda 
+ * @returns 
+ */
 const currentTime = agenda => {
     return head(agenda);
 }
@@ -186,6 +229,11 @@ const setCurrentTime = (agenda, time)=> {
     return setHead(agenda, time);
 }
 
+/**
+ * 对应一个指针
+ * @param {*} agenda 
+ * @returns 
+ */
 const segments = agenda => {
     return tail(agenda);
 }
@@ -194,10 +242,21 @@ const setSegments = (agenda,segments) => {
     return setTail(agenda,segments);
 }
 
+/**
+ * 
+ * 对应具体的元素
+ * @param {*} agenda 
+ * @returns 
+ */
 const firstSegment = (agenda)=> {
     return head(segments(agenda));
 }
 
+/**
+ * 对应一个指针
+ * @param {*} agenda 
+ * @returns 
+ */
 const restSegments = (agenda)=> {
     return tail(segments(agenda));
 }
@@ -226,6 +285,12 @@ const removeFirstAgendaItem = agenda => {
     }
 }
 
+/**
+ * 这个方法比较关键
+ * @param {*} time 
+ * @param {*} action 
+ * @param {*} agenda 
+ */
 const addToAgenda = (time,action, agenda) => {
     const belongsBefore = (segs) => {
         return null=== segs || time < segmentTime(head(segs));

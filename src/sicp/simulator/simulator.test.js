@@ -70,6 +70,14 @@ describe('simulator test',()=>{
         expect(segmentQueue(timeSegments1)).toEqual(queue1);
     });
 
+    it('segmentTime test',()=> {
+        const timeSegments = makeTimeSegment(6, null);
+        expect(segmentTime(timeSegments)).toEqual(6);
+        const timeSegments1 = makeTimeSegment(6);
+        expect(segmentTime(timeSegments1)).toEqual(6);
+        
+    })
+
     it('makeAgenda test',()=>{
         const agenda1 = makeAgenda();
         expect(currentTime(agenda1)).toEqual(0);
