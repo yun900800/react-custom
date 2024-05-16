@@ -75,7 +75,7 @@ describe('simulator test',()=>{
         expect(segmentTime(timeSegments)).toEqual(6);
         const timeSegments1 = makeTimeSegment(6);
         expect(segmentTime(timeSegments1)).toEqual(6);
-        
+
     })
 
     it('makeAgenda test',()=>{
@@ -112,7 +112,21 @@ describe('simulator test',()=>{
         propagate();
         setSignal(input2,1);
         propagate();
-    })
+    });
+
+    it('inverter test',()=>{
+        const input = makeWire();
+        const output = makeWire();
+        inverter(input,output);
+        prob('inverter output',output);
+        setSignal(input,0);
+        propagate();
+        expect(getSignal(output)).toEqual(1);
+        //这里会重新添加到agenda中
+        setSignal(input,1);
+        propagate();
+        expect(getSignal(output)).toEqual(0);      
+    });
 
 
 });
