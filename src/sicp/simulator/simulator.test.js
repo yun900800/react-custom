@@ -128,5 +128,35 @@ describe('simulator test',()=>{
         expect(getSignal(output)).toEqual(0);      
     });
 
+    it('orGate test',()=>{
+        const wireA = makeWire();
+        const wireB = makeWire();
+        const output = makeWire();
+        orGate(wireA,wireB,output);
+
+        prob('orGate output',output);
+        setSignal(wireA,1);
+        propagate();
+        setSignal(wireB,1);
+        propagate();
+        setSignal(wireA,0);
+        setSignal(wireB,0);
+        propagate();
+    });
+
+    it('andGate test',()=>{
+        const wireA = makeWire();
+        const wireB = makeWire();
+        const output = makeWire();
+        andGate(wireA,wireB,output);
+        prob('andGate output',output);
+        setSignal(wireA,1);
+        propagate();
+        setSignal(wireB,1);
+        propagate();
+        setSignal(wireA,0);
+        propagate();
+    });
+
 
 });
