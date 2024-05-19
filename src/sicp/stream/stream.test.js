@@ -16,7 +16,9 @@ import {
     displayStream,
     streamFilter,
 
-    memo
+    memo,
+    streamMap2,
+    mulStreams
 } from './stream';
 
 describe('stream test',()=>{
@@ -74,6 +76,17 @@ describe('stream test',()=>{
         expect(result).toEqual(9);
         result = memoFn(4);
         expect(result).toEqual(9);
-        expect(fn).toBeCalledTimes(1);
+        expect(fn).toBeCalledTimes(1); 
     });
+
+    it('streamMap2 mulStreams test',()=>{
+        const stream1 = streamEnumerateInterval(100,110);
+        const stream2 = streamEnumerateInterval(200,210);
+        const stream3 = streamMap2((s1,s2)=>s1+s2, stream1, stream2);
+        displayStream(stream3);
+
+        const stream4 = mulStreams(stream1, stream2);
+        displayStream(stream4);
+    })
+
 })

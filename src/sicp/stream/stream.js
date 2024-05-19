@@ -2,6 +2,10 @@ import {
     pair,
     head
 } from '../pair/pair';
+
+import {
+    error
+} from  '../utils/utils';
 const pairStream = (a,b) => m => {
     return m === 0 ? a : m === 1 ? ()=>b : error(m, "argument not 0 or 1 -- pair");
 }
@@ -53,6 +57,7 @@ const streamForEach = (fun,s) => {
         return true;
     } else {
         fun(head(s));
+        //只有这里的streamTail开启延时求值
         return streamForEach(fun, streamTail(s));
     }
 }
@@ -80,6 +85,20 @@ const memo = fun => {
     };
 }
 
+const streamMap2 = (fn, s1,s2) => {
+    return null === (s1) && null === (s2)
+        ? null
+        : null === (s1) || null === (s2)
+        ? error(null, "unexpected argument -- stream_map_2")
+        : pair(fn(head(s1),head(s2)), 
+               memo(() => streamMap2(fn, streamTail(s1),
+               streamTail(s2))));
+}
+
+function mulStreams(s1, s2) {
+    return streamMap2((x1, x2) => x1 * x2, s1, s2);
+}
+
 module.exports = {
     pairStream,
     streamHead,
@@ -91,5 +110,7 @@ module.exports = {
     displayStream,
     streamFilter,
 
-    memo
+    memo,
+    streamMap2,
+    mulStreams
 }
