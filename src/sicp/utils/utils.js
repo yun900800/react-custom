@@ -370,5 +370,7 @@ module.exports = {
     member,
     countPairs,
     loop,
-    loopNew
+    loopNew,
+    
+    isPrime
 }
