@@ -158,5 +158,20 @@ describe('simulator test',()=>{
         propagate();
     });
 
+    it('halfAdder test',()=>{
+        const wireA = makeWire();
+        const wireB = makeWire();
+        const wireS = makeWire();
+        const wireC = makeWire();
+        halfAdder(wireA,wireB,wireS,wireC);
+        prob('halfAdder wireS',wireS);
+        prob('halfAdder wireC',wireC);
+        setSignal(wireA,1);
+        propagate();
+        setSignal(wireB,1);
+        propagate();
+
+    })
+
 
 });

@@ -33,12 +33,35 @@ const callEach = (procedures) => {
  * 1. 导线是最基本的构成元素
  * 2. 利用导线可以组合成复杂的与,或,非门
  * 3. 利用与,或,非门可以组合成半加,全加等复合元素
- * 4. 对这些命令以后形成抽象
+ * 4. 对这些命令具体命名以后形成更高层次抽象
  * 
  * 注意,导线包含一个基本的信号值,以及信号值发生变化以后,需要执行的过程(实际上是一个表)
  * 
- * 定义最底层的抽象
- */
+ * 定义最底层的抽象,其实是最基本的元素 wire
+ *         Wire 包括两部分
+ *     -------------------------------------
+ *     |   signalValue 0 | 1               |
+ *     |   actionFns  [fn1->fn2->...->fnN] | 
+ *     |-----------------------------------|
+ * 
+ *             abstract barrier(抽象屏障)
+ * 
+ *     -------------------------------------
+ *     |            halfAdder              |
+ *     |            fullAdder              | 
+ *     |-----------------------------------| 
+ *                     ^    
+ *                     |
+ *     -------------------------------------
+ *     |          orGate andGate           |
+ *     |            inverter               | 
+ *     |-----------------------------------| 
+ *                     ^
+ *                     |
+ *     -------------------------------------
+ *     |            makeWire               |
+ *     |-----------------------------------| 
+ */    
 const makeWire = ()=>{
     let signalValue = 0;
     let actionFns = null;
@@ -93,6 +116,7 @@ const orGateDelay = 5;
 
 /**
  * 利用导线可以构成各种简单和复杂的组合过程
+ * 输入的wire会绑定一些函数过程 (a,b)
  * 
  * @param {*} a 
  * @param {*} b 
@@ -104,7 +128,7 @@ const orGate = (a,b,c) => {
         const newValue = logicOr(getSignal(a), getSignal(b));
         afterDelay(orGateDelay,()=>{
             setSignal(c, newValue);
-        })
+        });
     }
 
     const logicOr = (s1,s2) => {
@@ -118,6 +142,13 @@ const orGate = (a,b,c) => {
     return 'ok';
 }
 
+/**
+ * 输入的wire会绑定一些函数过程 (a1,a2)
+ * @param {*} a1 
+ * @param {*} a2 
+ * @param {*} output 
+ * @returns 
+ */
 const andGate = (a1,a2,output) => {
     const addActionFn = () =>{
         const newValue = logicAnd(getSignal(a1), getSignal(a2));
@@ -137,6 +168,12 @@ const andGate = (a1,a2,output) => {
     return 'ok';
 }
 
+/**
+ * 输入的wire会绑定一些函数过程 (input)
+ * @param {*} input 
+ * @param {*} output 
+ * @returns 
+ */
 const inverter = (input,output) => {
     const invertInput = () => {
         const newValue = logicNot(getSignal(input));
@@ -306,6 +343,7 @@ const addToAgenda = (time,action, agenda) => {
         if (segmentTime(head(segs)) === time) {
             insertQueue(segmentQueue(head(segs)), action);
         } else{
+            //递归到下一个 segs
             const rest = tail(segs);
             if (belongsBefore(rest)) {
                 setTail(segs, pair(makeNewTimeSegment(time, action),
