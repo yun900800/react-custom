@@ -426,5 +426,7 @@ module.exports = {
     fullAdder,
 
     prob,
-    propagate
+    propagate,
+
+    callEach
 }

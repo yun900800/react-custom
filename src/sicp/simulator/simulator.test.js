@@ -29,7 +29,9 @@ import {
     fullAdder,
 
     prob,
-    propagate
+    propagate,
+
+    callEach
 } from './simulator';
 
 import {
@@ -171,7 +173,19 @@ describe('simulator test',()=>{
         setSignal(wireB,1);
         propagate();
 
-    })
+    });
 
+    it('callEach test',()=>{
+        let procedures = null;
+        expect(callEach(procedures)).toEqual('done');
+        const fn1 = jest.fn(x=>x*x);
+        procedures = pair(fn1,null);
+        callEach(procedures);
+        expect(fn1).toBeCalledTimes(1);
 
+        procedures = pair(fn1,pair(fn1,null));
+        callEach(procedures);
+        expect(fn1).toBeCalledTimes(3);
+      
+    });
 });
