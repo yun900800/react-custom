@@ -34,6 +34,7 @@
     "test-simulator": "jest src/sicp/simulator/simulator.test.js",
     "test-serializer": "jest src/sicp/serializer/serializer.test.js",
     "test-stream": "jest src/sicp/stream/stream.test.js",
+    "test-constraint": "jest src/sicp/constraint/constraint.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
     "storybook": "storybook dev -p 6006",
