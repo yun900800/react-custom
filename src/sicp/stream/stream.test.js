@@ -1,5 +1,6 @@
 import { 
-    head 
+    head, 
+    pair,
 } from '../pair/pair';
 
 import {
@@ -18,7 +19,14 @@ import {
 
     memo,
     streamMap2,
-    mulStreams
+    mulStreams,
+
+    integerStartingFrom,
+    isDivisible,
+    fibgen,
+    sieve,
+    addStream,
+    scaleStream
 } from './stream';
 
 describe('stream test',()=>{
@@ -89,4 +97,71 @@ describe('stream test',()=>{
         displayStream(stream4);
     })
 
+});
+
+describe('infinite stream test',()=>{
+    it('integerStartingFrom test',()=>{
+        const integers = integerStartingFrom(1);
+        expect(streamRef(integers,5)).toEqual(6);
+        
+    });
+
+    it('define s stream noSeven',()=>{
+        const integers = integerStartingFrom(1);
+        const noSeven = streamFilter(x=>!isDivisible(x,7), integers);
+        //1 2 3 4 5 6 8 9 10
+        expect(streamRef(noSeven,8)).toEqual(10);
+        expect(streamRef(noSeven,100)).toEqual(117);
+    });
+
+    it('fibgen test',()=>{
+        const fibs = fibgen(0,1);
+        // 0 1 1 2 3 5 8 
+        expect(streamRef(fibs,6)).toEqual(8);
+    });
+
+    it('sieve test',()=> {
+        const integers = integerStartingFrom(2);
+        const primeS = sieve(integers);
+        expect(streamRef(primeS,50)).toEqual(233);
+        expect(streamRef(primeS,100)).toEqual(547);
+        expect(streamRef(primeS,1000)).toEqual(7927);
+    });
+
+    it('ones define test',()=>{
+        const ones = pair(1, ()=>ones);
+        expect(streamRef(ones,50)).toEqual(1);
+    });
+
+    it('addStream test',()=>{
+        const ones = pair(1, ()=>ones);
+        const integers = pair(1, ()=>addStream(ones, integers));
+        expect(streamRef(integers,50)).toEqual(51);
+
+        const fibs = pair(0,()=>pair(1, ()=>{
+            return addStream(streamTail(fibs), fibs);
+        }));
+        expect(streamRef(fibs,6)).toEqual(8);
+    });
+
+    it('scaleStream test',()=>{
+        const double = pair(1,()=>scaleStream(double,2));
+        expect(streamRef(double,4)).toEqual(16);
+    });
+
+    it('define primes',()=>{ 
+        const primes = pair(2, ()=> streamFilter(isPrimeNew,integerStartingFrom(3)));
+        const isPrimeNew = n => {
+            const iter = (ps) => {
+                return head(ps)* head(ps) > n
+                       ? true
+                       : isDivisible(n, head(ps))
+                       ? false
+                       : iter(streamTail(ps));
+            }
+            return iter(primes);
+        }
+        expect(streamRef(primes,50)).toEqual(233);
+        expect(streamRef(primes,100)).toEqual(547);
+    });
 })

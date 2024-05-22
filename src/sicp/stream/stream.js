@@ -99,6 +99,33 @@ function mulStreams(s1, s2) {
     return streamMap2((x1, x2) => x1 * x2, s1, s2);
 }
 
+// infinite stream
+
+const integerStartingFrom = n => {
+    return pair(n, ()=>integerStartingFrom(n+1));
+}
+
+const isDivisible = (x,y) => x%y===0;
+
+const fibgen = (a,b) => pair(a, ()=> fibgen(b, a+b));
+
+const sieve = s => {
+    return pair(head(s), ()=>{
+        return sieve(streamFilter(
+            x =>!isDivisible(x, head(s)),
+            streamTail(s)
+        ))
+    });
+}
+
+const addStream = (s1,s2) => {
+    return streamMap2((a,b)=>a+b,s1,s2);
+}
+
+const scaleStream = (stream, factor) => {
+    return streamMap(x=>x*factor, stream);
+}
+
 module.exports = {
     pairStream,
     streamHead,
@@ -112,5 +139,12 @@ module.exports = {
 
     memo,
     streamMap2,
-    mulStreams
+    mulStreams,
+
+    integerStartingFrom,
+    isDivisible,
+    fibgen,
+    sieve,
+    addStream,
+    scaleStream,
 }
