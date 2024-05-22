@@ -24,3 +24,16 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
     depends_on: 
       - "mongodb"
+  
+  nginx-web:
+    container_name: nginx-web
+    image: openresty/openresty:buster-fat
+    ports:
+      - "80:80"
+      # - "443:443"
+    volumes:
+      - "${NGINX_DIR}/conf:/usr/local/openresty/nginx/conf"
+      - "${NGINX_DIR}/logs:/var/log/nginx/:rw" 
+      - "${NGINX_DIR}/conf.d:/usr/local/openresty/nginx/conf/conf.d"
+    environment:
+      - TZ=Asia/Shanghai
