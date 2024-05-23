@@ -1,39 +1,60 @@
-2024/05/22 20:26:40 [error] 7#7: *2 open() "/usr/local/openresty/nginx/html/favicon.ico" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
-2024/05/22 20:32:32 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:33:30 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:33:31 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:33:31 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:33:32 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:33:32 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:34:22 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:34:24 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:34:24 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:34:25 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:35:26 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:35:27 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:35:27 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:35:27 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:36:20 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:36:20 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:36:20 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:36:21 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:36:24 [error] 7#7: *6 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:36:58 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/505。html" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /505%E3%80%82html HTTP/1.1", host: "localhost"
-2024/05/22 20:37:03 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/505.html" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /505.html HTTP/1.1", host: "localhost"
-2024/05/22 20:37:08 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/500.html" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /500.html HTTP/1.1", host: "localhost"
-2024/05/22 20:37:23 [error] 7#7: *6 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:12 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:12 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:13 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:13 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:13 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:13 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:14 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:14 [error] 7#7: *11 open() "/usr/local/openresty/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
-2024/05/22 20:39:17 [error] 7#7: *11 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:39:23 [error] 7#7: *11 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:39:32 [error] 7#7: *11 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:41:05 [error] 7#7: *12 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:41:06 [error] 7#7: *12 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:41:06 [error] 7#7: *12 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
-2024/05/22 20:41:06 [error] 7#7: *12 "/usr/local/openresty/nginx/html/react/index.html" is not found (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react/ HTTP/1.1", host: "localhost"
+/usr/share/nginx/html2024/05/23 12:20:03 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/05/23 12:20:03 [notice] 29#29: gracefully shutting down
+2024/05/23 12:20:03 [notice] 30#30: gracefully shutting down
+2024/05/23 12:20:03 [notice] 31#31: gracefully shutting down
+2024/05/23 12:20:03 [notice] 32#32: gracefully shutting down
+2024/05/23 12:20:03 [notice] 34#34: gracefully shutting down
+2024/05/23 12:20:03 [notice] 35#35: gracefully shutting down
+2024/05/23 12:20:03 [notice] 36#36: gracefully shutting down
+2024/05/23 12:20:03 [notice] 38#38: gracefully shutting down
+2024/05/23 12:20:03 [notice] 37#37: gracefully shutting down
+2024/05/23 12:20:03 [notice] 39#39: gracefully shutting down
+2024/05/23 12:20:03 [notice] 33#33: gracefully shutting down
+2024/05/23 12:20:03 [notice] 40#40: gracefully shutting down
+2024/05/23 12:20:03 [notice] 29#29: exiting
+2024/05/23 12:20:03 [notice] 30#30: exiting
+2024/05/23 12:20:03 [notice] 31#31: exiting
+2024/05/23 12:20:03 [notice] 32#32: exiting
+2024/05/23 12:20:03 [notice] 34#34: exiting
+2024/05/23 12:20:03 [notice] 35#35: exiting
+2024/05/23 12:20:03 [notice] 34#34: exit
+2024/05/23 12:20:03 [notice] 36#36: exiting
+2024/05/23 12:20:03 [notice] 38#38: exiting
+2024/05/23 12:20:03 [notice] 37#37: exiting
+2024/05/23 12:20:03 [notice] 38#38: exit
+2024/05/23 12:20:03 [notice] 39#39: exiting
+2024/05/23 12:20:03 [notice] 33#33: exiting
+2024/05/23 12:20:03 [notice] 40#40: exiting
+2024/05/23 12:20:03 [notice] 29#29: exit
+2024/05/23 12:20:03 [notice] 30#30: exit
+2024/05/23 12:20:03 [notice] 31#31: exit
+2024/05/23 12:20:03 [notice] 32#32: exit
+2024/05/23 12:20:03 [notice] 35#35: exit
+2024/05/23 12:20:03 [notice] 36#36: exit
+2024/05/23 12:20:03 [notice] 37#37: exit
+2024/05/23 12:20:03 [notice] 39#39: exit
+2024/05/23 12:20:03 [notice] 33#33: exit
+2024/05/23 12:20:03 [notice] 40#40: exit
+2024/05/23 12:20:03 [notice] 1#1: signal 17 (SIGCHLD) received from 40
+2024/05/23 12:20:03 [notice] 1#1: worker process 30 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 31 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 33 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 39 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 40 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: signal 29 (SIGIO) received
+2024/05/23 12:20:03 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2024/05/23 12:20:03 [notice] 1#1: worker process 29 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 34 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 35 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: signal 29 (SIGIO) received
+2024/05/23 12:20:03 [notice] 1#1: signal 17 (SIGCHLD) received from 36
+2024/05/23 12:20:03 [notice] 1#1: worker process 36 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: signal 29 (SIGIO) received
+2024/05/23 12:20:03 [notice] 1#1: signal 17 (SIGCHLD) received from 32
+2024/05/23 12:20:03 [notice] 1#1: worker process 32 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: worker process 38 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: signal 29 (SIGIO) received
+2024/05/23 12:20:03 [notice] 1#1: signal 17 (SIGCHLD) received from 37
+2024/05/23 12:20:03 [notice] 1#1: worker process 37 exited with code 0
+2024/05/23 12:20:03 [notice] 1#1: exit
+2024/05/23 12:22:57 [error] 29#29: *3 open() "/etc/nginx/html/react" failed (2: No such file or directory), client: 192.168.0.1, server: localhost, request: "GET /react HTTP/1.1", host: "localhost"
