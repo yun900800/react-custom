@@ -126,6 +126,14 @@ const scaleStream = (stream, factor) => {
     return streamMap(x=>x*factor, stream);
 }
 
+const integers = integerStartingFrom(1);
+
+const factorials = pair(1, ()=>mulStreams(factorials, integers));
+
+const partialSum = s => {
+    return pair(head(s), ()=>addStream(streamTail(s), partialSum(s)));
+}
+
 module.exports = {
     pairStream,
     streamHead,
@@ -147,4 +155,6 @@ module.exports = {
     sieve,
     addStream,
     scaleStream,
+    factorials,
+    partialSum
 }

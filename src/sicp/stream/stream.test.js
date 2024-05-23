@@ -26,7 +26,10 @@ import {
     fibgen,
     sieve,
     addStream,
-    scaleStream
+    scaleStream,
+
+    factorials,
+    partialSum
 } from './stream';
 
 describe('stream test',()=>{
@@ -164,4 +167,25 @@ describe('infinite stream test',()=>{
         expect(streamRef(primes,50)).toEqual(233);
         expect(streamRef(primes,100)).toEqual(547);
     });
+
+    it('define exp(2,n)',()=>{
+        const exp2 = pair(1,()=>addStream(exp2,exp2));
+        expect(streamRef(exp2,4)).toEqual(16);
+    });
+
+    it('mulStreams test',()=>{
+        const oneToTen = streamEnumerateInterval(1,10);
+        const stream1 = mulStreams(oneToTen, oneToTen);
+        expect(streamRef(stream1,9)).toEqual(100);
+    });
+
+    it('factorials test',()=>{
+        expect(streamRef(factorials,4)).toEqual(24);
+    });
+
+    it('partialSum test',()=>{
+        const integers = integerStartingFrom(1);
+        const s1 = partialSum(integers);
+        expect(streamRef(s1,4)).toEqual(15);
+    })
 })
