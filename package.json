@@ -122,7 +122,11 @@
     "react-router-dom": "^6.22.0",
     "react-spring": "^9.7.2",
     "styled-components": "^6.0.2",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "@react-three/fiber": "8.15.19",
+    "@types/three": "0.162.0",
+    "three": "0.162.0",
+    "@react-three/drei": "9.99.7"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [

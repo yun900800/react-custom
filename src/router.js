@@ -8,7 +8,8 @@ import './styles/main.css'
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js'
 import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js';
 import ResponsiveText from './component/tailwind-ui/responsive-text.js';
-import ExampleUI from './component/tailwind-ui/example-ui.js'
+import ExampleUI from './component/tailwind-ui/example-ui.js';
+import { Scene } from './component/three/scene'; 
 export default function RouterApp() {
 
   const [show,setShow] = useState(false);
@@ -43,6 +44,9 @@ export default function RouterApp() {
               <li>
                 <Link to="/tailwindexampleui">tailwindexampleui</Link>
               </li>
+              <li>
+                <Link to="/scene">scene</Link>
+              </li>
             </ul>
           </nav>
           <div className='content'>
@@ -53,6 +57,7 @@ export default function RouterApp() {
               <Route path="/tailwindtext" element={<TextStylingCombinations />} />
               <Route path="/tailwindresponse" element={<ResponsiveText/>}/>
               <Route path="/tailwindexampleui" element={<ExampleUI/>}/>
+              <Route path="/scene" element={<Scene/>}/>
             </Routes>
           </div>
         </main>
