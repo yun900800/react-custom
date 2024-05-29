@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import App from './App'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import TaskList from './stories/TaskList'
@@ -10,16 +10,23 @@ import TextStylingCombinations from './component/tailwind-ui/text-styling-combin
 import ResponsiveText from './component/tailwind-ui/responsive-text.js';
 import ExampleUI from './component/tailwind-ui/example-ui.js'
 export default function RouterApp() {
+
+  const [show,setShow] = useState(false);
+
+  const popup = (e)=>{
+    setShow(!show);
+    e.stopPropagation();
+  }
+  
   return (
     <>
       <Router>
-        <main className='max-sm:min-w-full'>
-          <nav>
+        <main className={show?'st-container st-menu-open st-effect-1':'st-container st-effect-1'}>
+          <a className='toggle' id="toggle" onClick={popup}>点击弹出</a>
+          <nav className='st-menu st-effect-1'>
             <ul>
               <li>
-                <Link to="/" className="bg-gray-200 rounded-md shadow-xs">
-                  home
-                </Link>
+                <Link to="/">home</Link>
               </li>
               <li>
                 <Link to="/welcome">welcome</Link>
@@ -38,15 +45,16 @@ export default function RouterApp() {
               </li>
             </ul>
           </nav>
-          <Routes>
-            <Route path="/" exact element={<App />} />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="/tailwindui" element={<TailwindUI />} />
-            <Route path="/tailwindtext" element={<TextStylingCombinations />} />
-            <Route path="/tailwindresponse" element={<ResponsiveText/>}/>
-            <Route path="/tailwindexampleui" element={<ExampleUI/>}/>
-            
-          </Routes>
+          <div className='content'>
+            <Routes>
+              <Route path="/" exact element={<App />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/tailwindui" element={<TailwindUI />} />
+              <Route path="/tailwindtext" element={<TextStylingCombinations />} />
+              <Route path="/tailwindresponse" element={<ResponsiveText/>}/>
+              <Route path="/tailwindexampleui" element={<ExampleUI/>}/>
+            </Routes>
+          </div>
         </main>
       </Router>
     </>

@@ -13,6 +13,8 @@ body {
   /* align-items: center; */
   min-height: 100vh;
   /* background: #4290da; */
+  overflow: hidden;
+  height: 100%;
 }
 
 html,
