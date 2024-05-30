@@ -149,7 +149,7 @@ const evalSequence = (stmts, env) => {
 }
 
 
-function scanOutDeclarations(component) {
+const scanOutDeclarations = (component) => {
     return isSequence(component)
            ? accumulate(append,
                         null,

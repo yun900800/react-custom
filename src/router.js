@@ -11,9 +11,7 @@ import ResponsiveText from './component/tailwind-ui/responsive-text.js';
 import ExampleUI from './component/tailwind-ui/example-ui.js';
 import { Scene } from './component/three/scene'; 
 export default function RouterApp() {
-
   const [show,setShow] = useState(false);
-
   const popup = (e)=>{
     setShow(!show);
     e.stopPropagation();
