@@ -10,11 +10,13 @@ import {
 } from '../pair/pair';
 
 import {
-    apply_in_underlying_javascript
+    apply_in_underlying_javascript,
+    map,
+    append
 } from '../utils/utils';
 
 import {
-    append
+    list
 } from '../list/list';
 import {
     isTaggedList
@@ -39,7 +41,7 @@ const primitiveFunctionSymbols = map(f => head(f), primitiveFunctions);
 const primitiveFunctionObjects = map(f => list("primitive", head(tail(f))),primitiveFunctions);
 
 const primitiveConstants = list(list("undefined", undefined),
-                                list("math_PI",   math_PI));
+                                list("math_PI",   Math.PI));
 const primitiveConstantSymbols = map(c => head(c), primitiveConstants);
                             
 const primitiveConstantValues = map(c => head(tail(c)), primitiveConstants);
