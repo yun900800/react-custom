@@ -10,6 +10,7 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
+//  这个模块主要定义了程序中的symbol名称
 const isName = component => {
     return isTaggedList(component, "name");
 }

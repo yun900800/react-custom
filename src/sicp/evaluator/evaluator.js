@@ -118,6 +118,7 @@ const listOfValues = (exps, env) => {
 }
 
 
+// 这个函数之上有两个抽象屏障 1. makeName and makeApplication
 const operatorCombinationToApplication = component =>{
     const operator = operatorSymbal(component);
     return isUnaryOperatorCombination(component)

@@ -19,7 +19,8 @@ const isTruthy = value => {
 }
 
 const isConditional = component =>{
-    return isTaggedList(component,'conditional_statement')
+    return isTaggedList(component,'conditional_statement') 
+        || isTaggedList(component,'conditional_expression')
 }
 
 const conditionalPredict = component => {
