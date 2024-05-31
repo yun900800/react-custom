@@ -10,6 +10,10 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
+import {
+    symbalOfName
+} from './evaluator-name';
+
 const makeAssignment = (name, expression) => {
     return list('assignment',name, expression);
 }
@@ -19,7 +23,7 @@ const isAssignment = component => {
 }
 
 const assignmentSymbol = component => {
-    return head(tail(component));
+    return symbalOfName(head(tail(component)));
 }
 
 const assignmentValueExpression = component => {

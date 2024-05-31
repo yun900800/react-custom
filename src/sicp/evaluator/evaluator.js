@@ -167,7 +167,7 @@ const evalBlock = (component,env) =>{
     const body = blockBody(component);
     const locals = scanOutDeclarations(body);
     const unassigneds = listOfUnassigned(locals);
-    return evaluate(body, extend_environment(locals,
+    return evaluate(body, extendEnviroment(locals,
                                              unassigneds, 
                                              env));
 }

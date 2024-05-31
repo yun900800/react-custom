@@ -10,6 +10,10 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
+import {
+    symbalOfName
+} from './evaluator-name';
+
 const makeConstantDeclaration = (name, valueExpression) => {
     return list("constant_declaration", name, valueExpression);
 }
@@ -40,10 +44,6 @@ const isDeclaration = component => {
         isTaggedList(component, "function_declaration");
 }
 
-const symbalOfName = ()=>{
-
-}
-
 const declarationSymbol = (component) => {
     return symbalOfName(head(tail(component)));
 }
@@ -52,7 +52,7 @@ const declarationValueExpression = (component) => {
 }
 
 const functionDeclarationName = component => {
-    return head(tail(component));
+    return symbalOfName(head(tail(component)));
 }
 
 const functionDeclarationParameters = component => {
