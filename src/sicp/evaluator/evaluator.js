@@ -104,11 +104,13 @@ import {
     functionBody,
     functionEnvironment
 } from './evaluator-compound';
- 
-// todo
-const lookupSymbalValue = (symbolName, env) => {
 
-}
+import {
+    extendEnviroment,
+    assignSymbolValue,
+    lookupSymbalValue
+} from './evaluator-enviroment';
+ 
 
 
 const listOfValues = (exps, env) => {
@@ -182,10 +184,6 @@ const evalDeclaration = (component,env)=>{
     return undefined;
 }
 
-const assignSymbolValue = (symbolName, value,env) =>{
-
-}
-
 const evalAssignment = (component,env)=>{
     const value = evaluate(assignmentValueExpression(component),
                            env);
@@ -248,9 +246,26 @@ function applyPrimitiveFunction(fun, arglist) {
 }
 
 const apply = (fun, args) => {
-
+    if(isPrimitiveFunction(fun)){
+        return applyPrimitiveFunction(fun, args);
+    } else if (isCompoundFunction(fun)) {
+        const result = evaluate(functionBody(fun),
+            extendEnviroment(
+                functionParameters(fun),
+                args,
+                functionEnvironment(fun)
+            )
+        );
+        return isReturnStatement(result)
+            ? returnExpression(result)
+            : undefined
+    } else {
+        error(fun, "unknown function type -- apply");
+    }
 }
 
 module.exports = {
-    evalConditional
+    evalConditional,
+    evaluate,
+    apply
 }
