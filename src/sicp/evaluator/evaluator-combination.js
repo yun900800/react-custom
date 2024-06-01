@@ -10,12 +10,16 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
-const makeUnaryCombination = expression => {
-    return list('unary_operator_combination','unary-operator',list(expression))
+import { symbolOfName } from './evaluator-name';
+
+const makeUnaryCombination = (unaryOperator,expression) => {
+    // unaryOperator = ! and - 
+    return list('unary_operator_combination',unaryOperator,list(expression))
 }
 
-const makeBinaryCombination = (expression1, expression2) => {
-    return list('binary_operator_combination','binary-operator',list(expression1,expression2))
+const makeBinaryCombination = (binaryOperator,expression1, expression2) => {
+    // binaryOperator = +, -, *, /, %, ===, !==, >, <, >= or <=
+    return list('binary_operator_combination',binaryOperator,list(expression1,expression2))
 }
 
 const isUnaryOperatorCombination = component => {
@@ -31,15 +35,15 @@ const isOperatorCombination = component =>{
 }
 
 const operatorSymbal = component => {
-    return head(tail(component))
+    return symbolOfName(head(tail(component)));
 }
 
 const firstOperand = component => {
-    return head(tail(tail(component)))
+    return head(head(tail(tail(component))));
 }
 
 const secondOperand = component => {
-    return tail(tail(tail(component)))
+    return head(tail(head(tail(tail(component)))));
 }
 
 module.exports = {

@@ -1,5 +1,6 @@
 import {
-    makeConditional,
+    makeExpressionConditional,
+    makeStatamentConditional,
     isTruthy,
     isConditional,
     conditionalPredict,
@@ -8,7 +9,19 @@ import {
 } from './evaluator-conditional';
 
 describe('evaluator-conditional test',()=>{
-    it('isTruthy test',()=>{
-        expect(isTruthy(true)).toBeTruthy();
+    it('makeExpressionConditional test',()=>{
+        const conditional = makeExpressionConditional('5>3',5,3);
+        expect(isConditional(conditional)).toBeTruthy();
+        expect(conditionalPredict(conditional)).toEqual('5>3');
+        expect(conditionalConsequent(conditional)).toEqual(5);
+        expect(conditionalAlternative(conditional)).toEqual(3);
+    });
+
+    it('makeStatamentConditional test',()=>{
+        const conditional = makeStatamentConditional('5>3',5,3);
+        expect(isConditional(conditional)).toBeTruthy();
+        expect(conditionalPredict(conditional)).toEqual('5>3');
+        expect(conditionalConsequent(conditional)).toEqual(5);
+        expect(conditionalAlternative(conditional)).toEqual(3);
     });
 });

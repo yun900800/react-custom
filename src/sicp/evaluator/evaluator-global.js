@@ -22,6 +22,10 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
+const makePrimitive = fun=>{
+    return list('primitive',fun);
+}
+
 const isPrimitiveFunction = fun =>{
     return isTaggedList(fun,'primitive');
 }
@@ -34,7 +38,7 @@ const primitiveFunctions = list(list("head",    head             ),
                                  list("tail",    tail             ),
                                  list("pair",    pair             ),
                                  list("isPair", isPair          ),
-                                 list("+",       (x, y) => x + y  ));
+                                 list("+",       (x, y) => x + y ));
 
 const primitiveFunctionSymbols = map(f => head(f), primitiveFunctions);
                              
@@ -64,5 +68,7 @@ const theGlobalEnvironment = setupEnviroment();
 
 module.exports = {
     theGlobalEnvironment,
-    applyPrimitiveFunction
+    applyPrimitiveFunction,
+    isPrimitiveFunction,
+    primitiveImplementation
 }

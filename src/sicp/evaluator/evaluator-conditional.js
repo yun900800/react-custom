@@ -10,7 +10,11 @@ import {
     isTaggedList
 } from  './evaluator-utils';
 
-const makeConditional = (predicate, consequentBlock, alternativeBlock) => {
+const makeExpressionConditional = (predicate, consequentBlock, alternativeBlock) => {
+    return  list('conditional_expression', predicate, consequentBlock,alternativeBlock);
+}
+
+const makeStatamentConditional = (predicate, consequentBlock, alternativeBlock) => {
     return  list('conditional_statement', predicate, consequentBlock,alternativeBlock);
 }
 
@@ -36,7 +40,8 @@ const conditionalAlternative = component => {
 }
 
 module.exports ={
-    makeConditional,
+    makeExpressionConditional,
+    makeStatamentConditional,
     isTruthy,
     isConditional,
     conditionalPredict,

@@ -25,7 +25,7 @@ const isApplication = component => {
 }
 
 const functionExpression = component => {
-    return head(tail(component))
+    return head(tail(component));
 }
 
 const argExpressions = component => {

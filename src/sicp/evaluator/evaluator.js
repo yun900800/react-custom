@@ -1,10 +1,6 @@
 import { map, error, accumulate } from '../utils/utils'
 
-import { head, tail } from '../pair/pair'
-
 import { list } from '../list/list'
-
-import { isTaggedList } from './evaluator-utils'
 
 import { isLiteral, literalValue } from './evaluator-literal'
 
@@ -85,8 +81,13 @@ import {
 import {
   extendEnviroment,
   assignSymbolValue,
-  lookupSymbalValue,
-} from './evaluator-enviroment'
+  lookupSymbolValue,
+} from './evaluator-enviroment';
+
+import {
+    applyPrimitiveFunction,
+    isPrimitiveFunction
+} from './evaluator-global';  
 
 const listOfValues = (exps, env) => {
   return map((arg) => evaluate(arg, env), exps)
@@ -176,7 +177,7 @@ const evaluate = (component, env) => {
   return isLiteral(component)
     ? literalValue(component)
     : isName(component)
-    ? lookupSymbalValue(symbolOfName(component), env)
+    ? lookupSymbolValue(symbolOfName(component), env)
     : isApplication(component)
     ? apply(
         evaluate(functionExpression(component), env),
@@ -207,17 +208,17 @@ const evaluate = (component, env) => {
     : error(component, 'unknown syntax -- evaluate')
 }
 
-const isPrimitiveFunction = (fun) => {
-  return isTaggedList(fun, 'primitive')
-}
+// const isPrimitiveFunction = (fun) => {
+//   return isTaggedList(fun, 'primitive')
+// }
 
-const primitiveImplementation = (fun) => {
-  return head(tail(fun))
-}
+// const primitiveImplementation = (fun) => {
+//   return head(tail(fun))
+// }
 
-function applyPrimitiveFunction(fun, arglist) {
-  return apply_in_underlying_javascript(primitiveImplementation(fun), arglist)
-}
+// function applyPrimitiveFunction(fun, arglist) {
+//   return apply_in_underlying_javascript(primitiveImplementation(fun), arglist)
+// }
 
 const apply = (fun, args) => {
   if (isPrimitiveFunction(fun)) {
