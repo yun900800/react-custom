@@ -64,5 +64,11 @@ describe('evaluate test',()=>{
         const literal3 = makeLiteral(3)
         const binaryCombination = makeBinaryCombination(plus,literal5,literal3);
         let value = evaluate(binaryCombination,theGlobalEnvironment);
+        expect(value).toEqual(8);
+
+        const pairSymbol = makeName('&&');
+        const pairCombination = makeBinaryCombination(pairSymbol,literal5,literal3);
+        value = evaluate(pairCombination,theGlobalEnvironment);
+        expect(value).toEqual(3);
     });
 });

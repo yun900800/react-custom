@@ -7,6 +7,9 @@ import {
     list
 } from '../list/list';
 import {
+    map
+} from '../utils/utils';
+import {
     isTaggedList
 } from  './evaluator-utils';
 

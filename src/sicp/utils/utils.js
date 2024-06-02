@@ -243,9 +243,7 @@ function apply_in_underlying_javascript(prim,argument_list) {
         argument_array[i++] = head(argument_list);
         argument_list = tail(argument_list);
     }
-    const result =  prim.apply(prim,argument_array);
-    console.log('result',result);
-    return result;
+    return prim.apply(prim,argument_array);
 }
 
 const makeCycle = x => {

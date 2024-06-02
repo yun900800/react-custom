@@ -38,7 +38,9 @@ const primitiveFunctions = list(list("head",    head             ),
                                  list("tail",    tail             ),
                                  list("pair",    pair             ),
                                  list("isPair", isPair          ),
-                                 list("+",       (x, y) => x + y ));
+                                 list("+",       (x, y) => x + y ),
+                                 list("&&",       (x, y) => x&&y )
+                                );
 
 const primitiveFunctionSymbols = map(f => head(f), primitiveFunctions);
                              

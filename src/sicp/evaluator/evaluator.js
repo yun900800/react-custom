@@ -208,18 +208,6 @@ const evaluate = (component, env) => {
     : error(component, 'unknown syntax -- evaluate')
 }
 
-// const isPrimitiveFunction = (fun) => {
-//   return isTaggedList(fun, 'primitive')
-// }
-
-// const primitiveImplementation = (fun) => {
-//   return head(tail(fun))
-// }
-
-// function applyPrimitiveFunction(fun, arglist) {
-//   return apply_in_underlying_javascript(primitiveImplementation(fun), arglist)
-// }
-
 const apply = (fun, args) => {
   if (isPrimitiveFunction(fun)) {
     return applyPrimitiveFunction(fun, args)
