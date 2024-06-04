@@ -96,9 +96,11 @@ const installPolarPackage = () => {
 }
 
 const applyGeneric = (op, args) => {
+    // 剥去复合数据的类型标识
     const typeTags = map(typeTag, args);
     const fun = get(op, typeTags);
     return undefined !== fun
+        // map(contents, args) 剥去复合数据的类型标识
            ? apply_in_underlying_javascript(fun, map(contents, args))
            : error(list(op, typeTags),
                    "no method for these types -- apply_generic");

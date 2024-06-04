@@ -123,8 +123,15 @@ const installComplexPackage = () => {
         return make_from_mag_ang(magnitude(z1) / magnitude(z2),
                                  angle(z1) - angle(z2));
     }
+
+    function add_complex_to_shcemenum(z,x) {
+        return make_from_real_imag(realPart(z) + x, imagPart(z));
+    }
     // interface to rest of the system
     function tag(z) { return attachTag("complex", z); }
+    // 复数加上一个整数
+    put('add',list('complex','scheme-number',
+        (z,x)=> tag(add_complex_to_shcemenum(z,x))));
     put("add", list("complex", "complex"), 
         (z1, z2) => tag(add_complex(z1, z2)));
     put("sub", list("complex", "complex"), 
