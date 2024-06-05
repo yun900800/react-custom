@@ -31,7 +31,12 @@ import {
     mystery,
     countPairs,
     loop,
-    loopNew
+    loopNew,
+
+    sumToAccumulator,
+    mapToAccumulator,
+    foldToAcc,
+    foldCps
 } from './utils';
 
 import {
@@ -280,5 +285,31 @@ describe('utils test',()=> {
         const list2 = list(1,2,3);
         setTail(lastPair(list2),list2);
         expect(loopNew(list2)).toBeTruthy();
-    })
+    });
+
+    it('sumToAccumulator test',()=>{
+        const xs = [1,5,8,15,9,24];
+        expect(sumToAccumulator(xs,0)).toEqual(62);
+    });
+
+    it('mapToAccumulator test',()=>{
+        const xs = [1,5,8,15,9,24];
+        const fn = x => x+2;
+        expect(mapToAccumulator(xs,fn,[])).toEqual([3,7,10,17,11,26]);
+    });
+
+    it('foldToAcc test',()=> {
+        const xs = [1,5,8];
+        let fn = (x,y) => x+y;
+        expect(foldToAcc(xs,fn,0,x=>x)).toEqual(14);
+        fn = (x,y) => x*y;
+        expect(foldToAcc(xs,fn,1,x=>x)).toEqual(40);
+    });
+    it('foldCps test',()=> {
+        const xs = [1,5,8];
+        let fn = (x,y) => x+y;
+        expect(foldCps(xs,fn,0,x=>x)).toEqual(14);
+        fn = (x,y) => x*y;
+        expect(foldCps(xs,fn,1,x=>x)).toEqual(40);
+    });
 });

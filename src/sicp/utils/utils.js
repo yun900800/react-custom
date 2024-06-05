@@ -331,6 +331,70 @@ const listWalk = (step,list)=> {
     return listWalk(step-1, tail(list));
 }
 
+const sumToAccumulator = (xs,init) => {
+    if (xs.length === 0) {
+        return init;
+    }
+    let [first, ...rest] = xs;
+    return sumToAccumulator(rest, init+ first);
+}
+
+const mapToAccumulator = (xs,fn, init) => {
+    if (xs.length === 0) {
+        return init;
+    }
+    let [first, ...rest] = xs;
+    const result = fn(first);
+    init.push(result);
+    return mapToAccumulator(rest, fn, init);
+}
+
+//https://mp.weixin.qq.com/s?__biz=MzI0OTQxNjQ4MA==&mid=2247484238&idx=1&sn=e0bc4ef8bd69e8b47404cf2eda61aca4&chksm=e9909d01dee7141789c01070ff70e84ef761dc5806b9c7ca1fdcc8152bf19d27e984330b1471&cur_album_id=1776479109406081027&scene=189#wechat_redirect
+
+function fold(xs, fn, zero) {
+    if (xs.length == 0) {
+      return zero;
+    }
+    let [first, ...rest] = xs;
+    return fn(first, fold(rest, fn, zero));
+}
+
+// 而每一次递归调用时的计算，可以看成是一个待调用的函数。以当前的 fold 为例，
+// 每一次递归调用时，fn(first, fold(...)) 这里，都可以改写成 ((x) => fn(first, x)) (fold(...))。
+// 前半段 ((x) => fn(first, x)) 是这次计算，后半段 (fold(...)) 是满足这次计算所需要的参数。
+// 这样我们就把计算作为值拿到了一个匿名函数里面。
+// 结合前面的 compose，就能继续往 accumulator 上面累计计算过程。
+
+// fold的思路轻参照以上思路
+const foldToAcc = (xs, fn, zero, acc) => {
+    if (xs.length === 0) {
+        return acc(zero)
+    }
+    let [first, ...rest] = xs;
+    return foldToAcc(rest, fn, zero,
+        compose(
+            x=>fn(first,x),
+            acc
+        )
+    )
+}
+
+const compose = (f,g) => x => g(f(x));
+
+const foldCps = (xs, fn, zero, ctx) => {
+    if (xs.length == 0) {
+        return ctx(zero);
+    }
+    
+    let [first, ...rest] = xs;
+    return foldCps(
+        rest,
+        fn,
+        zero,
+        (x) =>ctx(fn(first, x))
+    );
+}
+
 module.exports = {
     map,
     append,
@@ -372,5 +436,10 @@ module.exports = {
     loop,
     loopNew,
     
-    isPrime
+    isPrime,
+
+    sumToAccumulator,
+    mapToAccumulator,
+    foldToAcc,
+    foldCps
 }
