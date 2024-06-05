@@ -12,7 +12,7 @@
     "test-state": "jest src/sicp/state/table.test.js jest src/sicp/state/queue.test.js jest src/sicp/state/local-state.test.js",
     "test-complex": "jest src/sicp/data-abstract/complex.test.js",
     "test-cons": "jest src/sicp/cons/cons.test.js",
-    "test-pair": "jest src/sicp/pair/pair.test.js",
+    "test-pair": "jest src/sicp/pair/pair.test.js src/sicp/pair/mutable-pair.test.js",
     "test-list": "jest src/sicp/list/list.test.js",
     "test-utils": "jest src/sicp/utils/utils.test.js",
     "test-evaluation": "jest src/sicp/evaluation/evaluation.test.js",
