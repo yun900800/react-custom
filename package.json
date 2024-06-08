@@ -38,6 +38,7 @@
     "test-evaluator-enviroment": "jest src/sicp/evaluator/evaluator-enviroment.test.js src/sicp/evaluator/evaluator-global.test.js",
     "test-evaluator": "jest src/sicp/evaluator/evaluator-application.test.js src/sicp/evaluator/evaluator-declaration.test.js src/sicp/evaluator/evaluator-assignment.test.js src/sicp/evaluator/evaluator.test.js src/sicp/evaluator/evaluator-utils.test.js src/sicp/evaluator/evaluator-literal.test.js src/sicp/evaluator/evaluator-name.test.js src/sicp/evaluator/evaluator-conditional.test.js src/sicp/evaluator/evaluator-sequence.test.js src/sicp/evaluator/evaluator-block.test.js src/sicp/evaluator/evaluator-return.test.js",
     "test-evaluate": "jest src/sicp/evaluator/evaluator.test.js",
+    "test-continuation": "jest src/sicp/continuation/continuation.test.js",
     "test-combination": "jest src/sicp/evaluator/evaluator-combination.test.js src/sicp/evaluator/evaluator-lambda.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
