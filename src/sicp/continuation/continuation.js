@@ -59,6 +59,8 @@ const factC = (n, k) => {
 }
 
 const id = (x) => x
+
+// https://www.sfu.ca/~tjd/383summer2019/scheme-cps.html
 module.exports = {
   plus,
   id,
