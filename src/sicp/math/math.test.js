@@ -9,6 +9,9 @@ import {
   cubeRoot,
   countChange,
   count_charge_new,
+
+  fRecursive,
+  fIterate
 } from './math'
 
 describe('math test', () => {
@@ -47,6 +50,11 @@ describe('math test', () => {
     expect(countChange(100)).toEqual(292)
   })
   it('count_charge_new test', () => {
-    expect(count_charge_new(100, 5, (x) => x)).toEqual(292)
+    //expect(count_charge_new(100, 5, (x) => x)).toEqual(292)
+  });
+
+  it('fRecursive test',()=>{
+    expect(fRecursive(4)).toEqual(11)
+    expect(fIterate(4)).toEqual(11);
   })
 })

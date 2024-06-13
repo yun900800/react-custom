@@ -119,7 +119,40 @@ const numberToAmount = (n) => {
   }
 }
 
-const countChange = (amount) => count_change(amount, 5)
+const countChange = (amount) => count_change(amount, 5);
+
+/**
+ * 递归函数容易理解和翻译
+ * @param {*} n 
+ * @returns 
+ */
+const fRecursive = n => {
+  return n < 3
+    ? n
+    : fRecursive(n-1) +
+    2*fRecursive(n-2) +
+    3*fRecursive(n-3);
+}
+
+const fIterate = n => {
+  return n < 3 
+    ? n
+    : fIterateImpl(2,1,0,n-2)
+}
+// fIterate(0) = 0;
+// fIterate(1) = 1;
+// fIterate(2) = 2;
+// fIterate(3) = fIterateImpl(2,1,0,1) = 4
+// fIterate(4) = fIterateImpl(2,1,0,2)
+
+// fIterateImpl(2,1,0,2) = fIterateImpl(4,2,1,1)
+// fIterateImpl(4,2,1,1) = fIterateImpl(13,6,2,0) = 11
+
+const fIterateImpl = (a,b,c,n) =>{
+  return n === 0 
+    ? a
+    : fIterateImpl(a+2*b+3*c,a,b,n-1);
+}
 
 module.exports = {
   abs,
@@ -132,4 +165,6 @@ module.exports = {
   cubeRoot,
   countChange,
   count_charge_new,
+  fRecursive,
+  fIterate
 }
