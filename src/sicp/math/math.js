@@ -154,6 +154,46 @@ const fIterateImpl = (a,b,c,n) =>{
     : fIterateImpl(a+2*b+3*c,a,b,n-1);
 }
 
+const smallestDivisor = n => {
+  return findDivisor(n,2);
+}
+
+const divides = (a,b) => {
+  return b%a === 0;
+}
+
+const findDivisor = (n, testDivisor) => {
+  return testDivisor*testDivisor > n ? n
+    : divides(testDivisor,n) ? testDivisor
+    : findDivisor(n, testDivisor+1);
+}
+
+const isPrime = n => {
+  return n === smallestDivisor(n);
+}
+
+const isEven = n => {
+  return n % 2 ===0;
+}
+
+const square = n => {
+  return n * n ;
+}
+
+const expmod = (base,exp,m) => {
+  return exp === 0 ? 1
+    : isEven(exp) 
+    ? (square(expmod(base, exp/2,m))) % m
+    : (base * expmod(base,exp-1,m)) % m;
+}
+
+const fermatTest = n => {
+  const tryIt = a => {
+    return expmod(a,n,n) ===a;
+  }
+  return tryIt(1 + Math.floor(Math.random() * (n - 1)));
+}
+
 module.exports = {
   abs,
   greaterOrEqual,
@@ -166,5 +206,9 @@ module.exports = {
   countChange,
   count_charge_new,
   fRecursive,
-  fIterate
+  fIterate,
+
+  smallestDivisor,
+  isPrime,
+  fermatTest
 }

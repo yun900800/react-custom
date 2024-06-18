@@ -11,7 +11,9 @@ import {
   count_charge_new,
 
   fRecursive,
-  fIterate
+  fIterate,
+  smallestDivisor,
+  fermatTest
 } from './math'
 
 describe('math test', () => {
@@ -56,5 +58,16 @@ describe('math test', () => {
   it('fRecursive test',()=>{
     expect(fRecursive(4)).toEqual(11)
     expect(fIterate(4)).toEqual(11);
+  });
+
+  it('smallestDivisor test',()=>{
+    expect(smallestDivisor(199)).toEqual(199);
+    expect(smallestDivisor(1999)).toEqual(1999);
+    expect(smallestDivisor(19999)).toEqual(7);
+  });
+
+  it('fermatTest test',()=>{
+    expect(fermatTest(19999)).toBeFalsy();
+    expect(fermatTest(1999)).toBeTruthy();
   })
 })
