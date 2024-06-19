@@ -116,6 +116,28 @@ const productI = (term,a,next,b)=>{
     return accumulaterIter(times,1,term,a,next,b);
 }
 
+const filterAccumulate = (combiner, nullValue,
+    term, a, next, b, filter) =>{
+    return a > b ? nullValue
+        : filter(a)
+        ? combiner(term(a), filterAccumulate(combiner,nullValue, term, next(a),next,b, filter))
+        : filterAccumulate(combiner,nullValue, term, next(a),next,b, filter);
+}
+
+const filterAccumulateIter = (combiner, nullValue,
+    term, a, next, b, filter) => {
+        const iter = (a,result)=>{
+            if (a > b){
+                return result;
+            }
+            if (filter(a)) {
+                return iter(next(a), combiner(term(a),result));
+            } 
+            return iter(next(a),result);
+        }
+        return iter(a,nullValue);
+    }
+
 module.exports = {
     sumInteger,
     sumCubes,
@@ -130,5 +152,7 @@ module.exports = {
     productR,
     accumulaterIter,
     sumI,
-    productI
+    productI,
+    filterAccumulate,
+    filterAccumulateIter
 }

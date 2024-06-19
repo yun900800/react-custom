@@ -11,8 +11,18 @@ import {
     productR,
     accumulaterIter,
     sumI,
-    productI
+    productI,
+    filterAccumulate,
+    filterAccumulateIter
 } from './high-order';
+
+import {
+    isPrime
+} from '../math/math';
+
+import {
+    gcd
+} from '../utils/utils';
 
 describe('high-order test',()=>{
     it('sumInteger test',()=> {
@@ -63,5 +73,44 @@ describe('high-order test',()=>{
     it('sumI productI test',()=>{
         expect(sumI(x=>x,1,x=>x+1,10)).toEqual(55);
         expect(productI(x=>x,1,x=>x+1,10)).toEqual(3628800);
+    });
+
+    it('filterAccumulate test',()=>{
+        const sumPrime = (a,b) =>{
+            return filterAccumulate(
+                (x,y)=>x+y,
+                0,
+                x=>x,
+                a,
+                x=>x+1,
+                b,
+            isPrime);
+        }
+
+        expect(sumPrime(1,10)).toEqual(18);
+
+        const coPrime = (i,n)=>{
+            return i < n && gcd(i,n) ===1;
+        }
+
+        const productPrime = n => {
+            return filterAccumulate(
+                (x,y)=>x*y,
+                1,
+                x=>x,
+                1,
+                x=>x+1,
+                n,
+                x=>coPrime(x,n));
+        }
+        expect(productPrime(10)).toEqual(189);
+    });
+
+    it('filterAccumulateIter test',()=>{
+        const evenSum = n =>{
+            return filterAccumulateIter((x,y)=>x+y,0,x=>x,1,x=>x+1,n, x=>x%2===0);
+        }
+
+        expect(evenSum(10)).toEqual(30);
     })
 });
