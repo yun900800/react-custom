@@ -65,9 +65,9 @@ export default function RouterApp() {
 }
 
 const Welcome = () => (
-  <>
+  <div class="task-container">
     <Provider store={store}>
       <TaskList></TaskList>
     </Provider>
-  </>
+  </div>
 )

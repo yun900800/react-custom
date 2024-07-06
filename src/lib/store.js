@@ -8,10 +8,12 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
  * Usually, you would fetch this from a server. Let's not worry about that now
  */
 const defaultTasks = [
-  { id: '1', title: 'Something', state: 'TASK_INBOX' },
-  { id: '2', title: 'Something more', state: 'TASK_INBOX' },
-  { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  { id: '4', title: 'Something again', state: 'TASK_INBOX' },
+  { id: '1', title: 'Build Your Own Redis with C/C++', state: 'TASK_INBOX' },
+  { id: '2', title: 'Build Your Own Database From Scratch', state: 'TASK_INBOX' },
+  { id: '3', title: 'From Source Code To Machine Code', state: 'TASK_INBOX' },
+  { id: '4', title: 'Build Your Own Web Server From Scratch In Node.JS', state: 'TASK_INBOX' },
+  { id: '5', title: 'How to read an understand SICP', state: 'TASK_INBOX' },
+  { id: '6', title: 'How to read an understand CSAPP', state: 'TASK_INBOX' },
 ]
 const TaskBoxData = {
   tasks: defaultTasks,

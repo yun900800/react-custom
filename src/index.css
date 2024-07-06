@@ -285,9 +285,10 @@ textarea {
 }
 
 .list-item {
+  border-radius: 0.5rem;
   font-size: 14px;
   line-height: 20px;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   height: 3rem;
   width: 100%;
@@ -400,6 +401,7 @@ textarea {
   position: relative;
   background: white;
   min-height: 288px;
+  border-radius: 0.5rem;
 }
 
 .list-items .select-placeholder {
@@ -472,4 +474,17 @@ textarea {
   display: inline-block;
   vertical-align: top;
   max-width: 100%;
+}
+
+.task-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+@media screen and ( min-width: 1160px ) {
+  .list-items {
+    width: 840px;
+  }
+  
 }

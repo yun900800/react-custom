@@ -22,12 +22,12 @@ import ArticlesWithDataApi from './component/article/article-with-data-api.js'
 export default class App extends Component {
   render() {
     return (
-      <>
+      <div className='app-container'>
         <div className="app">
           {process.env.NODE_ENV}, {process.env.name}
         </div>
         <div className="app">
-          <Sparkles color="red" width="200px" height="200px">
+          <Sparkles color="purple" width="200px" height="200px">
             hello
           </Sparkles>
           , react
@@ -42,23 +42,31 @@ export default class App extends Component {
         <div className="app">
           <Hello name="yun900800@126.com" enthusiasmLevel={5}></Hello>
         </div>
-        <Boop rotation={20} timing={200}>
-          <div>Common Boop</div>
-        </Boop>
-        <SpringBoop rotation={20} x={20} timing={200}>
-          <div>Spring Boop </div>
-        </SpringBoop>
+        <div className="app">
+          <Boop rotation={20} timing={200}>
+            <div>Common Boop</div>
+          </Boop>
+          <SpringBoop rotation={20} x={20} timing={200}>
+            <div>Spring Boop </div>
+          </SpringBoop>
 
-        <NewBoop rotation={20} y={20} timing={200}>
-          <div>NewBoop with Spring and Hooks</div>
-        </NewBoop>
-        <CircleDemo></CircleDemo>
+          <NewBoop rotation={20} y={20} timing={200}>
+            <div>NewBoop with Spring and Hooks</div>
+          </NewBoop>
+          <CircleDemo></CircleDemo>
+        </div>
+        
+        <div className="app">
         <StyleBasic></StyleBasic>
         <AdapterProps></AdapterProps>
         <StyleExtender></StyleExtender>
-        <Provider store={store}>
-          <TaskList></TaskList>
-        </Provider>
+        </div>
+        <div className="app">
+          <Provider store={store}>
+            <TaskList></TaskList>
+          </Provider>
+        </div>
+        <div className="app">
         <FoldableImage
           width={600}
           height={400}
@@ -80,10 +88,14 @@ export default class App extends Component {
           height={400}
           src="assets/images/process-picture.jpg"
         ></Foldable3>
-        <Articles />
-        <ArticlesWithHook />
-        <ArticlesWithDataApi />
-      </>
+        </div>
+        <div className='app'>
+          <Articles />
+          <ArticlesWithHook />
+          <ArticlesWithDataApi />
+        </div>
+        
+      </div>
     )
   }
 }
