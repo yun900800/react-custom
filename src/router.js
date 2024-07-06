@@ -10,6 +10,7 @@ import TextStylingCombinations from './component/tailwind-ui/text-styling-combin
 import ResponsiveText from './component/tailwind-ui/responsive-text.js';
 import ExampleUI from './component/tailwind-ui/example-ui.js';
 import { Scene } from './component/three/scene'; 
+import AppStyledComponent from './component/styles/app-styled-component.js';
 export default function RouterApp() {
   const [show,setShow] = useState(false);
   const popup = (e)=>{
@@ -45,6 +46,9 @@ export default function RouterApp() {
               <li>
                 <Link to="/scene">scene</Link>
               </li>
+              <li>
+                <Link to="/styled">styled</Link>
+              </li>
             </ul>
           </nav>
           <div className='content'>
@@ -56,6 +60,7 @@ export default function RouterApp() {
               <Route path="/tailwindresponse" element={<ResponsiveText/>}/>
               <Route path="/tailwindexampleui" element={<ExampleUI/>}/>
               <Route path="/scene" element={<Scene/>}/>
+              <Route path="/styled" element={<AppStyledComponent/>}/>
             </Routes>
           </div>
         </main>
@@ -71,3 +76,5 @@ const Welcome = () => (
     </Provider>
   </div>
 )
+
+
