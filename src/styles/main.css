@@ -12,13 +12,13 @@
     padding: 50px;
 }
 
-.st-container a.toggle {
+.st-container div.toggle {
     position: absolute;
     right: 3rem;
     top: 1rem;
     border-radius: 0.8rem;
     padding: 4px 8px;
-    background: #48a770;
+    background: transparent;
 }
 
 .st-container a.toggle:hover{
@@ -138,4 +138,55 @@
 .bg-black {
 	background: #080000;
 	border-radius: 36% 64% 70% 30% / 30% 30% 70% 70% ;
+}
+
+.burger-wrapper {
+	cursor: pointer;
+  	margin: auto;
+  	width: 50px;
+  	height: 40px;
+}
+
+.burger-wrapper .hamburger{
+	background: rgb(65, 60, 60); 
+    width: 50px;
+    height: 5px;
+    position: relative;
+    transition: background 10ms 480ms ease;
+    transform: translateY(20px);
+}
+
+.burger-wrapper .hamburger::before,
+.burger-wrapper .hamburger::after{
+	transition: top 480ms 350ms ease,
+        transform 480ms 50ms ease;
+      position: absolute;
+      background: rgb(65, 60, 60);
+      width: 50px;
+      height: 5px;
+      content: '';
+}
+
+.burger-wrapper .hamburger::before{
+	top: -15px;
+}
+.burger-wrapper .hamburger::after{
+	top: 15px;
+}
+
+.menu-trigger:checked + .burger-wrapper .hamburger{
+	background: transparent;
+}
+.menu-trigger:checked + .burger-wrapper .hamburger::before, 
+.menu-trigger:checked + .burger-wrapper .hamburger::after{
+	transition: top 480ms 50ms ease,
+        transform 480ms 350ms ease;
+        top: 0;
+}
+
+.menu-trigger:checked + .burger-wrapper .hamburger::before{
+	transform: rotate(45deg);
+}
+.menu-trigger:checked + .burger-wrapper .hamburger::after{
+	transform: rotate(-45deg);
 }

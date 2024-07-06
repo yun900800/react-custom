@@ -37,7 +37,12 @@ export default function RouterApp() {
     <>
       <Router>
         <main className={show?'st-container st-menu-open st-effect-1':'st-container st-effect-1'}>
-          <a className='toggle' id="toggle" onClick={popup}>点击弹出</a>
+          <div className='toggle' id="toggle">
+            <input class="menu-trigger hidden" id="togglenav" type="checkbox"/>
+            <label class="burger-wrapper" for="togglenav" onClick={popup}>
+              <div class="hamburger"></div>
+            </label>
+          </div>
           <nav className='st-menu st-effect-1'>
             <ul>
               <li>
