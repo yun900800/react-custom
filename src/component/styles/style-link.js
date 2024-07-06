@@ -12,9 +12,9 @@ const StyledLink = styled(Link)`
 `
 
 export const StyledAnyComponent = ()=>(
-    <div>
+    <>
     <Link>Unstyled, boring Link</Link>
     <br />
     <StyledLink>Styled, exciting Link</StyledLink>
-  </div>
+  </>
 )

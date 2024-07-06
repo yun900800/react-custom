@@ -119,3 +119,5 @@
 - Memoization
     1. 这个概念的作用是将那些纯函数组件告诉react缓存起来，不用每次渲染的时候都重新调用
     2. 同时这个理念也告诉我们做设计组件的时候尽可能设计纯函数组件或者幂等性的组件
+
+- [增加权限文章](https://www.robinwieruch.de/react-router-private-routes/)
