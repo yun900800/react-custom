@@ -6,6 +6,11 @@ services:
     ports:
       - 3000:3000
 
+  react-app-new:
+    build: . 
+    ports:
+      - 3010:3000
+
   mongodb:
     image: mongo
     ports:

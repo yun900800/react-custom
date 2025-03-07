@@ -15,4 +15,7 @@ COPY package.json .babelrc postcss.config.js tailwind.config.js tsconfig.json /r
 # RUN npm install && npm run build
 # 这里可以直接打包编译后的文件,这样速度会更加快速
 
+RUN npm install serve -g
+EXPOSE 3000
+
 CMD ["npm", "run","run-build"] 
