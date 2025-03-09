@@ -9,7 +9,7 @@
     /* 这里不能设置100% 否则将导致整个页面被撑开 */
     height: 100vh;
     width: 100vw;
-    padding: 50px;
+    /* padding: 50px; */
 }
 
 .st-container div.toggle {
@@ -19,6 +19,8 @@
     border-radius: 0.8rem;
     padding: 4px 8px;
     background: transparent;
+	z-index: 1000;
+	height: 60px;
 }
 
 .st-container a.toggle:hover{
@@ -145,6 +147,7 @@
   	margin: auto;
   	width: 50px;
   	height: 40px;
+	display: block;
 }
 
 .burger-wrapper .hamburger{

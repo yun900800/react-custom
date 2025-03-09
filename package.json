@@ -30,7 +30,7 @@
     "test-data-directed": "jest src/sicp/complex/data-directed.test.js",
     "test-message-passing": "jest src/sicp/complex/message-passing.test.js",
     "test-generic-operation": "jest src/sicp/generic-operation/generic-operation.test.js",
-    "test-tree-all" : "npm-run-all -l -p test-tree test-conventional",
+    "test-tree-all": "npm-run-all -l -p test-tree test-conventional",
     "test-simulator": "jest src/sicp/simulator/simulator.test.js",
     "test-serializer": "jest src/sicp/serializer/serializer.test.js",
     "test-stream": "jest src/sicp/stream/stream.test.js",
@@ -40,7 +40,7 @@
     "test-evaluate": "jest src/sicp/evaluator/evaluator.test.js",
     "test-continuation": "jest src/sicp/continuation/continuation.test.js",
     "test-combination": "jest src/sicp/evaluator/evaluator-combination.test.js src/sicp/evaluator/evaluator-lambda.test.js",
-    "test-math" : "jest src/sicp/math/math.test.js",
+    "test-math": "jest src/sicp/math/math.test.js",
     "test-lambda": "jest src/sicp/high-order/lambda.test.js",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,sass,md}\"",
@@ -115,13 +115,17 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "@react-three/drei": "9.99.7",
+    "@react-three/fiber": "8.15.19",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/three": "0.162.0",
     "axios": "^1.6.7",
     "markdown-pdf": "^11.0.0",
     "mini-css-extract-plugin": "^2.8.0",
     "node-fetch": "^2.6.1",
     "postcss-loader": "^8.1.0",
     "react": "^18.2.0",
+    "react-custom": "file:",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "react-redux": "^8.1.2",
@@ -129,10 +133,7 @@
     "react-spring": "^9.7.2",
     "styled-components": "^6.0.2",
     "tailwindcss": "^3.4.1",
-    "@react-three/fiber": "8.15.19",
-    "@types/three": "0.162.0",
-    "three": "0.162.0",
-    "@react-three/drei": "9.99.7"
+    "three": "0.162.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [

@@ -1,6 +1,8 @@
 import React from 'react'
 const TextStylingCombinations = () => {
   return (
+    
+    <div className="mx-auto flex flex-row items-center sm:flex-col sm:items-start max-w-2xl h-auto  gap-x-8 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-100 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
     <div className="bg-gray-100 p-8">
       <a href="https://medium.com/@stheodorejohn/text-styling-with-tailwind-css-deep-dive-into-tailwind-css-magic-c73defaffd7e">
         <span className="text-lg font-bold text-yellow-500">
@@ -38,6 +40,7 @@ const TextStylingCombinations = () => {
         Text styling combination 10
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">   <div>Item 1</div>   <div>Item 2</div>   <div>Item 3</div> </div>
+    </div>
     </div>
   )
 }
