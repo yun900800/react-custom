@@ -1,7 +1,6 @@
 import React from 'react';
 const ResponsiveText = () => {
   return (
-    <div className="mx-auto flex flex-row items-center sm:flex-col sm:items-start max-w-2xl h-auto  gap-x-8 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-100 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
     <div className="bg-gray-200 p-4">
      <a href="https://medium.com/@stheodorejohn/responsive-design-with-tailwind-css-517c55127874">
         <span className="text-lg font-bold text-yellow-500">
@@ -25,7 +24,6 @@ const ResponsiveText = () => {
       <div className="aspect-w-16 aspect-h-9 bg-indigo-300 p-4">
         Aspect Ratio Box: Your content here.
       </div>
-    </div>
     </div>
   );
 };

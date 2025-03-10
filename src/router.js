@@ -18,6 +18,7 @@ import ResponsiveText from './component/tailwind-ui/responsive-text.js';
 import ExampleUI from './component/tailwind-ui/example-ui.js';
 import { Scene } from './component/three/scene'; 
 import AppStyledComponent from './component/styles/app-styled-component.js';
+import { Layout } from './component/layout/layout.js';
 export default function RouterApp() {
   const [user, setUser] = React.useState(null);
   const [show,setShow] = useState(false);
@@ -82,17 +83,19 @@ export default function RouterApp() {
               <Route path="/" exact element={<App />} />
               <Route path="/welcome" element={
                 <ProtectedRoute isAllowed={!!user}>
-                  <Welcome />
+                    <Welcome />
                 </ProtectedRoute>
                 } />
               <Route path="/tailwindui" element={
                 <ProtectedRoute isAllowed={!!user}>
-                  <TailwindUI />
+                  <Layout>
+                    <TailwindUI />
+                  </Layout>
                 </ProtectedRoute>
                 } />
               <Route element={<ProtectedRoute isAllowed={!!user} />}>
-                <Route path="/tailwindtext" element={<TextStylingCombinations />} />
-                <Route path="/tailwindresponse" element={<ResponsiveText />} />
+                <Route path="/tailwindtext" element={ <Layout><TextStylingCombinations /></Layout>} />
+                <Route path="/tailwindresponse" element={<Layout><ResponsiveText /></Layout>} />
               </Route>
               {/* <Route path="/tailwindtext" element={
                 <ProtectedRoute user={user}>
@@ -108,21 +111,27 @@ export default function RouterApp() {
                 <ProtectedRoute isAllowed={
                   !!user && user.permissions.includes('analyze')
                 }>
+                  <Layout>
                   <ExampleUI/>
+                  </Layout>
                 </ProtectedRoute>
                 }/>
               <Route path="/scene" element={
                 <ProtectedRoute isAllowed={
                   !!user && user.permissions.includes('analyze')
                 }>
+                  <Layout>
                   <Scene/>
+                  </Layout>
                 </ProtectedRoute>
                 }/>
               <Route path="/styled" element={
                 <ProtectedRoute isAllowed={
                   !!user && user.permissions.includes('admin')
                 }>
+                  <Layout>
                   <AppStyledComponent/>
+                  </Layout>
                 </ProtectedRoute>
                 }/>
             </Routes>
