@@ -14,8 +14,8 @@
 
 .st-container div.toggle {
     position: absolute;
-    right: 3rem;
-    top: 1rem;
+    right: 0;
+    top: 0;
     border-radius: 0.8rem;
     padding: 4px 8px;
     background: transparent;

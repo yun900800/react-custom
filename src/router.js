@@ -19,6 +19,8 @@ import ExampleUI from './component/tailwind-ui/example-ui.js';
 import { Scene } from './component/three/scene'; 
 import AppStyledComponent from './component/styles/app-styled-component.js';
 import { Layout } from './component/layout/layout.js';
+import { ResponseLayout } from './component/layout/response-layout.js'
+import ResponseImages from './component/tailwind-ui/response-images.js'
 export default function RouterApp() {
   const [user, setUser] = React.useState(null);
   const [show,setShow] = useState(false);
@@ -69,6 +71,9 @@ export default function RouterApp() {
               </li>
               <li>
                 <Link to="/styled">styled</Link>
+              </li>
+              <li>
+                <Link to="/images-card">images-card</Link>
               </li>
             </ul>
           </nav>
@@ -121,7 +126,7 @@ export default function RouterApp() {
                   !!user && user.permissions.includes('analyze')
                 }>
                   <Layout>
-                  <Scene/>
+                    <Scene/>
                   </Layout>
                 </ProtectedRoute>
                 }/>
@@ -130,10 +135,34 @@ export default function RouterApp() {
                   !!user && user.permissions.includes('admin')
                 }>
                   <Layout>
-                  <AppStyledComponent/>
+                    <AppStyledComponent/>
                   </Layout>
                 </ProtectedRoute>
-                }/>
+              }/>
+              <Route path="/images-card" element={
+                  <ProtectedRoute isAllowed={
+                    !!user && !user.permissions.includes('admin')
+                  }>
+                    <ResponseLayout>
+                      <ResponseImages
+                        {
+                          ...{
+                            src: "https://img1.baidu.com/it/u=3543009939,2144310597&fm=253&fmt=auto&app=138&f=JPEG?w=704&h=500",
+                            alt: "这是富士山"
+                        }
+                      }                      
+                        />
+                      <ResponseImages 
+                        {
+                          ...{
+                            src: "https://img0.baidu.com/it/u=694832972,884680727&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800",
+                            alt: "这是绿野仙踪"
+                        }
+                      }
+                        />
+                    </ResponseLayout>
+                  </ProtectedRoute>
+              }/>
             </Routes>
           </div>
         </main>
