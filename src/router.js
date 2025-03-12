@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import App from './App'
 import { 
+  useNavigate,
   BrowserRouter as Router, 
   Route, 
   Routes, 
@@ -9,7 +10,7 @@ import {
   Outlet  
 } from 'react-router-dom'
 import TaskList from './stories/TaskList'
-import store from './lib/store'
+import store, { updateUser } from './lib/store'
 import { Provider } from 'react-redux'
 import './styles/main.css'
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js'
@@ -21,20 +22,21 @@ import AppStyledComponent from './component/styles/app-styled-component.js';
 import { Layout } from './component/layout/layout.js';
 import { ResponseLayout } from './component/layout/response-layout.js'
 import ResponseImages from './component/tailwind-ui/response-images.js'
+import LayoutOne from './component/layout/layout-one.js'
+
+import LoginForm  from './component/login/login-form.js'
+import { useSelector,useDispatch } from 'react-redux'
+
 export default function RouterApp() {
-  const [user, setUser] = React.useState(null);
-  const [show,setShow] = useState(false);
+  const dispatch = useDispatch();
+  const [show,setShow] = useState(false); 
   const popup = (e)=>{
     setShow(!show);
     e.stopPropagation();
   }
-  const handleLogin = () => setUser({ 
-      id: '1', 
-      name: 'robin', 
-      permissions: ['analyze'],
-      roles: ['admin'],}
-  );
-  const handleLogout = () => setUser(null);
+  const user = useSelector(state => {
+    return state.user.user
+  });
   
   return (
     <>
@@ -75,17 +77,24 @@ export default function RouterApp() {
               <li>
                 <Link to="/images-card">images-card</Link>
               </li>
+              <li>
+                <Link to="/layoutone">layout-one</Link>
+              </li>
+              <li>
+                <Logout/>
+              </li>
             </ul>
           </nav>
           <div className='content'>
-          {user ? (
+          {/* {user ? (
             <button onClick={handleLogout}>Sign Out</button>
           ) : (
             <button onClick={handleLogin}>Sign In</button>
-          )}
+          )} */}
 
             <Routes>
               <Route path="/" exact element={<App />} />
+              <Route path="/login" exact element={<LoginForm />} />
               <Route path="/welcome" element={
                 <ProtectedRoute isAllowed={!!user}>
                     <Welcome />
@@ -114,7 +123,7 @@ export default function RouterApp() {
                 }/> */}
               <Route path="/tailwindexampleui" element={
                 <ProtectedRoute isAllowed={
-                  !!user && user.permissions.includes('analyze')
+                  !!user && user.permissions && user.permissions.includes('analyze')
                 }>
                   <Layout>
                   <ExampleUI/>
@@ -123,7 +132,7 @@ export default function RouterApp() {
                 }/>
               <Route path="/scene" element={
                 <ProtectedRoute isAllowed={
-                  !!user && user.permissions.includes('analyze')
+                  !!user && user.permissions && user.permissions.includes('analyze')
                 }>
                   <Layout>
                     <Scene/>
@@ -132,7 +141,7 @@ export default function RouterApp() {
                 }/>
               <Route path="/styled" element={
                 <ProtectedRoute isAllowed={
-                  !!user && user.permissions.includes('admin')
+                  !!user && user.permissions && user.permissions.includes('admin')
                 }>
                   <Layout>
                     <AppStyledComponent/>
@@ -141,7 +150,7 @@ export default function RouterApp() {
               }/>
               <Route path="/images-card" element={
                   <ProtectedRoute isAllowed={
-                    !!user && !user.permissions.includes('admin')
+                    !!user && user.permissions && !user.permissions.includes('admin')
                   }>
                     <ResponseLayout>
                       <ResponseImages
@@ -163,6 +172,24 @@ export default function RouterApp() {
                     </ResponseLayout>
                   </ProtectedRoute>
               }/>
+              <Route path="/layoutone" element={
+                <ProtectedRoute isAllowed={
+                  !!user
+                }>
+                  <LayoutOne>
+                    <AppStyledComponent/>
+                  </LayoutOne>
+                </ProtectedRoute>
+              }/>
+              <Route path="/login" element={
+                <ProtectedRoute isAllowed={
+                  !!user
+                }>
+                  <LayoutOne>
+                    <LoginForm/>
+                  </LayoutOne>
+                </ProtectedRoute>
+              }/>
             </Routes>
           </div>
         </main>
@@ -172,14 +199,26 @@ export default function RouterApp() {
 }
 
 const Welcome = () => (
-  <div class="task-container">
+  <div className="task-container">
     <Provider store={store}>
       <TaskList></TaskList>
     </Provider>
   </div>
 )
 
-const ProtectedRoute = ({isAllowed, redirectPath = '/', children}) =>{
+const Logout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () =>{
+    dispatch(updateUser(null));
+    navigate('/login');
+  }
+  return (
+    <a onClick={handleLogout}>退出</a>
+  )
+}
+
+const ProtectedRoute = ({isAllowed, redirectPath = '/login', children}) =>{
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }

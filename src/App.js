@@ -62,9 +62,7 @@ export default class App extends Component {
         <StyleExtender></StyleExtender>
         </div>
         <div className="app">
-          <Provider store={store}>
-            <TaskList></TaskList>
-          </Provider>
+          <TaskList/>
         </div>
         <div className="app">
         <FoldableImage

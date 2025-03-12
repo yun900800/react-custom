@@ -21,6 +21,10 @@ const TaskBoxData = {
   error: null,
 }
 
+const UserData = {
+  user: null
+}
+
 /*
  * The store is created here.
  * You can read more about Redux Toolkit's slices in the docs:
@@ -40,17 +44,30 @@ const TasksSlice = createSlice({
   },
 })
 
+const UserSlice = createSlice({
+  name: 'user',
+  initialState: UserData,
+  reducers: {
+    updateUser: (state, action) => {
+      state.user = {...action.payload};
+    },
+  },
+})
+
 // The actions contained in the slice are exported for usage in our components
 export const { updateTaskState } = TasksSlice.actions
+export const { updateUser } = UserSlice.actions;
 
 /*
  * Our app's store configuration goes here.
  * Read more about Redux's configureStore in the docs:
  * https://redux-toolkit.js.org/api/configureStore
  */
+console.log('execute configureStore');
 const store = configureStore({
   reducer: {
     taskbox: TasksSlice.reducer,
+    user: UserSlice.reducer,
   },
 })
 
