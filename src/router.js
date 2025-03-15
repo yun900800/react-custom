@@ -28,7 +28,6 @@ import LoginForm  from './component/login/login-form.js'
 import { useSelector,useDispatch } from 'react-redux'
 
 export default function RouterApp() {
-  const dispatch = useDispatch();
   const [show,setShow] = useState(false); 
   const popup = (e)=>{
     setShow(!show);
@@ -141,7 +140,7 @@ export default function RouterApp() {
                 }/>
               <Route path="/styled" element={
                 <ProtectedRoute isAllowed={
-                  !!user && user.permissions && user.permissions.includes('admin')
+                  !!user && user.permissions && !user.permissions.includes('admin')
                 }>
                   <Layout>
                     <AppStyledComponent/>

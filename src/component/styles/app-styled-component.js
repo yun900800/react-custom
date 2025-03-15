@@ -14,9 +14,11 @@ import {
     StyledAnyComponent
  } from './style-link';
  import Counter from './counter';
+
+ import { StyledButton, StyledLink} from './styled-button';
 function AppStyledComponent() {
-    return <div class="app-container">
-                <div className='app'>
+    return <div className="app-container">
+                <div className='flex-grow'>
                     <StyleBasic/>
                     <StyleExtender/>
                     <AdapterProps/>
@@ -24,9 +26,17 @@ function AppStyledComponent() {
                     <StyleAsCustomExtender/>
                     <StyledAnyComponent/>    
                 </div>
-                <div className='app'>
+                <div className='flex-grow'>
                     <Counter/>
                 </div>
+                <StyledButton bg="green" onClick={() => alert("Clicked!")}>
+                    绿色按钮
+                </StyledButton>
+                <StyledButton disabled>禁用按钮</StyledButton>
+                <br />
+                <StyledLink href="https://google.com" newTab>
+                    访问 Google
+                </StyledLink>
             </div>
 }
 
