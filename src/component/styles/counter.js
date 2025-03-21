@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useStickyState from '../hooks/use-sticky-state';
 import createPersistedState from 'use-persisted-state';
 const useCounterState = createPersistedState('count1');
+//const useMaterialListState = createPersistedState('materialList');
  
 
 const StyledCounter = styled.div`
@@ -58,6 +59,31 @@ export function Counter2() {
             <Button onClick={increment}>+</Button>
             <Button onClick={decrement}>-</Button>
         </StyledCounter>
+    );
+}
+
+export function MaterialList(){
+    const [data, setData] = useState([]);
+    // const {materials,setMaterials} = useMaterialListState([]);
+    // console.log(materials);
+    console.log(data);
+    useEffect(() => { 
+        fetch('/api/material/materials')
+        .then(response => response.json())
+        .then(data => {
+            // setMaterials(data);
+            setData(data);
+        });
+    }, []);
+    return (
+        <div>
+            <ul>
+                {data.map((item, index) => (
+                    <li key={index}>{item.materialMaster.name}</li>
+                ))}
+            </ul>
+        
+        </div>
     );
 }
 // export default class Counter extends React.Component {
