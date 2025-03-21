@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import useStickyState from '../hooks/use-sticky-state';
+import createPersistedState from 'use-persisted-state';
+const useCounterState = createPersistedState('count1');
+ 
 
 const StyledCounter = styled.div`
     display:flex;
@@ -30,21 +34,48 @@ const Button = styled.button`
     padding: 20px 40px;
     margin-bottom: 40px;
 `
-export default class Counter extends React.Component {
-    state = { count: 0 };
-  
-  
-    increment = () => this.setState({ count: this.state.count + 1 });
-    decrement = () => this.setState({ count: this.state.count - 1 });
-  
-  
-    render() {
-      return (
+
+export default function Counter() {
+    const [count, setCount] = useStickyState(0, 'count');
+    const increment = () => setCount(count + 1);
+    const decrement = () => setCount(count - 1);
+    return (
         <StyledCounter>
-          <Paragraph>{this.state.count}</Paragraph>
-          <Button onClick={this.increment}>+</Button>
-          <Button onClick={this.decrement}>-</Button>
+            <Paragraph>{count}</Paragraph>
+            <Button onClick={increment}>+</Button>
+            <Button onClick={decrement}>-</Button>
         </StyledCounter>
-      );
-    }
-  }
+    );
+}
+
+export function Counter2() {
+    const [count, setCount] = useCounterState(0);
+    const increment = () => setCount(count + 1);
+    const decrement = () => setCount(count - 1);
+    return (
+        <StyledCounter>
+            <Paragraph>{count}</Paragraph>
+            <Button onClick={increment}>+</Button>
+            <Button onClick={decrement}>-</Button>
+        </StyledCounter>
+    );
+}
+// export default class Counter extends React.Component {
+    
+//     state = { count: 0 };
+  
+  
+//     increment = () => this.setState({ count: this.state.count + 1 });
+//     decrement = () => this.setState({ count: this.state.count - 1 });
+  
+  
+//     render() {
+//       return (
+//         <StyledCounter>
+//           <Paragraph>{this.state.count}</Paragraph>
+//           <Button onClick={this.increment}>+</Button>
+//           <Button onClick={this.decrement}>-</Button>
+//         </StyledCounter>
+//       );
+//     }
+//   }

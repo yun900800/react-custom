@@ -1,4 +1,6 @@
 import React from 'react'
+import DarkMode from './dark-mode.js'
+import Contributor from './contributor.js'
 const TextStylingCombinations = () => {
   return (
     
@@ -39,6 +41,8 @@ const TextStylingCombinations = () => {
         Text styling combination 10
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">   <div>Item 1</div>   <div>Item 2</div>   <div>Item 3</div> </div>
+      <DarkMode />
+      <Contributor />
     </div>
   )
 }

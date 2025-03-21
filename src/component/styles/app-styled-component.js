@@ -13,7 +13,7 @@ import {
  import {
     StyledAnyComponent
  } from './style-link';
- import Counter from './counter';
+ import Counter, { Counter2 } from './counter';
 
  import { StyledButton, StyledLink} from './styled-button';
 function AppStyledComponent() {
@@ -28,6 +28,7 @@ function AppStyledComponent() {
                 </div>
                 <div className='flex-grow'>
                     <Counter/>
+                    <Counter2/>
                 </div>
                 <StyledButton bg="green" onClick={() => alert("Clicked!")}>
                     绿色按钮

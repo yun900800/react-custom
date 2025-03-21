@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import React from 'react'
+import React from 'react';
+import {COLORS} from '../../constant/constants'
 export const StyleExtender = () => {
   return (
     <div>
@@ -30,7 +31,7 @@ export const StyleAsCustomExtender = ()=>{
 }
 
 const Button = styled.button`
-  color: #bf4f74;
+  color: ${COLORS.primary};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
