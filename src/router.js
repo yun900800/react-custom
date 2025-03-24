@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import App from './App'
 import { 
   useNavigate,
@@ -29,6 +29,12 @@ import { useSelector,useDispatch } from 'react-redux'
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
+  useEffect(()=>{
+    document.body.addEventListener('click',popup);
+    return ()=>{
+      document.body.removeEventListener('click',popup);
+    }
+  });
   const popup = (e)=>{
     setShow(!show);
     e.stopPropagation();

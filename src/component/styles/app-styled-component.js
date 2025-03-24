@@ -16,7 +16,8 @@ import {
  import Counter, { Counter2, MaterialList } from './counter';
 
  import { StyledButton, StyledLink} from './styled-button';
-import { Material } from 'three';
+import GlobalEvent from '../hooks/component/global-event';
+import { WelcomeAnimationExample } from '../hooks/component/welcome-animation';
 function AppStyledComponent() {
     return <div className="app-container">
                 <div className='flex-grow'>
@@ -40,6 +41,8 @@ function AppStyledComponent() {
                 <StyledLink href="https://google.com" newTab>
                     访问 Google
                 </StyledLink>
+                <GlobalEvent/>
+                <WelcomeAnimationExample/>
             </div>
 }
 
