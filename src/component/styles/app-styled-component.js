@@ -13,7 +13,7 @@ import {
  import {
     StyledAnyComponent
  } from './style-link';
- import Counter, { Counter2, MaterialList } from './counter';
+ import Counter, { Counter2, MaterialList, Timer } from './counter';
 
  import { StyledButton, StyledLink} from './styled-button';
 import GlobalEvent from '../hooks/component/global-event';
@@ -32,6 +32,7 @@ function AppStyledComponent() {
                     <Counter/>
                     <Counter2/>
                     <MaterialList/>
+                    <Timer />
                 </div>
                 <StyledButton bg="green" onClick={() => alert("Clicked!")}>
                     绿色按钮

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+	/* 定义一个容器查询 */
+	@container card (min-width: 400px) {
+	  .card-content {
+		flex-direction: row; /* 当容器超过 400px 时，改为水平排列 */
+	  }
+	}
+
+	@container card (min-width: 600px) {
+	  .card {
+		padding: 2rem; /* 容器超过 600px 时，增加内边距 */
+	  }
+	}
+}
+
 
 .st-container {
     position: relative;

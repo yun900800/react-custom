@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useRef} from 'react';
 import styled from 'styled-components';
 import useStickyState from '../hooks/use-sticky-state';
 import createPersistedState from 'use-persisted-state';
 const useCounterState = createPersistedState('count1');
-//const useMaterialListState = createPersistedState('materialList');
+const useMaterialListState = createPersistedState('materialList');
  
 
 const StyledCounter = styled.div`
@@ -51,6 +51,7 @@ export default function Counter() {
 
 export function Counter2() {
     const [count, setCount] = useCounterState(0);
+    //console.log(count);
     const increment = () => setCount(count + 1);
     const decrement = () => setCount(count - 1);
     return (
@@ -64,28 +65,53 @@ export function Counter2() {
 
 export function MaterialList(){
     const [data, setData] = useState([]);
-    // const {materials,setMaterials} = useMaterialListState([]);
-    // console.log(materials);
-    console.log(data);
+    const [materials,setMaterials] = useMaterialListState([]);
+    //console.log(materials);
+    //console.log(data);
     useEffect(() => { 
         fetch('/api/material/materials')
         .then(response => response.json())
         .then(data => {
-            // setMaterials(data);
+            setMaterials(data);
             setData(data);
         });
     }, []);
     return (
         <div>
             <ul>
-                {data.map((item, index) => (
+                {materials.map((item, index) => (
                     <li key={index}>{item.materialMaster.name}</li>
                 ))}
             </ul>
         
         </div>
     );
+};
+
+export function Timer() {
+  const countRef = useRef(0);
+  const [renderCount, setRenderCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      countRef.current += 1;
+      console.log("Count:", countRef.current); // 组件不会重新渲染，但 count 仍然在增加
+      //只有count變化的時候才會渲染
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <p>Render count: {renderCount}</p>
+      <button onClick={() => setRenderCount((prev) => prev + 1)}>
+        Force Render
+      </button>
+    </div>
+  );
 }
+
 // export default class Counter extends React.Component {
     
 //     state = { count: 0 };

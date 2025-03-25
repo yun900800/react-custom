@@ -1,6 +1,8 @@
 import React from 'react'
 import DarkMode from './dark-mode.js'
 import Contributor from './contributor.js'
+import ResponseMarket from './response-market.js';
+import ContainerCard from './container-card.js'
 
 const TextStylingCombinations = () => {
   const textStyles = [
@@ -35,6 +37,8 @@ const TextStylingCombinations = () => {
       </div>
       <DarkMode />
       <Contributor />
+      <ResponseMarket />
+      <ContainerCard/>
     </div>
   )
 }
