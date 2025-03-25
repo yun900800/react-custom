@@ -120,6 +120,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@types/three": "0.162.0",
     "axios": "^1.6.7",
+    "lucide-react": "^0.483.0",
     "markdown-pdf": "^11.0.0",
     "mini-css-extract-plugin": "^2.8.0",
     "node-fetch": "^2.6.1",

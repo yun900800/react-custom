@@ -18,6 +18,8 @@ import {
  import { StyledButton, StyledLink} from './styled-button';
 import GlobalEvent from '../hooks/component/global-event';
 import { WelcomeAnimationExample } from '../hooks/component/welcome-animation';
+import DarkMode from '../dark/dark-mode';
+import ThemeSwitcher from '../dark/theme-switcher';
 function AppStyledComponent() {
     return <div className="app-container">
                 <div className='flex-grow'>
@@ -33,6 +35,8 @@ function AppStyledComponent() {
                     <Counter2/>
                     <MaterialList/>
                     <Timer />
+                    <DarkMode/>
+                    <ThemeSwitcher/>
                 </div>
                 <StyledButton bg="green" onClick={() => alert("Clicked!")}>
                     绿色按钮

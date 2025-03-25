@@ -51,7 +51,6 @@ export default function Counter() {
 
 export function Counter2() {
     const [count, setCount] = useCounterState(0);
-    //console.log(count);
     const increment = () => setCount(count + 1);
     const decrement = () => setCount(count - 1);
     return (
@@ -66,8 +65,6 @@ export function Counter2() {
 export function MaterialList(){
     const [data, setData] = useState([]);
     const [materials,setMaterials] = useMaterialListState([]);
-    //console.log(materials);
-    //console.log(data);
     useEffect(() => { 
         fetch('/api/material/materials')
         .then(response => response.json())
@@ -77,7 +74,7 @@ export function MaterialList(){
         });
     }, []);
     return (
-        <div>
+        <div className='bg-primary'>
             <ul>
                 {materials.map((item, index) => (
                     <li key={index}>{item.materialMaster.name}</li>
@@ -105,7 +102,11 @@ export function Timer() {
   return (
     <div>
       <p>Render count: {renderCount}</p>
-      <button onClick={() => setRenderCount((prev) => prev + 1)}>
+      <div class="bg-background-light dark:bg-background-dark">主题测试</div>
+      <button onClick={() => {
+        setRenderCount((prev) => prev + 1);
+        document.documentElement.classList.toggle('dark')
+        }}>
         Force Render
       </button>
     </div>

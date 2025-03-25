@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
         // 这个参数会影响到 webpack-dev-server 的行为，
         // 如果设置为 true，webpack-dev-server 会启用内联模式;代理不会生效
-        historyApiFallback: false,
+        historyApiFallback: true,
         hot:true,
         open:true,
         allowedHosts: 'all',

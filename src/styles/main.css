@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--primary-color: #adc1f8; /* Tailwind 的 blue-700 */
+	--secondary-color: #9333ea; /* Tailwind 的 purple-600 */
+
+	--primary-color: #1d4ed8; /* 蓝色 */
+  	--background-color: #ffffff;
+  	--text-color: #1e293b; /* 深灰 */
+}
+
+/* 暗色模式 */
+.dark {
+	--primary-color: #9333ea; /* 紫色 */
+	--background-color: #1e1e1e;
+	--text-color: #f1f5f9; /* 浅灰 */
+}
+  
+
+  
 @layer utilities {
 	/* 定义一个容器查询 */
 	@container card (min-width: 400px) {
