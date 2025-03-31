@@ -29,12 +29,12 @@ import { useSelector,useDispatch } from 'react-redux'
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
-  useEffect(()=>{
-    document.body.addEventListener('click',popup);
-    return ()=>{
-      document.body.removeEventListener('click',popup);
-    }
-  });
+  // useEffect(()=>{
+  //   document.body.addEventListener('click',popup);
+  //   return ()=>{
+  //     document.body.removeEventListener('click',popup);
+  //   }
+  // });
   const popup = (e)=>{
     setShow(!show);
     e.stopPropagation();
@@ -170,6 +170,54 @@ export default function RouterApp() {
                         {
                           ...{
                             src: "https://img0.baidu.com/it/u=694832972,884680727&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800",
+                            alt: "这是绿野仙踪"
+                        }
+                      }
+                        />
+                        <ResponseImages
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1742403949587-42a767b9ea5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            alt: "这是富士山"
+                        }
+                      }                      
+                        />
+                      <ResponseImages 
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1743046813915-94cf6d5e6942?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            alt: "这是绿野仙踪"
+                        }
+                      }
+                        />
+                        <ResponseImages
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1742403949587-42a767b9ea5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            alt: "这是富士山"
+                        }
+                      }                      
+                        />
+                      <ResponseImages 
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1743046813915-94cf6d5e6942?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            alt: "这是绿野仙踪"
+                        }
+                      }
+                        />
+                        <ResponseImages
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1742403949587-42a767b9ea5b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                            alt: "这是富士山"
+                        }
+                      }                      
+                        />
+                      <ResponseImages 
+                        {
+                          ...{
+                            src: "https://images.unsplash.com/photo-1743046813915-94cf6d5e6942?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                             alt: "这是绿野仙踪"
                         }
                       }

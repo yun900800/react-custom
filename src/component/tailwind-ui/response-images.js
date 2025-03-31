@@ -1,7 +1,7 @@
 import React from "react";
 export default function ResponseImages({ src, alt }) {
   return (
-    <div className="md:flex m-4">
+    <div className="flex md:flex m-4 max-w-[48%]">
         <div className="md:shrink-0">
         <img
             className="h-48 w-full object-cover md:h-full md:w-48"

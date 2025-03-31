@@ -9,6 +9,12 @@
 	--primary-color: #1d4ed8; /* 蓝色 */
   	--background-color: #ffffff;
   	--text-color: #1e293b; /* 深灰 */
+
+	--color-white: #ffffff;
+	--rounded-lg: 0.8rem;
+	--spacing-6: 1.5rem;
+	--shadow-xl: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+	--text-color: #1e293b;
 }
 
 /* 暗色模式 */
@@ -16,6 +22,12 @@
 	--primary-color: #9333ea; /* 紫色 */
 	--background-color: #1e1e1e;
 	--text-color: #f1f5f9; /* 浅灰 */
+
+	--color-white: #000111;
+	--rounded-lg: 0.8rem;
+	--spacing-6: 1.5rem;
+	--shadow-xl: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+	--text-color: #FFF;
 }
   
 
@@ -32,6 +44,20 @@
 	  .card {
 		padding: 2rem; /* 容器超过 600px 时，增加内边距 */
 	  }
+	}
+
+	.content-auto {
+		content-visibility: auto;
+	}
+}
+
+@layer components {
+	.custom-card {
+	  background-color: var(--color-white);
+	  border-radius: var(--rounded-lg);
+	  padding: var(--spacing-6);
+	  box-shadow: var(--shadow-xl);
+	  color: var(--text-color);
 	}
 }
 
@@ -148,7 +174,7 @@
     height: 100%;
     overflow-y: auto;
     position: relative;
-	margin-top: 1rem;
+	padding: 1rem;
 }
 
 .content::-webkit-scrollbar {
@@ -162,6 +188,21 @@
 }
 
 .content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #d55959;
+}
+
+.response-bar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.response-bar::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+}
+
+.response-bar::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #d55959;
 }

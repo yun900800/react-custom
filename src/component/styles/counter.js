@@ -74,8 +74,8 @@ export function MaterialList(){
         });
     }, []);
     return (
-        <div className='bg-primary'>
-            <ul>
+        <div className='bg-primary custom-card'>
+            <ul className='content-auto'>
                 {materials.map((item, index) => (
                     <li key={index}>{item.materialMaster.name}</li>
                 ))}
@@ -100,9 +100,9 @@ export function Timer() {
   }, []);
 
   return (
-    <div>
+    <div className='custom-card'>
       <p>Render count: {renderCount}</p>
-      <div class="bg-background-light dark:bg-background-dark">主题测试</div>
+      <div className="bg-background-light dark:bg-background-dark">主题测试</div>
       <button onClick={() => {
         setRenderCount((prev) => prev + 1);
         document.documentElement.classList.toggle('dark')
