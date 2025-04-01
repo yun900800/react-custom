@@ -267,3 +267,34 @@
 .menu-trigger:checked + .burger-wrapper .hamburger::after{
 	transform: rotate(-45deg);
 }
+
+
+/* 默认情况下大屏幕三列布局 */
+.fcontainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+  
+.fitem {
+	flex: 1 1 calc(33.333% - 20px); /* 三列 */
+	margin: 10px;
+	background-color: yellow;
+}
+  
+  /* 中屏幕两列布局 */
+@media (max-width: 1024px) {
+	.fitem {
+	  flex: 1 1 calc(50% - 20px); /* 两列 */
+	  background-color: yellowgreen;
+	}
+}
+  
+  /* 小屏幕一列布局 */
+@media (max-width: 768px) {
+	.fitem {
+	  flex: 1 1 100%; /* 一列 */
+	  margin: 10px;
+	  background-color:greenyellow ;
+	}
+}
+  

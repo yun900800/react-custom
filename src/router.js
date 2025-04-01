@@ -26,6 +26,7 @@ import LayoutOne from './component/layout/layout-one.js'
 
 import LoginForm  from './component/login/login-form.js'
 import { useSelector,useDispatch } from 'react-redux'
+import LayoutTwo from './component/layout/layout-two.js'
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
@@ -84,6 +85,9 @@ export default function RouterApp() {
               </li>
               <li>
                 <Link to="/layoutone">layout-one</Link>
+              </li>
+              <li>
+                <Link to="/layouttwo">layout-two</Link>
               </li>
               <li>
                 <Logout/>
@@ -232,6 +236,41 @@ export default function RouterApp() {
                   <LayoutOne>
                     <AppStyledComponent/>
                   </LayoutOne>
+                </ProtectedRoute>
+              }/>
+              <Route path="/layouttwo" element={
+                <ProtectedRoute isAllowed={
+                  !!user
+                }>
+                  <LayoutTwo>
+                    <div className='fitem'>
+                      原来这是一个假定的高度，在flexbox布局中，flex-grow属性会让子元素在父元素的高度不够时，自动撑开到父元素的高度。
+                      这就是flex-grow的作用。
+                    </div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                    <div className='fitem'></div>
+                  </LayoutTwo>
                 </ProtectedRoute>
               }/>
               <Route path="/login" element={

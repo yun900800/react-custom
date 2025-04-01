@@ -13,6 +13,9 @@ module.exports = {
           dark: "#1e1e1e",
         },
       },
+      minWidth: {
+        'calc-100p-minus-2rem': 'calc(100% - 16rem)', // 自定义 min-width 值
+      },
     },
   },
   plugins: [],
