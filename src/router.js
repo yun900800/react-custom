@@ -9,9 +9,7 @@ import {
   Navigate,
   Outlet  
 } from 'react-router-dom'
-import TaskList from './stories/TaskList'
-import store, { updateUser } from './lib/store'
-import { Provider } from 'react-redux'
+import { updateUser } from './lib/store'
 import './styles/main.css'
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js'
 import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js';
@@ -27,6 +25,7 @@ import LayoutOne from './component/layout/layout-one.js'
 import LoginForm  from './component/login/login-form.js'
 import { useSelector,useDispatch } from 'react-redux'
 import LayoutTwo from './component/layout/layout-two.js'
+import { Welcome } from './stories/welcome.js'
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
@@ -290,13 +289,13 @@ export default function RouterApp() {
   )
 }
 
-const Welcome = () => (
-  <div className="task-container">
-    <Provider store={store}>
-      <TaskList></TaskList>
-    </Provider>
-  </div>
-)
+// const Welcome = () => (
+//   <div className="task-container">
+//     <Provider store={store}>
+//       <TaskList></TaskList>
+//     </Provider>
+//   </div>
+// )
 
 const Logout = () => {
   const dispatch = useDispatch();

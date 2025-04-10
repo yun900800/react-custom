@@ -3,6 +3,8 @@ import Example from './example'
 import HockeyTeamList from './hockey-team-list'
 import Card from './card'
 import ResponseImage from './response-image'
+import CustomExample from './custom-example'
+import FormPlugin from './form-plugin'
 const teams = [
   {
     id: 1,
@@ -30,6 +32,8 @@ export default function TailwindUI() {
         <HockeyTeamList teams={teams} />
         <Card />
         <ResponseImage src="assets/react.svg" alt="react" />
+        <CustomExample />
+        <FormPlugin />
     </>
   )
 }

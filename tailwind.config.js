@@ -18,6 +18,12 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class', // 默认
+    }),
+  ],
+  mode: 'jit',  // 启用 JIT 模式
+  purge: ['./src/**/*.{html,js,jsx,ts,tsx}'],
 }
 
