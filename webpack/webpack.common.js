@@ -58,7 +58,26 @@ module.exports = {
             {
                 test: /\.(?:ico|gif|jpeg|jpg|png)$/i,
                 type: 'asset/resource'
-            }
+            },
+            // 加入这一段
+            {
+                test: /\.module\.scss$/, // 只处理 *.module.scss 为模块的样式
+                use: [
+                'style-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                    modules: true,
+                    },
+                },
+                'sass-loader',
+                ],
+            },
+            {
+                test: /\.scss$/, // 处理普通 SCSS，不是 module 的
+                exclude: /\.module\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
         ]
     },
     // devServer: {

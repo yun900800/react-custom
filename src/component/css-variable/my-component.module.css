@@ -1,0 +1,17 @@
+/* MyComponent.module.css */
+.title {
+    color: blue;
+    font-size: 24px;
+}
+
+.title1 {
+    color: rgb(245, 110, 110);
+    font-size: 18px;
+}
+
+.title2 {
+    border-radius: 12px;
+    background: rgb(112, 118, 151);
+    padding: 4px 8px;
+}
+  

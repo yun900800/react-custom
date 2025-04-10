@@ -1,0 +1,23 @@
+$main-color: #bb3186;
+
+.container {
+    padding: 16px;
+  
+    .title {
+      color: $main-color;
+      font-weight: bold;
+    }
+}
+
+// 布局 / 调色 / 间距 等用 Tailwind
+
+// 复杂样式结构 / 动画 / 主题变量 用 CSS Module（甚至 SCSS Module）
+
+// 最终效果如
+
+// MyComponent.module.scss
+.customBox {
+    border: 2px dashed #bb3186;
+    padding: 20px;
+}
+  

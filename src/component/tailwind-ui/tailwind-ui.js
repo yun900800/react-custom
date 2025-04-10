@@ -5,6 +5,8 @@ import Card from './card'
 import ResponseImage from './response-image'
 import CustomExample from './custom-example'
 import FormPlugin from './form-plugin'
+import MyComponent from '../css-variable/my-component';
+import UsetCard from '../css-variable/UserCard';
 const teams = [
   {
     id: 1,
@@ -34,6 +36,8 @@ export default function TailwindUI() {
         <ResponseImage src="assets/react.svg" alt="react" />
         <CustomExample />
         <FormPlugin />
+        <MyComponent />
+        <UsetCard name="John Doe" role="Developer" avatar="assets/react.svg" online={true} />
     </>
   )
 }
