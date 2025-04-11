@@ -1,5 +1,11 @@
 // UserCard.module.scss
 
+// 布局 / 调色 / 间距 等用 Tailwind
+
+// 复杂样式结构 / 动画 / 主题变量 用 CSS Module（甚至 SCSS Module）
+
+// 最终效果如
+
 .card {
     border: 2px solid #e2e8f0;
     border-radius: 1rem;

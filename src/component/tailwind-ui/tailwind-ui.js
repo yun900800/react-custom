@@ -6,7 +6,10 @@ import ResponseImage from './response-image'
 import CustomExample from './custom-example'
 import FormPlugin from './form-plugin'
 import MyComponent from '../css-variable/my-component';
-import UsetCard from '../css-variable/UserCard';
+import UserCard from '../css-variable/UserCard';
+
+import AuthApp from '../high-order/auth-component';
+import ErrorApp from '../high-order/with-error-boundary-component'
 const teams = [
   {
     id: 1,
@@ -37,7 +40,10 @@ export default function TailwindUI() {
         <CustomExample />
         <FormPlugin />
         <MyComponent />
-        <UsetCard name="John Doe" role="Developer" avatar="assets/react.svg" online={true} />
+        <UserCard name="John Doe" role="Developer" avatar="assets/react.svg" online={true} />
+        <UserCard name="Ava Wang" role="Product Designer" avatar="https://i.pravatar.cc/150?img=32" online={true}/>
+        <AuthApp />
+        <ErrorApp />
     </>
   )
 }
