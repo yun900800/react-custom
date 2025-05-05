@@ -17,15 +17,16 @@ import { Foldable3 } from './fold/foldable-3'
 import Articles from './component/article/articles.jsx'
 import ArticlesWithHook from './component/article/articles-with-hook.js'
 import ArticlesWithDataApi from './component/article/article-with-data-api.js'
+import './app.css'
 export default class App extends Component {
   render() {
     return (
       <div className='app-container'>
-        <div className="app">
+        <div className="app system-info">
           {process.env.NODE_ENV}, {process.env.name}
         </div>
-        <div className="app">
-          <Sparkles color="purple" width="200px" height="200px">
+        <div className="app sparkle-info">
+          <Sparkles color="var(--color-magenta)" width="200px" height="200px">
             hello
           </Sparkles>
           , react
@@ -34,13 +35,13 @@ export default class App extends Component {
             nice to meet you
           </Sparkles>
         </div>
-        <div className="app">
+        <div className="app app-input">
           <Input label="username">aaa</Input>
         </div>
-        <div className="app">
+        <div className="app app-hello">
           <Hello name="yun900800@126.com" enthusiasmLevel={5}></Hello>
         </div>
-        <div className="app">
+        <div className="app app-boop">
           <Boop rotation={20} timing={200}>
             <div>Common Boop</div>
           </Boop>
@@ -54,15 +55,15 @@ export default class App extends Component {
           <CircleDemo></CircleDemo>
         </div>
         
-        <div className="app">
+        <div className="app app-style">
         <StyleBasic></StyleBasic>
         <AdapterProps></AdapterProps>
         <StyleExtender></StyleExtender>
         </div>
-        <div className="app">
+        <div className="app app-tasklist">
           <TaskList/>
         </div>
-        <div className="app">
+        <div className="app app-foldable">
         <FoldableImage
           width={600}
           height={400}
@@ -85,7 +86,7 @@ export default class App extends Component {
           src="assets/images/process-picture.jpg"
         ></Foldable3>
         </div>
-        <div className='app'>
+        <div className='app app-article'>
           <Articles />
           <ArticlesWithHook />
           <ArticlesWithDataApi />

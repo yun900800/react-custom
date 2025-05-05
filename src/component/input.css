@@ -1,16 +1,27 @@
 .wrapper {
-  border: 1px solid #eee;
-  padding-left: 4px;
-  border-radius: 8px;
+  border: 1px solid var(--color-gray-blue);
+  /* outline: 1px solid rgb(57, 230, 57); */
+  display: inline-block;
+  background: var(--color-moon-white);
+  color: var(--color-moon-white-revert);
+  border-radius: 2px;
+}
+
+.wrapper label {
+  padding: 12px;
+  font-size: 20px;
+  /* border: 2px solid #8f0707; */
+}
+.wrapper input[type='text'] {
+  padding: 12px;
+  width: 120px; /* 初始宽度设置为大约10个字符的宽度 */
+  min-width: 96px; /* 设置最小宽度 */
 }
 input {
-  border: none;
-  outline: none;
+  /* outline: 1px solid rgb(57, 230, 57); */
   margin: 12px 8px;
-  background: #eee;
   border-radius: 8px;
   font-size: 1em;
-  line-height: 1.5em;
-  padding: 4px 12px;
-  background: rgb(226, 236, 226);
+  line-height: 1.5;
+  background: var(--color-white-gao);
 }

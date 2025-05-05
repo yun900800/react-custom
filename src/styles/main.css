@@ -187,7 +187,7 @@
     height: 100%;
     overflow-y: auto;
     position: relative;
-	padding: 1rem;
+	/* padding: 1rem; */
 }
 
 .content::-webkit-scrollbar {
@@ -202,7 +202,7 @@
 
 .content::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: #d55959;
+    background-color: var(--color-moon-white-revert);
 }
 
 .response-bar::-webkit-scrollbar {

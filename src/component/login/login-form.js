@@ -16,7 +16,7 @@ export default function LoginForm() {
         navigate('/');
     };
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-200">
+        <div className="flex items-center justify-center min-h-screen" style={{backgroundColor : 'var(--color-moon-white)'}}>
             <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold text-center text-gray-700">登录</h2>
                 

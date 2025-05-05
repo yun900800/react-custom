@@ -2,7 +2,6 @@
 import React from 'react'
 // 引入App.js文件
 // import App from './App.js';
-import './app.css'
 import RouterApp from './router.js';
 import { Provider } from 'react-redux'
 import store from './lib/store'

@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   display: flex;
@@ -29,3 +25,68 @@ body {
 .app {
   min-width: 840px;
 }
+
+.system-info {
+  background: var(--color-tianshui-green);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-tea);
+}
+
+.sparkle-info {
+  background: var(--color-peach);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-indigo-blue);
+}
+
+.app-input {
+  background: var(--color-apricot-yellow);
+  border-radius: 2px;
+  padding: 4px 8px;
+  /* color: var(--color-white-plain-reverse); */
+}
+
+.app-hello {
+  background: var(--color-duck-yellow);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain-reverse);
+}
+
+.app-boop {
+  background: var(--color-primrose);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain-reverse);
+}
+
+.app-style {
+  background: var(--color-light-green);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain-reverse);
+}
+
+.app-tasklist{
+  background: var(--color-willow-yellow);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain-reverse);
+}
+
+.app-foldable {
+  background: var(--color-willow-green);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain-reverse);
+}
+
+.app-article {
+  background: var(--color-bamboo-green);
+  border-radius: 2px;
+  padding: 4px 8px;
+  color: var(--color-white-plain);
+}
+
