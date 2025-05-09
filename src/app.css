@@ -35,10 +35,22 @@ body {
 }
 
 .sparkle-info {
-  background: var(--color-peach);
+  background: var(--color-bamboo-green);
   border-radius: 2px;
   padding: 4px 8px;
   color: var(--color-indigo-blue);
+}
+
+.sparkle-info-common {
+  color: var(--color-tong-red);
+}
+
+.sparkle-info-one {
+  color: var(--color-madder-red);
+}
+
+.sparkle-info-two {
+  color: var(--color-fiefy-red);
 }
 
 .app-input {
@@ -52,14 +64,26 @@ body {
   background: var(--color-duck-yellow);
   border-radius: 2px;
   padding: 4px 8px;
-  color: var(--color-white-plain-reverse);
+  color: var(--color-crimson-purple);
 }
 
 .app-boop {
   background: var(--color-primrose);
   border-radius: 2px;
   padding: 4px 8px;
-  color: var(--color-white-plain-reverse);
+  color: var(--color-crimson-red);
+}
+
+.app-boop-common-color {
+  color: var(--color-rouge);
+}
+
+.app-boop-spring-color {
+  color: var(--color-vermilion);
+}
+
+.app-boop-new-color {
+  color: var(--color-cinnabar);
 }
 
 .app-style {

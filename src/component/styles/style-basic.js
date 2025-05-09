@@ -3,7 +3,7 @@ import React from 'react'
 export const StyleBasic = () => {
   return (
     <Wrapper>
-      <Title>Hello World!</Title>
+      <Title>two color match and mixed</Title>
     </Wrapper>
   )
 }
@@ -12,11 +12,11 @@ export const StyleBasic = () => {
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
-  color: #bf4f74;
+  color: var(--color-purple);
 `
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
   padding: 4em;
-  background: papayawhip;
+  background: var(--color-white-gao);
 `

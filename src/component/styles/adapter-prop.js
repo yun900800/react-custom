@@ -11,12 +11,12 @@ export const AdapterProps = () => {
 
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.$primary ? '#BF4F74' : 'white')};
-  color: ${(props) => (props.$primary ? 'white' : '#BF4F74')};
+  background: ${(props) => (props.$primary ? 'var(--color-dark-brown)' : 'white')};
+  color: ${(props) => (props.$primary ? 'white' : 'var(--color-dark-brown)')};
 
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid #bf4f74;
+  border: 2px solid var(--color-orange-between-yellow-and-red);
   border-radius: 3px;
 `

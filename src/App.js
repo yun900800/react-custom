@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Sparkles from './sparkle/sparkles'
 import Input from './component/new-input'
+import CustomInput,{AnimatedInput} from './component/input'
 import Hello from './component/Hello.tsx'
 import { Boop, SpringBoop, NewBoop } from './boop/boop'
 import CircleDemo from './component/circle-demo'
@@ -27,38 +28,42 @@ export default class App extends Component {
         </div>
         <div className="app sparkle-info">
           <Sparkles color="var(--color-magenta)" width="200px" height="200px">
-            hello
+            <span className='sparkle-info-common'>hello</span>
           </Sparkles>
-          , react
+          , <span className='sparkle-info-one'>react</span>
           <br />
           <Sparkles color="green" width="200px" height="200px">
-            nice to meet you
+            <span className='sparkle-info-two'>nice to meet you</span>
           </Sparkles>
         </div>
         <div className="app app-input">
           <Input label="username">aaa</Input>
+          <CustomInput label="自定义邮箱:" id="custom-email"></CustomInput>
+          <CustomInput label="自定义账号:" id="custom-account"></CustomInput>
+          <CustomInput label="自定义密码:" id="custom-password"></CustomInput>
+          <AnimatedInput label="自定义密码:" id="custom-password-animated" type='password'></AnimatedInput>
         </div>
         <div className="app app-hello">
           <Hello name="yun900800@126.com" enthusiasmLevel={5}></Hello>
         </div>
         <div className="app app-boop">
           <Boop rotation={20} timing={200}>
-            <div>Common Boop</div>
+            <div className='app-boop-common-color'>Common Boop</div>
           </Boop>
-          <SpringBoop rotation={20} x={20} timing={200}>
-            <div>Spring Boop </div>
+          <SpringBoop  rotation={20} x={20} timing={200}>
+            <div className='app-boop-spring-color'>Spring Boop </div>
           </SpringBoop>
 
           <NewBoop rotation={20} y={20} timing={200}>
-            <div>NewBoop with Spring and Hooks</div>
+            <div className='app-boop-new-color'>NewBoop with Spring and Hooks</div>
           </NewBoop>
           <CircleDemo></CircleDemo>
         </div>
         
         <div className="app app-style">
-        <StyleBasic></StyleBasic>
-        <AdapterProps></AdapterProps>
-        <StyleExtender></StyleExtender>
+          <StyleBasic></StyleBasic>
+          <AdapterProps></AdapterProps>
+          <StyleExtender></StyleExtender>
         </div>
         <div className="app app-tasklist">
           <TaskList/>

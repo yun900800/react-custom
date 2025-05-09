@@ -13,15 +13,14 @@
   /* border: 2px solid #8f0707; */
 }
 .wrapper input[type='text'] {
-  padding: 12px;
+  /* padding: 12px; */
   width: 120px; /* 初始宽度设置为大约10个字符的宽度 */
   min-width: 96px; /* 设置最小宽度 */
-}
-input {
-  /* outline: 1px solid rgb(57, 230, 57); */
+  outline: 1px solid rgb(57, 230, 57);
   margin: 12px 8px;
   border-radius: 8px;
   font-size: 1em;
   line-height: 1.5;
   background: var(--color-white-gao);
+  max-width: 360px;
 }

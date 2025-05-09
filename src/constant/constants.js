@@ -1,7 +1,7 @@
 const COLORS = {
     text: 'black',
     background: 'white',
-    primary: 'rebeccapurple',
+    primary: 'var(--color-maroon)',
   };
   
   const SIZES = [

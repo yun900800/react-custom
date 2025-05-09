@@ -1,0 +1,103 @@
+.inputGroup {
+    position: relative;
+    margin: 1.5em 0;
+}
+  
+.input {
+    border: none;
+    border-bottom: 2px solid var(--color-gray-blue);
+    padding: 0.5em 0.8rem;
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    background: var(--color-moon-white);
+    color: var(--color-moon-white-reverse);
+}
+  
+.input:focus {
+    outline: none;
+    border-bottom-color: var(--color-tianshui-green); /* 焦点时的颜色 */
+}
+  
+.label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--color-xuanqing);
+    font-size: 1em;
+    /* 这里需要注意的是如果label与input不在一行，这个属性可以不要;如果在同一行，那么就需要 */
+    /* pointer-events: none;  */
+    /* 防止 label 遮挡输入 */
+    transition: 0.3s ease all;
+    cursor: pointer;
+}
+  
+.input:focus + .label,
+  .input:not(:placeholder-shown) + .label {
+    top: -1.4em;
+    font-size: 0.8em;
+    color: var(--color-xuanqing); /* 焦点时的颜色 */
+}
+
+
+.input-group-animated {
+    position: relative;
+    margin: 1.5em 0;
+}
+  
+.input-animated {
+    border: none;
+    padding: 0.5em 0.8rem;
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    background-color: var(--color-moon-white); /* 使输入框背景透明 */
+    border-radius: 2px;
+    
+}
+  
+.input-animated:focus {
+    outline: none;
+}
+  
+.label-animated {
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    color: #999;
+    font-size: 1em;
+    /* pointer-events: none; */
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+  
+.input-animated:focus + .label-animated,
+  .input-animated:not(:placeholder-shown) + .label-animated {
+    top: -1.5em;
+    font-size: 0.8em;
+    color: #007bff;
+}
+  
+.border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+}
+  
+.border::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-tianshui-green);
+    transition: 0.3s ease all;
+}
+  
+.input-animated:focus + .label-animated + .border::before {
+    width: 100%;
+}

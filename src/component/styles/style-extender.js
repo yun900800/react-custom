@@ -35,13 +35,13 @@ const Button = styled.button`
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid #bf4f74;
+  border: 2px solid var(--color-camel);
   border-radius: 3px;
 `
 
 // A new component based on Button, but with some override styles
 const TomatoButton = styled(Button)`
-  color: tomato;
+  color: var(--color-dusky-yellow);
   border-color: tomato;
 `
 

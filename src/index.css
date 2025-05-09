@@ -14,12 +14,55 @@
   --color-cherry: rgba(201, 55, 86,1);
   --color-silver-red: rgba(240, 86, 84,1);
   --color-crimson : rgba(255, 33, 33,1);
+  --color-crimson-purple : rgb(140, 67, 86,1);
+  --color-crimson-red : rgba(200, 60, 35,1);
+  --color-rouge: rgba(157, 41, 51,1);
+  --color-vermilion: rgba(255, 76, 0,1);
+  --color-cinnabar: rgba(255, 78, 32,1);
+  --color-tong-red: rgba(243, 83, 54,1);
+  --color-madder-red: rgba(203, 58, 86,1);
+  --color-fiefy-red: rgba(255, 45, 81,1);
+  --color-hechi-red: rgba(201, 31, 55,1);
+  --color-bright-red: rgba(239, 122, 130,1);
+  --color-magenta-red: rgba(255, 0, 151,1);
+  --color-flame-red: rgba(255, 51, 0,1);
+  --color-chi-red: rgba(195, 39, 43,1);
+  --color-jiang-red: rgba(169, 129, 117,1);
+  --color-zao-red: rgba(195, 33, 54,1);
+  --color-sandalwood-red: rgba(179, 109, 97,1);
+  --color-deep-red: rgba(190, 0, 47,1);
+  --color-flushed-red: rgba(220, 48, 35,1);
+  --color-blushing-red: rgba(249, 144, 111,1);
 
   /* 黄色系 */
   --color-light-yellow: rgba(255, 241, 67,1);
   --color-duck-yellow: rgba(250, 255, 114,1);
   --color-primrose: rgba(234, 255, 86,1);
   --color-apricot-yellow: rgba(255, 166, 49,1);
+  --color-apricot-red: rgba(255, 140, 49,1);
+  --color-orange: rgba(255, 137, 54,1);
+  --color-orange-ad: rgba(255, 164, 0,1);
+  --color-orange-red: rgba(255, 117, 0,1);
+  --color-turmeric: rgba(255, 199, 115,1);
+  --color-purple: rgba(240, 194, 57,1);
+  --color-orange-between-yellow-and-red: rgba(250, 140, 53,1);
+  --color-dark-brown: rgba(179, 92, 68,1);
+  --color-camel: rgba(168, 132, 98,1);
+  --color-dusky-yellow: rgba(200, 155, 64,1);
+  --color-maroon: rgba(96, 40, 30,1);
+  --color-brown: rgba(178, 93, 37,1);
+  --color-brown-green: rgba(130, 113, 0,1);
+  --color-brown-black: rgba(124, 75, 0,1);
+  --color-brown-red: rgba(155, 68, 0,1);
+  --color-brown-yellow: rgba(174, 112, 0,1);
+  --color-ocher: rgba(156, 83, 51,1);
+  --color-ocher-red : rgba(149, 85, 57,1);
+  --color-amber: rgba(202, 105, 36,1);
+  --color-brown: rgba(110, 81, 30,1);
+  --color-withered: rgba(211, 177, 125,1);
+  --color-cotinus-coggygria: rgba(226, 156, 69,1);
+  --color-autumn-yellow: rgba(137, 108, 57,1);
+  --color-autumn-fragrance: rgba(217, 182, 17,1);
 
   /* 绿色系 */
   --color-light-green: rgba(189, 221, 34,1);
@@ -29,6 +72,33 @@
   --color-onion-yellow: rgba(163, 217, 0,1);
   --color-onion-green: rgba(158, 217, 0,1);
   --color-tianshui-green: rgba(89,204,178,1);
+  --color-onion-cyan: rgba(14, 184, 58,1);
+  --color-turquoise: rgba(10, 163, 68,1);
+  --color-oily-green: rgba(0, 188, 18,1);
+  --color-dark-green: rgba(12, 137, 24,1);
+  --color-jade-green: rgba(42, 221, 156,1);
+  --color-jade: rgba(27, 209, 165,1);
+  --color-cyan-green: rgba(72, 192, 163,1);
+  --color-emerald: rgba(61, 225, 173,1);
+  --color-grass-green: rgba(64, 222, 90,1);
+  --color-cyan: rgba(0, 224, 158,1);
+  --color-verdant: rgba(0, 224, 121,1); 
+  --color-pale-cyan-white: rgba(192, 235, 215,1);
+  --color-duck-egg-blue: rgba(224, 238, 232,1);
+  --color-crab-shell-green: rgba(187, 205, 197,1);
+  --color-crow-blue: rgba(66, 76, 80,1);
+  --color-green: rgba(0, 229, 0,1);
+  --color-bean-green: rgba(158, 208, 72,1);
+  --color-bean-cyan: rgba(150, 206, 84,1);
+  --color-azurite: rgba(123, 207, 166,1);
+  --color-jade: rgba(46, 223, 163,1);
+  --color-light-blue: rgba(127, 236, 173,1);
+  --color-ai-green: rgba(164, 226, 198,1);
+  --color-pine-cypress-green: rgba(33, 166, 117,1);
+  --color-pine-green: rgba(5, 119, 72,1);
+  --color-pine: rgba(188, 230, 114,1);
+
+  
 
   /* 蓝色系 */
   --color-sky-blue: rgba(68, 206, 246,1);
@@ -38,6 +108,25 @@
   --color-azure-sky: rgba(112, 243, 255,1);
   --color-sapphire-blue: rgba(75, 92, 196,1);
   --color-gray-blue: rgba(161, 175, 201,1);
+  --color-navy: rgba(46, 78, 126,1);
+  --color-navy-blue: rgba(59, 46, 126,1);
+  --color-dark-blue: rgba(74, 66, 102,1);
+  --color-dailuo: rgba(74, 66, 102,1);
+  --color-dark-green: rgba(66, 102, 102,1);
+  --color-delan: rgba(66, 80, 102,1);
+  --color-dark-purple: rgba(87, 66, 102,1);
+  --color-purple: rgba(141, 75, 187,1);
+  --color-purple-sauce: rgba(129, 84, 99,1);
+  --color-purple-sauce-red: rgba(129, 84, 118,1);
+  --color-rosewood: rgba(76, 34, 27,1);
+  --color-dark-blue-primary: rgba(0, 51, 113,1);
+  --color-purple-tang: rgba(86, 0, 79,1);
+  --color-blue-purple: rgba(128, 29, 174,1);
+  --color-ultramarine: rgba(76, 141, 174,1);
+  --color-snow-cyan: rgba(176, 164, 227,1);
+  --color-lilac-blue: rgba(204, 164, 227,1);
+  --color-pale-pinkish-gray: rgba(237, 209, 216,1);
+  --color-purple-red: rgba(228, 198, 208,1);
 
   /* 苍色系 */
   --color-pale: rgba(117, 135, 138,1);
@@ -60,6 +149,42 @@
   --color-white: rgba(255, 255, 255,1);
   --color-ivory: rgba(255, 251, 240,1);
   --color-snow-white: rgba(240, 252, 255,1);
+  --color-moon-white: rgba(214, 236, 240,1);
+  --color-gao-white: rgba(242, 236, 222,1);
+  --color-plain: rgba(224, 240, 233,1);
+  --color-white-tea: rgba(243, 249, 241,1);
+  --color-frost: rgba(233, 241, 246,1);
+  --color-flower-white: rgba(194, 204, 208,1);
+  --color-fish-belly-white: rgba(252, 239, 232,1);
+  --color-ying-white: rgba(227, 249, 253,1);
+  --color-bray: rgba(128, 128, 128,1);
+  --color-tooth-color: rgba(238, 222, 176,1);
+  --color-lead-white: rgba(240, 240, 244,1);
+
+  /* 黑色系 */
+  --color-xuan-black: rgba(98, 42, 29,1);
+  --color-xuanqing: rgba(61, 59, 79,1);
+  --color-wu-black: rgba(114, 94, 130,1);
+  --color-jet-black: rgba(57, 47, 65,1);
+  --color-dark-black: rgba(22, 24, 35,1);
+  --color-ink-black: rgba(80, 97, 109,1);
+  --color-ink-gray: rgba(117, 138, 153,1);
+  --color-black: rgba(0, 0, 0,1);
+  --color-silk-black: rgba(73, 49, 49,1);
+  --color-coal-black: rgba(49, 37, 32,1);
+  --color-yellow-black: rgba(93, 81, 60,1);
+  --color-grass-black: rgba(117, 102, 77,1);
+  --color-you: rgba(107, 104, 130,1);
+  --color-you-black: rgba(102, 87, 87);
+  --color-an-black: rgba(65, 85, 93,1);
+
+  /* 金银色系 */
+  --color-red-gold: rgba(242, 190, 69,1);
+  --color-gold: rgba(234, 205, 118,1);
+  --color-silver-white: rgba(233, 231, 239,1);
+  --color-patina: rgba(84, 150, 136,1);
+  --color-black-gold: rgba(167, 142, 68,1);
+  --color-old-silver: rgba(186, 202, 198,1);
 
 
   /* 上面颜色的补色 */
@@ -124,7 +249,7 @@ label {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-button::-moz-focus-inner,
+/* button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -136,7 +261,7 @@ input[type='reset'],
 input[type='submit'] {
   cursor: pointer;
   appearance: button;
-}
+} */
 
 @keyframes spin {
   0% {
@@ -199,7 +324,7 @@ input[type='submit'] {
   font-style: italic;
 }
 
-input[type='text'],
+/* input[type='text'],
 input[type='email'],
 input[type='password'],
 textarea {
@@ -214,7 +339,7 @@ textarea {
   box-sizing: border-box;
   color: #333;
   outline: none;
-}
+} */
 
 .checkbox {
   display: inline-block;
