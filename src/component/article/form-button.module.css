@@ -1,0 +1,38 @@
+.input-button-container {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  max-width: 600px;
+}
+
+.input-field, .submit-button {
+  height: 40px; /* 设置相同的高度 */
+  padding: 0 10px; /* 内边距让内容更美观 */
+  font-size: 16px; /* 设置字体大小 */
+}
+
+.input-field {
+  flex-grow: 1; /* 使输入框扩展以填充可用空间 */
+  border: 1px solid #ccc; /* 输入框边框 */
+  border-radius: 4px; /* 圆角 */
+  min-width: 180px;
+  max-width: 240px;
+  color: black;
+}
+
+.input-field:focus {
+  border-color: #4CAF50; /* 输入框聚焦时的边框颜色 */
+  outline: none; /* 去掉默认的轮廓线 */
+  color: black;
+}
+
+.submit-button {
+  border: 1px solid #ccc; /* 按钮边框 */
+  background-color: #4CAF50; /* 按钮背景色 */
+  color: white; /* 按钮文字颜色 */
+  border-radius: 4px; /* 圆角 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+}
+
+.submit-button:hover {
+  background-color: #45a049; /* 按钮悬停效果 */
+}

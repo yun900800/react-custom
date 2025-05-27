@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../../styles/main.css'
+import PostList from './postlist'
+import FormButton from './form-button'
 
 function Articles() {
   /**
@@ -18,22 +20,6 @@ function Articles() {
   )
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
-
-  // useEffect(()=>{
-  //     const fetchData = async () => {
-  //         const response = await fetch(
-  //           'https://hn.algolia.com/api/v1/search?query=redux',
-  //         );
-  //         const result = await response.json();
-  //         const data = {
-  //             hits: result.hits
-  //         }
-  //         setData(data);
-  //         console.log(data);
-  //     };
-  //     console.log(5555);
-  //     fetchData();
-  // },[]);
   useEffect(() => {
     const fetchData = async () => {
       setIsError(false)
@@ -53,7 +39,7 @@ function Articles() {
 
   return (
     <>
-      <form
+      {/* <form
         onSubmit={(event) => {
           setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`)
           event.preventDefault()
@@ -73,18 +59,21 @@ function Articles() {
         >
           search
         </button>
-      </form>
+      </form> */}
+      <FormButton
+        onClick={(event) => {
+          setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`)
+          event.preventDefault()
+        }}
+        setQuery={setQuery}
+        query={query}
+        text="Search"
+      />
       {isError && <div>Something went wrong ...</div>}
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <ul>
-          {data.hits.map((item) => (
-            <li key={item.objectID}>
-              <a href={item.url}>{item.title}</a>
-            </li>
-          ))}
-        </ul>
+        <PostList posts={data.hits} />
       )}
     </>
   )

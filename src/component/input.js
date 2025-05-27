@@ -45,7 +45,7 @@ const AnimatedInput = ({ id = '', label = '', type = 'text' }) => {
         <Sparkles color="var(--color-orange-ad)">{label}</Sparkles>
         {/* {label} */}
       </label>
-      <span class={styles.border}></span>
+      <span className={styles.border}></span>
     </div>
   )
 }

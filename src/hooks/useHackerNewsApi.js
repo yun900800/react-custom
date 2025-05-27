@@ -11,14 +11,14 @@ const useHackerNewsApi = (initialUrl, initialData)=>{
             setIsError(false);
             try {
                 const result = await axios(url);
-                setData(result.data);
+                setData(result.data);  
             } catch(error){
                 setIsError(true);
                 setData(initialData)
             }
             setIsLoading(false);
         }
-        fetchData();
+        fetchData();     
     },[url]);
     return [{data, isLoading, isError},setUrl];
 }
