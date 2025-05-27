@@ -28,7 +28,7 @@ const Paragraph = styled.p`
 `;
 
 const Button = styled.button`
-    width:60px;
+    min-width:50%;
     height:60px;
     background: yellow;
     border-radius:8px;
@@ -99,18 +99,34 @@ export function Timer() {
     return () => clearInterval(interval);
   }, []);
 
+  const renderCountFn = ()=>{
+        setRenderCount((prev) => prev + 1);
+        document.documentElement.classList.toggle('dark')
+  }
+
   return (
     <div className='custom-card'>
-      <p>Render count: {renderCount}</p>
-      <div className="bg-background-light dark:bg-background-dark">主题测试</div>
-      <button onClick={() => {
+      {/* <p>Render count: {renderCount}</p>
+      <div className="bg-background-light dark:bg-background-dark">主题测试</div> */}
+      <Display renderCount={renderCount} title="主题测试" />
+      <Button onClick={renderCountFn}>Force Render</Button>
+      {/* <button onClick={() => {
         setRenderCount((prev) => prev + 1);
         document.documentElement.classList.toggle('dark')
         }}>
         Force Render
-      </button>
+      </button> */}
     </div>
   );
+}
+
+const Display = ({renderCount, title})=>{
+    return (
+        <>
+            <p>Render count: {renderCount}</p>
+            <div className="bg-background-light dark:bg-background-dark">{title}</div>
+        </> 
+    )
 }
 
 // export default class Counter extends React.Component {

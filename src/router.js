@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import App from './App'
+import React, { useState } from 'react'
 import { 
-  useNavigate,
-  BrowserRouter as Router, 
-  Route, 
-  Routes, 
-  Link,
+  BrowserRouter as Router,  
   Navigate,
-  Outlet  
+  Outlet,
+  Route, Routes
 } from 'react-router-dom'
-import { updateUser } from './lib/store'
 import './styles/main.css'
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js'
 import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js';
@@ -23,18 +18,16 @@ import ResponseImages from './component/tailwind-ui/response-images.js'
 import LayoutOne from './component/layout/layout-one.js'
 
 import LoginForm  from './component/login/login-form.js'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import LayoutTwo from './component/layout/layout-two.js'
-import { Welcome } from './stories/welcome.js'
+import { Welcome } from './stories/welcome.js';
+import Breadcrumb  from './component/Breadcrumb.js';
+import App from './App';
+
+import AppRoutes from './app-routes.js';
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
-  // useEffect(()=>{
-  //   document.body.addEventListener('click',popup);
-  //   return ()=>{
-  //     document.body.removeEventListener('click',popup);
-  //   }
-  // });
   const popup = (e)=>{
     setShow(!show);
     e.stopPropagation();
@@ -42,6 +35,20 @@ export default function RouterApp() {
   const user = useSelector(state => {
     return state.user.user
   });
+
+  const breadcrumbLinks = [
+    { path: '/', label: 'home' },
+    { path: '/welcome', label: 'welcome' },
+    { path: '/tailwindui', label: 'tailwindui' },
+    { path: '/tailwindtext', label: 'tailwindtext' },
+    { path: '/tailwindresponse', label: 'tailwindresponse' },
+    { path: '/tailwindexampleui', label: 'tailwindexampleui' },
+    { path: '/scene', label: 'scene' },
+    { path: '/styled', label: 'styled' },
+    { path: '/images-card', label: 'images-card' },
+    { path: '/layoutone', label: 'layout-one' },
+    { path: '/layouttwo', label: 'layout-two' },
+  ];
   
   return (
     <>
@@ -53,53 +60,9 @@ export default function RouterApp() {
               <div className="hamburger"></div>
             </label>
           </div>
-          <nav className='st-menu st-effect-1'>
-            <ul>
-              <li>
-                <Link to="/">home</Link>
-              </li>
-              <li>
-                <Link to="/welcome">welcome</Link>
-              </li>
-              <li>
-                <Link to="/tailwindui">tailwindui</Link>
-              </li>
-              <li>
-                <Link to="/tailwindtext">tailwindtext</Link>
-              </li>
-              <li>
-                <Link to="/tailwindresponse">tailwindresponse</Link>
-              </li>
-              <li>
-                <Link to="/tailwindexampleui">tailwindexampleui</Link>
-              </li>
-              <li>
-                <Link to="/scene">scene</Link>
-              </li>
-              <li>
-                <Link to="/styled">styled</Link>
-              </li>
-              <li>
-                <Link to="/images-card">images-card</Link>
-              </li>
-              <li>
-                <Link to="/layoutone">layout-one</Link>
-              </li>
-              <li>
-                <Link to="/layouttwo">layout-two</Link>
-              </li>
-              <li>
-                <Logout/>
-              </li>
-            </ul>
-          </nav>
-          <div className='content'>
-          {/* {user ? (
-            <button onClick={handleLogout}>Sign Out</button>
-          ) : (
-            <button onClick={handleLogin}>Sign In</button>
-          )} */}
-
+          <Breadcrumb links={breadcrumbLinks} />
+          
+          {/* <div className='content'>
             <Routes>
               <Route path="/" exact element={<App />} />
               <Route path="/login" exact element={<LoginForm />} />
@@ -119,16 +82,6 @@ export default function RouterApp() {
                 <Route path="/tailwindtext" element={ <Layout><TextStylingCombinations /></Layout>} />
                 <Route path="/tailwindresponse" element={<Layout><ResponsiveText /></Layout>} />
               </Route>
-              {/* <Route path="/tailwindtext" element={
-                <ProtectedRoute user={user}>
-                  <TextStylingCombinations />
-                </ProtectedRoute>
-                } />
-              <Route path="/tailwindresponse" element={
-                <ProtectedRoute user={user}>
-                  <ResponsiveText/>
-                </ProtectedRoute>
-                }/> */}
               <Route path="/tailwindexampleui" element={
                 <ProtectedRoute isAllowed={
                   !!user && user.permissions && user.permissions.includes('analyze')
@@ -281,31 +234,15 @@ export default function RouterApp() {
                   </LayoutOne>
                 </ProtectedRoute>
               }/>
-            </Routes>
-          </div>
+            </Routes> 
+            
+          </div> */}
+          <div className="content">
+              <AppRoutes user={user} />
+            </div>
         </main>
       </Router>
     </>
-  )
-}
-
-// const Welcome = () => (
-//   <div className="task-container">
-//     <Provider store={store}>
-//       <TaskList></TaskList>
-//     </Provider>
-//   </div>
-// )
-
-const Logout = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleLogout = () =>{
-    dispatch(updateUser(null));
-    navigate('/login');
-  }
-  return (
-    <a onClick={handleLogout}>退出</a>
   )
 }
 
