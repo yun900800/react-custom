@@ -4,9 +4,9 @@ import '../../styles/main.css'
 import PostList from './postlist';
 import FormButton from './form-button';
 function ArticlesWithHook() {
-  const [query, setQuery] = useState('redux')
+  const [query, setQuery] = useState('react')
   const [{ data, isLoading, isError }, doFetch] = useHackerNewsApi(
-    'https://hn.algolia.com/api/v1/search?query=redux',
+    `http://hn.algolia.com/api/v1/search?query=${query}`,
     { hits: [] }
   )
 

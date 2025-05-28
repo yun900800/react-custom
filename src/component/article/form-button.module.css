@@ -36,3 +36,16 @@
 .submit-button:hover {
   background-color: #45a049; /* 按钮悬停效果 */
 }
+
+.post-error-container {
+  color: red; /* 错误信息颜色 */
+  font-size: 14px; /* 错误信息字体大小 */
+  margin-top: 10px; /* 错误信息与输入框的间距 */
+  width: 100%; /* 错误信息宽度 */
+  height: auto;
+  min-height: 600px;
+  display: flex;
+  align-items: center; /* 水平居中对齐 */
+  justify-content: center; /* 垂直居中对齐 */
+  background: #ccc;
+}

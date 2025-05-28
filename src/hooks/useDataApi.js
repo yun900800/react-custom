@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
-const useHackerNewsApi = (initialUrl, initialData)=>{
+const useDataApi = (initialUrl, initialData)=>{
     const [data,setData] = useState(initialData);
     const [url,setUrl] = useState(initialUrl);
     const [isLoading,setIsLoading] = useState(false);
@@ -9,7 +9,7 @@ const useHackerNewsApi = (initialUrl, initialData)=>{
         const fetchData = async ()=>{
             setIsLoading(true);
             setIsError(false);
-            try {
+            try {  
                 const result = await axios(url);
                 setData(result.data);
             } catch(error){
@@ -22,4 +22,4 @@ const useHackerNewsApi = (initialUrl, initialData)=>{
     },[url]);
     return [{data, isLoading, isError},setUrl];
 }
-export default useHackerNewsApi;
+export default useDataApi;

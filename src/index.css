@@ -503,10 +503,14 @@ textarea {
 .list-item input[type='text'] {
   background: transparent;
   width: 100%;
+  line-height: 3.5;
+  border: 0;
+  font-size: 14px;
 }
 
 .list-item input[type='text']:focus {
   cursor: text;
+  border: 0;
 }
 
 .pin-button {

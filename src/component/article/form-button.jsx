@@ -14,6 +14,7 @@ const FormButton = ({ onClick, setQuery, query,text }) => {
             <input
                 type="text"
                 value={query}
+                placeholder={query}
                 onChange={(event) => setQuery(event.target.value)}
                 className={styles['input-field']}
             />

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './input.module.css';
 import Sparkles from '../sparkle/sparkles';
-console.log(styles);
 
 const Input = ({ id = '', label = '', type = 'text' }) => {
   const [value, setValue] = useState('')

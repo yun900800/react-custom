@@ -1,11 +1,12 @@
 import useDataApi from '../../hooks/useDataApi';
 import React, {useState} from "react";
 import PostList from './postlist';
+import PostError from './post-error';
 import FormButton from './form-button';
 function ArticlesWithDataApi(){
-    const [query, setQuery] = useState('redux');
+    const [query, setQuery] = useState('redis');
     const [{ data, isLoading, isError }, doFetch] = useDataApi(
-        'https://hn.algolia.com/api/v1/search?query=redux',
+        `http://hn.algolia.com/api/v1/search?query=${query}`,
         { hits: [] });
   return (
     <>
@@ -16,9 +17,9 @@ function ArticlesWithDataApi(){
           }}
           setQuery={setQuery}
           query={query}
-          text="Search-with-hook"
+          text="Search-with-cancellation"
       />
-      {isError && <div>Something went wrong ...</div>}
+      {isError && <PostError msg="Something went wrong ..." />}
 
       {isLoading ? (
         <div>Loading ...</div>
