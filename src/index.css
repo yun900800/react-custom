@@ -680,7 +680,7 @@ textarea {
 .task-container {
   display: flex;
   justify-content: center;
-  
+  flex-wrap: wrap;
 }
 
 @media screen and ( min-width: 1160px ) {

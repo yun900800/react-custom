@@ -310,4 +310,15 @@
 	  background-color:greenyellow ;
 	}
 }
+
+/* public/index.css 或你项目的CSS文件 */
+
+.fade-animation-container {
+  opacity: 0; /* 初始状态，完全透明 */
+  transition: opacity 1s ease-in-out; /* 定义过渡效果：透明度在1秒内平滑变化 */
+}
+
+.fade-animation-container.fade-in-active {
+  opacity: 1; /* 激活状态，完全不透明 */
+}
   
