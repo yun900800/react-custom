@@ -12,6 +12,7 @@ import AfterApp from "../component/generic-content-card/AfterApp";
 import PanelApp from "../component/layout/PanelApp";
 import TwoColumnApp from "../component/layout/TwoColumnApp";
 import MouseTrackerApp from "../component/layout/MouseTrackerApp";
+import UseEffectApp from "../component/layout/useInnerWidth";
 export const Welcome = () => {
   console.log('这个组件载入index.css'); 
   return (
@@ -29,6 +30,7 @@ export const Welcome = () => {
       <PanelApp />
       <TwoColumnApp />
       <MouseTrackerApp />
+      <UseEffectApp />
     </>
   )
 }
