@@ -14,6 +14,12 @@ import TwoColumnApp from "../component/layout/TwoColumnApp";
 import MouseTrackerApp from "../component/layout/MouseTrackerApp";
 import UseEffectApp from "../component/layout/useInnerWidth";
 import TwoColumnNewApp from "../component/layout/TwoColumnNewApp";
+import ThemeContextApp from "../component/data-share/context/ThemeContextApp"; 
+import ReduxApp from "../component/data-share/redux/ReduxApp";
+import WithDataApp from "../component/data-share/hocs/WithDataApp";
+import ThemeApp from "../component/data-share/children-pass-through/ThemeApp";
+import FormApp from "../component/form/form-app";
+import SvgApp from "../component/svg/SvgApp";
 export const Welcome = () => {
   console.log('这个组件载入index.css'); 
   return (
@@ -33,6 +39,12 @@ export const Welcome = () => {
       <MouseTrackerApp />
       <UseEffectApp />
       <TwoColumnNewApp />
+      <ThemeContextApp />
+      <ReduxApp />
+      <WithDataApp />
+      <ThemeApp />
+      <FormApp />
+      <SvgApp />
     </>
   )
 }

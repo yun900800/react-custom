@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { 
-  BrowserRouter as Router,  
-  Navigate,
-  Outlet,
+  BrowserRouter as Router,
 } from 'react-router-dom'
 import './styles/main.css'
 import { useSelector } from 'react-redux'
 import Breadcrumb  from './component/Breadcrumb.js';
-
+import Toggle from './component/toggle.js';
 import AppRoutes from './app-routes.js';
+import MainLayout from './component/layout/main-layout.js';
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
@@ -37,18 +36,14 @@ export default function RouterApp() {
   return (
     <>
       <Router>
-        <main className={show?'st-container st-menu-open st-effect-1':'st-container st-effect-1'}>
-          <div className='toggle' id="toggle">
-            <input className="menu-trigger hidden" id="togglenav" type="checkbox"/>
-            <label className="burger-wrapper" htmlFor="togglenav" onClick={popup}>
-              <div className="hamburger"></div>
-            </label>
-          </div>
-          <Breadcrumb links={breadcrumbLinks} />
-          <div className="content">
-              <AppRoutes user={user} />
-            </div>
-        </main>
+        <MainLayout 
+          show={show} 
+          toggle={<div className="toggle-wrapper">
+              <Toggle toggle={popup} bgColor={'var(--color-jade-green)'} />
+            </div>}
+          sidebar={<Breadcrumb links={breadcrumbLinks} />}>
+          <AppRoutes user={user} />
+        </MainLayout>
       </Router>
     </>
   )

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../lib/store'
+import { updateUser } from '../lib/store';
+import styles from './breadcrumb.module.css'; // Assuming you have a CSS module for styles
 
 const Breadcrumb = ({ links }) => {
   return (
-    <nav className="st-menu st-effect-1">
-      <ul>
+    <>
+      <ul className={styles['sidebar-nav']}>
         {links.map((link, index) => (
           <li key={index}>
             <Link to={link.path}>{link.label}</Link>
@@ -16,7 +17,7 @@ const Breadcrumb = ({ links }) => {
           <Logout />
         </li>
       </ul>
-    </nav>
+    </>
   );
 };
 

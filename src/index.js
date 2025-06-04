@@ -1,7 +1,5 @@
 // 引入react和react-dom库文件
 import React from 'react'
-// 引入App.js文件
-// import App from './App.js';
 import RouterApp from './router.js';
 import { Provider } from 'react-redux'
 import store from './lib/store'
