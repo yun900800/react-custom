@@ -20,6 +20,9 @@ import WithDataApp from "../component/data-share/hocs/WithDataApp";
 import ThemeApp from "../component/data-share/children-pass-through/ThemeApp";
 import FormApp from "../component/form/form-app";
 import SvgApp from "../component/svg/SvgApp";
+import FoccApp from "../component/facc/focc-app";
+import FaccModuleProblemApp from "../component/facc-module-problem/Facc-module-problem-app";
+import CloverApp from '../component/clover/CloverApp';
 export const Welcome = () => {
   console.log('这个组件载入index.css'); 
   return (
@@ -45,6 +48,9 @@ export const Welcome = () => {
       <ThemeApp />
       <FormApp />
       <SvgApp />
+      <FoccApp />
+      <FaccModuleProblemApp />
+      <CloverApp/>
     </>
   )
 }

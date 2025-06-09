@@ -1,0 +1,33 @@
+.btn {
+    min-width: 48px;
+}
+
+.toggleBtn {
+  background-color: blue;
+  color: white;
+}
+
+.active {
+    background-color: green;
+    color: white;
+}
+.inactive {
+    background-color: red;
+    color: white;
+}
+
+.on {
+    background-color: var(--color-tianshui-green);
+    color: var(--color-white-gao);
+}
+
+.off {
+    background-color: var(--color-sapphire-blue);
+    color: var(--color-white-gao);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    gap: 24px;
+}

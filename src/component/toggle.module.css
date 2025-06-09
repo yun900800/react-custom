@@ -44,6 +44,10 @@
 	top: 15px;
 }
 
+.menu-trigger {
+    display: none;
+}
+
 .menu-trigger:checked + .burger-wrapper .hamburger{
 	background: transparent;
 }

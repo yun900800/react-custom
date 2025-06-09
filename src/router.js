@@ -8,6 +8,7 @@ import Breadcrumb  from './component/Breadcrumb.js';
 import Toggle from './component/toggle.js';
 import AppRoutes from './app-routes.js';
 import MainLayout from './component/layout/main-layout.js';
+import ToggleSwitch from './component/toggle-switch.tsx';
 
 export default function RouterApp() {
   const [show,setShow] = useState(false); 
@@ -32,18 +33,42 @@ export default function RouterApp() {
     { path: '/layoutone', label: 'layout-one' },
     { path: '/layouttwo', label: 'layout-two' },
   ];
+
+  // 使用这种抽取组件的方式，内部的样式似乎没有效果
+  // const ToggleWrapper = ({ toggle }) => {
+  //   return (
+  //     <div className="toggle-wrapper">
+  //       <Toggle toggle={toggle} bgColor={'var(--color-jade-green)'} />
+  //     </div>
+  //   );
+  // }
   
   return (
     <>
       <Router>
-        <MainLayout 
+        {/* <MainLayout 
           show={show} 
           toggle={<div className="toggle-wrapper">
               <Toggle toggle={popup} bgColor={'var(--color-jade-green)'} />
             </div>}
           sidebar={<Breadcrumb links={breadcrumbLinks} />}>
           <AppRoutes user={user} />
-        </MainLayout>
+        </MainLayout> */}
+        <ToggleSwitch>
+          {({ on, toggle }) => (
+            <MainLayout
+              show={on}
+              toggle={
+                <div className="toggle-wrapper">
+                  <Toggle toggle={toggle} bgColor={'var(--color-jade-green)'} checked={on} />
+                </div>
+              }
+              sidebar={<Breadcrumb links={breadcrumbLinks} />}
+            >
+              <AppRoutes user={user} />
+            </MainLayout>
+          )}
+        </ToggleSwitch>
       </Router>
     </>
   )

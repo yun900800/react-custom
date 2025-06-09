@@ -1,0 +1,232 @@
+:root {
+    --leaves-width: 136px;
+    --leaves-height: 136px;
+
+    --leave-width: 40px;
+    --leave-height: 64px;
+
+    --leave-three-width: 60px;
+    --leave-three-height: 72px;
+
+    --leave-intial-degree: -45deg;
+    --leave-three-intial-degree: 120deg;
+
+    --branch-width: 160px;
+    --branch-height: 160px;
+    --branch-thickness: 5px;
+    --branch-left-offset: 60px;
+    --branch-top-offset: 20px;
+
+    --branch-left-range: 60px;
+    --branch-right-range: 150px;
+
+    --leave-three-origin-x: 93%;
+    --leave-three-origin-y: 106%;
+}
+
+* {
+    /* init reset.css */
+    margin: 0;
+    padding:0 ; 
+    box-sizing: border-box;
+}
+
+.main {
+    /* Step1 - set main container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    gap: 40px;
+}
+
+.clover {
+    /* Step2 - set clover wrapper and leaves container */
+    position: relative;
+}
+
+.leaves {
+    /* Step2 - set clover wrapper and leaves container */
+    position: relative;
+    /* width: 34px;
+    height: 34px; */
+    width: var(--leaves-width);
+    height: var(--leaves-height);
+    background: transparent;
+    z-index: 1;
+}
+
+.leave {
+    /* Step3 - construct heart leave */
+    display: block;
+    position: absolute;
+    width: var(--leave-width);
+    height: var(--leave-height);
+    left: calc( var(--leaves-width) / 2 );
+    top: calc( var(--leaves-height) / 2 - var(--leave-height) );
+    background: #0f0;
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 0px 3px;
+    /* Step3-1 - 沿着中心轴旋转-45deg */
+    transform-origin: -2% 102%;
+    transform: rotate(var(--leave-intial-degree));
+    
+}
+
+.leave:after {
+    content: '';
+    position: absolute;
+    width: var(--leave-width);
+    height: var(--leave-height);
+    background: #0f0;
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 3px 0px;
+    /* Step3 - construct heart leave */
+
+    /* Step3-2 - 叶子的另一瓣旋转并且移动,这里移动的距离是宽度的一般 */
+    transform-origin: 50% 100%;
+    transform: rotate(90deg) translate(calc(var(--leave-width) / -2), calc(var(--leave-width) / 2));
+}
+
+
+/* Step4 adjust the angle of four leave */
+.angleN {
+    transform: rotate(var(--leave-intial-degree));
+}
+.angleS {
+    transform: rotate(calc(var(--leave-intial-degree) * -3 ));
+}
+.angleW {
+    transform: rotate(calc(var(--leave-intial-degree) * 3 ));
+}
+.angleE {
+    transform: rotate(calc(var(--leave-intial-degree) * -1 ));
+}
+
+.leave-three {
+    display: block;
+    position: absolute;
+    width: var(--leave-three-width);
+    height: var(--leave-three-height);
+    left: calc( var(--leaves-width) / 2 );
+    top: calc( var(--leaves-height) / 2 - var(--leave-height) );
+    /* background: #0f0; */
+    border-radius: calc(var(--leave-three-width) / 2) calc(var(--leave-three-width) / 2) 0px 0px;
+    transform-origin: -2% 102%;
+    
+}
+
+.leave-three:hover{
+    /* background: #219b21; */
+}
+
+
+/* 
+    step5 three leaves need to adjust transform and transform-origin 
+    step5 1. the params above need adjust according width and height
+ */
+.leave-three::before {
+    content: '';
+    position: absolute;
+    /* top:0;
+    left:0; */
+    width: var(--leave-three-width);
+    height: var(--leave-three-height);
+    background: #0f0;
+    border-radius: calc(var(--leave-three-width) / 2) calc(var(--leave-three-width) / 2) 0px 0px;
+    transform: rotate(var(--leave-three-intial-degree)) translate(calc(var(--leave-width) / 2),calc(var(--leave-three-height) * 0.76));
+    transform-origin: var(--leave-three-origin-x) var(--leave-three-origin-y);
+}
+
+
+/*  step6 every leave has different color
+    step6 1, when hover the leave, it changes its color
+  */
+/* .leave-three:hover::before {
+    background: #219b21;
+} */
+
+
+.angle1 {
+    transform: rotate(0deg);
+}
+
+/* .leave-three.angle2::before {
+    background: red;
+}
+
+.leave-three.angle2:hover::before {
+    background: #f08a8a;
+} */
+
+.angle2 {
+    transform: rotate(var(--leave-three-intial-degree));
+    /* background: red; */
+}
+
+/* .angle2:hover{
+    background: #f08a8a;
+}
+
+.leave-three.angle3::before {
+    background: blue;
+}
+
+.leave-three.angle3:hover::before {
+    background: #6d64ee;
+} */
+
+.angle3 {
+    transform: rotate(calc( var(--leave-three-intial-degree) * 2 ));
+    /* background: blue; */
+}
+
+/* .angle3:hover{
+    background: #6d64ee;
+} */
+
+.leave,
+.leave-three {
+  background: var(--leaf-color, #0f0);
+  /* transition: background 0.3s; */
+}
+.leave:hover,
+.leave-three:hover {
+  background: var(--leaf-hover-color, #219b21);
+}
+
+.leave::after {
+    background: var(--leaf-color, #0f0);
+}
+
+.leave:hover::after{
+  background: var(--leaf-hover-color, #219b21);
+}
+
+.leave-three::before {
+  background: var(--leaf-color, #0f0);
+  /* transition: background 0.3s; */
+}
+.leave-three:hover::before {
+  background: var(--leaf-hover-color, #219b21);
+}
+
+.branch {
+    position: absolute;
+    /* height: 40px;
+    width: 40px; */
+    width: var(--branch-width);
+    height: var(--branch-height);
+    left: var(--branch-left-offset);
+    top: var(--branch-top-offset);
+}
+
+.branch::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: var(--branch-width);
+    height: calc( var(--branch-height) + 10px );
+    border-bottom: var(--branch-thickness) solid #219b21;
+    border-radius: 0px 0px var(--branch-left-range) var(--branch-right-range);
+    left: 0;
+    top:-8px;
+}
