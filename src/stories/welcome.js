@@ -23,6 +23,8 @@ import SvgApp from "../component/svg/SvgApp";
 import FoccApp from "../component/facc/focc-app";
 import FaccModuleProblemApp from "../component/facc-module-problem/Facc-module-problem-app";
 import CloverApp from '../component/clover/CloverApp';
+import StyleApp from "../component/style-component/style-app";
+import PerformanceApp,{PromoteApp} from '../component/performance/performance-app'
 export const Welcome = () => {
   console.log('这个组件载入index.css'); 
   return (
@@ -51,6 +53,9 @@ export const Welcome = () => {
       <FoccApp />
       <FaccModuleProblemApp />
       <CloverApp/>
+      <StyleApp/>
+      <PerformanceApp/>
+      <PromoteApp/>
     </>
   )
 }

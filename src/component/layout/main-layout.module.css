@@ -17,6 +17,7 @@
 	background: #48a770;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
+	overflow-y: auto;
 }
 
 .st-menu::after {
@@ -54,6 +55,14 @@
     overflow-y: auto;
     position: relative;
 	/* padding: 1rem; */
+}
+
+@media screen and (max-width: 768px) {
+	.content {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+	
 }
 
 .content::-webkit-scrollbar {

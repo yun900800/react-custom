@@ -11,11 +11,6 @@ import MainLayout from './component/layout/main-layout.js';
 import ToggleSwitch from './component/toggle-switch.tsx';
 
 export default function RouterApp() {
-  const [show,setShow] = useState(false); 
-  const popup = (e)=>{
-    setShow(!show);
-    e.stopPropagation();
-  }
   const user = useSelector(state => {
     return state.user.user
   });

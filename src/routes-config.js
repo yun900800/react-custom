@@ -1,12 +1,12 @@
 import React from 'react';
-import App from './App';
-import LoginForm from './component/login/login-form.js';
+import App from './pages/app/App';
+import LoginPage from './pages/login/login-page.js';
 import { Welcome } from './stories/welcome.js';
 import TailwindUI from './component/tailwind-ui/tailwind-ui.js';
 import TextStylingCombinations from './component/tailwind-ui/text-styling-combination.js';
 import ResponsiveText from './component/tailwind-ui/responsive-text.js';
 import ExampleUI from './component/tailwind-ui/example-ui.js';
-import { Scene } from './component/three/scene';
+import ThreeJsPage from './pages/three-js/threejs-page.js';
 import AppStyledComponent from './component/styles/app-styled-component.js';
 import { Layout } from './component/layout/layout.js';
 import { ResponseLayout } from './component/layout/response-layout.js';
@@ -121,13 +121,13 @@ const LayoutTwoApp = () => {
 
 export const routesConfig = [
   { path: '/', element: <App />, isProtected: false },
-  { path: '/login', element: <LoginForm />, isProtected: false },
+  { path: '/login', element: <LoginPage />, isProtected: false },
   { path: '/welcome', element: <Welcome />, isProtected: true },
   { path: '/tailwindui', element: <TailwindUI />, isProtected: true, layout: Layout },
   { path: '/tailwindtext', element: <TextStylingCombinations />, isProtected: true, layout: Layout },
   { path: '/tailwindresponse', element: <ResponsiveText />, isProtected: true, layout: Layout },
   { path: '/tailwindexampleui', element: <ExampleUI />, isProtected: true, layout: Layout, permissions: ['analyze'] },
-  { path: '/scene', element: <Scene />, isProtected: true, layout: Layout, permissions: ['analyze'] },
+  { path: '/scene', element: <ThreeJsPage />, isProtected: true, layout: Layout, permissions: ['analyze'] },
   { path: '/styled', element: <AppStyledComponent />, isProtected: true, layout: Layout, permissions: ['!admin'] },
   { path: '/images-card', element: <ResponseLayoutImage />, isProtected: true, layout: ResponseLayout },
   { path: '/layoutone', element: <AppStyledComponent />, isProtected: true, layout: LayoutOne },

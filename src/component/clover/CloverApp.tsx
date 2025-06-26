@@ -1,6 +1,7 @@
 import React from "react";
 import Clover from "./Clover";
 import CloverNew from "./Clover-new";
+import Clover1 from "./clover-1";
 import styles from "./clover.module.css"; 
 export default function CloverApp() {
   return (
@@ -33,10 +34,12 @@ export default function CloverApp() {
         leaveHeight={90}
         originX="102%"
         originY="102%"
+        branchColor="var(--color-water)"
+        branchHoverColor="var(--color-orange)"
         leafColors={[
-          { color: "#0f0", hoverColor: "#ff0" },
-          { color: "#0ff", hoverColor: "#f0f" },
-          { color: "#f00", hoverColor: "#00f" },
+          { color: 'var(--color-onion-cyan)', hoverColor: 'var(--color-jade-green)' },
+          { color: 'var(--color-onion-green)', hoverColor: 'var(--color-bamboo-green)' },
+          { color: 'var(--color-grass-green)', hoverColor: 'var(--color-cyan-green)' },
         ]}
       />
       <CloverNew
@@ -46,12 +49,14 @@ export default function CloverApp() {
         leaveWidth={30}
         leaveHeight={50}
         leafColors={[
-          { color: "#0f0", hoverColor: "#ff0" },
-          { color: "#0ff", hoverColor: "#f0f" },
-          { color: "#f00", hoverColor: "#00f" },
-          { color: "#fa0", hoverColor: "#0af" },
+          { color: 'var(--color-orange)', hoverColor: 'var(--color-orange-ad)' },
+          { color: 'var(--color-bright-red)', hoverColor: 'var(--color-magenta-red)' },
+          { color: 'var(--color-blue-purple)', hoverColor: 'var(--color-purple-tang)'},
+          { color: 'var(--color-water)', hoverColor: 'var(--color-lake-green)'},
         ]}
       />
+      <Clover1 type="four" />
+      <Clover1 type="three" />
     </div>
     
   );

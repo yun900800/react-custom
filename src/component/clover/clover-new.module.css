@@ -1,0 +1,128 @@
+:root {
+    /* 定义三叶草或者四叶草容器的大小 */
+    --leaves-width: 136px;
+    --leaves-height: 136px;
+
+    /* 定义三叶草或者四叶草的叶子大小，注意这里有一个约束就是
+        --leave-width < --leave-height
+     */
+    --leave-width: 40px;
+    --leave-height: 64px;
+
+    /* 叶子初始旋转角度 */
+    --init-rotate-degree: 150deg;
+
+    /* 四叶草旋转间隔度数 */
+    --rotate-degree-of-four: 90deg;
+    /* 三叶草间隔旋转度数 */
+    --rotate-degree-of-three: 120deg;
+
+}
+
+* {
+    /* init reset.css */
+    margin: 0;
+    padding:0 ; 
+    box-sizing: border-box;
+}
+
+.main {
+    /* Step1 - set main container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 40px;
+}
+
+.clover {
+    /* Step2 - set clover wrapper */
+    position: relative;
+}
+
+.leaves {
+    /* Step2 - set leaves container */
+    position: relative;
+    width: var(--leaves-width);
+    height: var(--leaves-height);
+    background: transparent;
+    z-index: 1;
+}
+
+.leave {
+    /* Step3 - construct heart leave  */
+    display: block;
+    position: absolute;
+    width: var(--leave-width);
+    height: var(--leave-height);
+    left: calc( var(--leaves-width) / 2 );
+    top: calc( var(--leaves-height) / 2 - var(--leave-height) );
+    /* step3-1 - move to make left-bottom position to the enter of container */
+    background: #0f0;
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 0px 3px;
+    /* step3-2 - make left-top and right-top to circle */
+
+    /* Step3-3 - rotate --init-rotate-degree degree around left bottom a little */
+    transform-origin: -2% 102%;
+    transform: rotate(var(--init-rotate-degree));
+}
+
+/* 这里的前六行代码是对主元素的复制
+   不同的是旋转的方式
+   原来的代码采用的是
+   transform-origin: 50% 100%;
+   transform: translate(calc(var(--leave-width) / -2), calc(var(--leave-width) / 2));
+    上面实际上是依照元素的x轴50%和y轴100%的点旋转
+
+    而我换了一种方式
+    transform-origin: 0% 100%;
+    transform: rotate(90deg) translateX(calc(var(--leave-width) / -1));
+    我是用元素的左下角的点作为旋转点，然后左移100%
+*/
+.leave::after {
+    content: '';
+    position: absolute;
+    width: var(--leave-width);
+    height: var(--leave-height);
+    background: #0f0;
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 3px 0px;
+    
+    transform: rotate(90deg) translateX(calc(var(--leave-width) / -1));
+    /* transform: translate(calc(var(--leave-width) / -2), calc(var(--leave-width) / 2)); */
+    transform-origin: 0% 100%;
+}
+
+/* Step4 adjust the angle of four leave */
+.angleN {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-four)));
+}
+.angleS {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-four) * 2));
+}
+.angleW {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-four) * 3));
+}
+.angleE {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-four) * 4));
+}
+
+.leave-three {
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 0px 0px;
+}
+
+.leave-three::after {
+    border-radius: calc(var(--leave-width) / 2) calc(var(--leave-width) / 2) 0px 0px;
+    transform: rotate(var(--rotate-degree-of-three)) translateX(calc(var(--leave-width) / -1));
+}
+
+.angle1 {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-three)));
+}
+
+.angle2 {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-three) * 2));
+}
+
+.angle3 {
+    transform: rotate(calc(var(--init-rotate-degree) + var(--rotate-degree-of-three) * 3));
+}

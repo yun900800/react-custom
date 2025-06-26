@@ -1,0 +1,6 @@
+.threeJsPage {
+    margin-top: 20px;
+    min-width: 100%;
+    background-color: var(--color-white-plain);
+    border-radius: 4px;
+}

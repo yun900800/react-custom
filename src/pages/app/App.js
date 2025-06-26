@@ -1,29 +1,34 @@
 import React, { Component } from 'react'
-import Sparkles from './sparkle/sparkles'
-import Input from './component/new-input'
-import CustomInput,{AnimatedInput} from './component/input'
-import Hello from './component/Hello.tsx'
-import { Boop, SpringBoop, NewBoop } from './boop/boop'
-import CircleDemo from './component/circle-demo'
-import { StyleBasic } from './component/styles/style-basic'
-import { AdapterProps } from './component/styles/adapter-prop'
-import { StyleExtender } from './component/styles/style-extender'
-import TaskList from './stories/TaskList'
+import Sparkles from '../../sparkle/sparkles'
+import Input from '../../component/new-input'
+import CustomInput,{AnimatedInput} from '../../component/input'
+import Hello from '../../component/Hello.tsx'
+import { Boop, SpringBoop, NewBoop } from '../../boop/boop'
+import CircleDemo from '../../component/circle-demo'
+import { StyleBasic } from '../../component/styles/style-basic'
+import { AdapterProps } from '../../component/styles/adapter-prop'
+import { StyleExtender } from '../../component/styles/style-extender'
+import TaskList from '../../stories/TaskList'
 
-import FoldableImage from './fold/foldable'
-import { Foldable } from './fold/foldable-1'
-import { Foldable2 } from './fold/foldable-2'
-import { Foldable3 } from './fold/foldable-3'
+import FoldableImage from '../../fold/foldable'
+import { Foldable } from '../../fold/foldable-1'
+import { Foldable2 } from '../../fold/foldable-2'
+import { Foldable3 } from '../../fold/foldable-3'
 
-import Articles from './component/article/articles.jsx'
-import ArticlesWithHook from './component/article/articles-with-hook.js'
-import ArticlesWithDataApi from './component/article/article-with-data-api.js'
+import Articles from '../../component/article/articles.jsx'
+import ArticlesWithHook from '../../component/article/articles-with-hook.js'
+import ArticlesWithDataApi from '../../component/article/article-with-data-api.js'
 import './app.css'
-export default class App extends Component {
-  render() {
-    return (
-      <div className='app-container'>
-        <div className="app system-info">
+import useMediaQuery from '../../component/hooks/use-media-query.js'
+const App  = () => {
+  const isMobile = useMediaQuery('(max-width: 600px)');
+  let widthAndHeight = { width: '100%', height: 'auto' };
+  if (!isMobile) {
+    widthAndHeight = { width: 600, height: 400 };
+  }
+  return (
+    <div className='app-container'>
+      <div className="app system-info">
           {process.env.NODE_ENV}, {process.env.name}
         </div>
         <div className="app sparkle-info">
@@ -70,24 +75,24 @@ export default class App extends Component {
         </div>
         <div className="app app-foldable">
         <FoldableImage
-          width={600}
-          height={400}
+          width={widthAndHeight.width}
+          height={widthAndHeight.height}
           percentage={40}
           src="assets/images/process-picture.jpg"
         ></FoldableImage>
         <Foldable
-          width={600}
-          height={400}
+          width={widthAndHeight.width}
+          height={widthAndHeight.height}
           src="assets/images/process-picture.jpg"
         ></Foldable>
         <Foldable2
-          width={600}
-          height={400}
+          width={widthAndHeight.width}
+          height={widthAndHeight.height}
           src="assets/images/process-picture.jpg"
         ></Foldable2>
         <Foldable3
-          width={600}
-          height={400}
+          width={widthAndHeight.width}
+          height={widthAndHeight.height}
           src="assets/images/process-picture.jpg"
         ></Foldable3>
         </div>
@@ -99,5 +104,5 @@ export default class App extends Component {
         
       </div>
     )
-  }
 }
+export default App;

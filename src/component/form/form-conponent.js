@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState, Profiler} from 'react';
 import { Motion, spring } from 'react-motion'
 import useInput  from './use-input';
 const Uncontrolled = () => (
@@ -31,6 +31,9 @@ class UncontrolledForm extends React.Component {
 
     render() {
         return (
+            <Profiler id="UncontrolledForm" onRender={(id, phase, actualDuration, baseDuration, startTime, commitTime) => {
+                console.log('Rendered:', id, phase, actualDuration, baseDuration, startTime, commitTime );
+            }}>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" onChange={this.handleChange} />
                 <button type="submit">Submit</button>
@@ -43,6 +46,7 @@ class UncontrolledForm extends React.Component {
                     </button>
                 </div>
             </form>
+            </Profiler>
         );
     }
 }
@@ -289,11 +293,34 @@ const Transition = () => (
   </Motion>
 );
 
+function ExampleComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('副作用：每次渲染都会调用');
+    document.title = `You clicked ${count} times`;
+
+    // 注意：没有清理副作用
+  }, [count]);
+
+  return (
+    <Profiler id="ExampleComponent" onRender={(id, phase, actualDuration, baseDuration, startTime, commitTime) => {
+                console.log('Rendered:', id, phase, actualDuration, baseDuration, startTime, commitTime );
+            }}>
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+    </Profiler>
+  );
+}
+
 
 
 export { Uncontrolled, NameForm, NamePromoteForm,
      UncontrolledFormInput, Controlled,ControlledForm,
      TimerComponent,
-     Transition
+     Transition,
+     ExampleComponent
      };
 export default UncontrolledForm;

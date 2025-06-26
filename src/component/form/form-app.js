@@ -7,19 +7,25 @@ import UncontrolledForm, {
     Controlled,
     ControlledForm,
     TimerComponent,
-    Transition
+    Transition,
+    ExampleComponent
 } from "./form-conponent";
 import Card from "./card";
-import Login from './Login'
+import Login from './Login';
+import styles from './form-app.module.css';
 const FormApp = () => {
     return (
-        <>
+        <div className={styles.main}>
             <h1>Form Application</h1>
             <Uncontrolled />
             <UncontrolledForm />
             <NameForm />
             <NamePromoteForm />
             <UncontrolledFormInput />
+            <React.StrictMode>
+                <ExampleComponent />
+            </React.StrictMode>
+            {/* <ExampleComponent/> */}
             <Card>
                 <Card.Header>Form Header</Card.Header>
                 <Card.Body>
@@ -35,7 +41,7 @@ const FormApp = () => {
                 </Card.Body>
                 <Card.Footer>Form Footer</Card.Footer>
             </Card>
-        </>
+        </div>
     );
 }
 

@@ -1,0 +1,9 @@
+.main {
+    max-width: 840px;
+    margin: 0 auto;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}

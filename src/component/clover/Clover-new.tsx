@@ -17,6 +17,8 @@ type CloverProps = {
   originX?: Percent;
   originY?: Percent;
   leafColors?: LeafColor[];
+  branchColor?: string;
+  branchHoverColor?: string;
   // ...其它你想自定义的变量
 };
 function CloverNew({
@@ -30,6 +32,8 @@ function CloverNew({
   originX = "93%",
   originY = "106%",
   leafColors = [],
+  branchColor = "#219b21",
+  branchHoverColor = "red",
 }: CloverProps) {
   const leafClass = type === "four" ? styles.leave : styles["leave-three"];
   const angles =
@@ -47,6 +51,8 @@ function CloverNew({
     "--branch-height": `${branchHeight}px`,
     '--leave-three-origin-x': `${originX}`,
     '--leave-three-origin-y': `${originY}`,
+    "--branch-color": branchColor,
+    "--branch-hover-color": branchHoverColor,
     // ...其它变量
   } as React.CSSProperties;
 

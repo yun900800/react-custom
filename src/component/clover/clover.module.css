@@ -38,6 +38,7 @@
     align-items: center;
     min-height: 50vh;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .clover {
@@ -114,10 +115,6 @@
     
 }
 
-.leave-three:hover{
-    /* background: #219b21; */
-}
-
 
 /* 
     step5 three leaves need to adjust transform and transform-origin 
@@ -130,7 +127,6 @@
     left:0; */
     width: var(--leave-three-width);
     height: var(--leave-three-height);
-    background: #0f0;
     border-radius: calc(var(--leave-three-width) / 2) calc(var(--leave-three-width) / 2) 0px 0px;
     transform: rotate(var(--leave-three-intial-degree)) translate(calc(var(--leave-width) / 2),calc(var(--leave-three-height) * 0.76));
     transform-origin: var(--leave-three-origin-x) var(--leave-three-origin-y);
@@ -219,14 +215,20 @@
     top: var(--branch-top-offset);
 }
 
+
+
 .branch::before {
     content: '';
     display: block;
     position: absolute;
     width: var(--branch-width);
     height: calc( var(--branch-height) + 10px );
-    border-bottom: var(--branch-thickness) solid #219b21;
+    border-bottom: var(--branch-thickness) solid var(--branch-color, #219b21);
     border-radius: 0px 0px var(--branch-left-range) var(--branch-right-range);
     left: 0;
     top:-8px;
+}
+
+.branch:hover::before {
+    border-bottom: var(--branch-thickness) solid var(--branch-hover-color, #45f545);
 }

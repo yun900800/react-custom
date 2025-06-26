@@ -32,7 +32,7 @@ const teams = [
 ]
 export default function TailwindUI() {
   return (
-    <>
+    <div className='flex flex-col gap-4 p-4 mx-auto min-w-full bg-white rounded-lg shadow-md'>
         <Example />
         <HockeyTeamList teams={teams} />
         <Card />
@@ -44,6 +44,6 @@ export default function TailwindUI() {
         <UserCard name="Ava Wang" role="Product Designer" avatar="https://i.pravatar.cc/150?img=32" online={true}/>
         <AuthApp />
         <ErrorApp />
-    </>
+    </div>
   )
 }
